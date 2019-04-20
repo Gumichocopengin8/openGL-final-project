@@ -5,7 +5,9 @@
 #ifndef PROJECT_MAIN_H
 #define PROJECT_MAIN_H
 #include "camera/Camera.h"
+#include "window/Window.h"
 
+extern Window *windowPtr;
 extern Camera *cameraPtr;
 
 void display();

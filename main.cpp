@@ -2,10 +2,14 @@
 #include <GLUT/glut.h>
 
 #include "main.h"
+#include "window/Window.h"
 #include "camera/Camera.h"
 #include "cube/Cube.h"
 #include "mouse/mouse.h"
 #include "keyboard/keyboard.h"
+
+Camera  *cameraPtr;
+Window  *windowPtr;
 
 #define WINDOW_SIZE 400
 
@@ -28,6 +32,8 @@ void display() {
 }
 
 void reshape(int w, int h) {
+    windowPtr->setWidth(w);
+    windowPtr->setHeight(h);
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -36,6 +42,10 @@ void reshape(int w, int h) {
 }
 
 int main(int argc, char **argv) {
+
+    Window window(WINDOW_SIZE, WINDOW_SIZE);
+    windowPtr = &window;
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);

@@ -4,6 +4,7 @@
 #include <GLUT/glut.h>
 #include <math.h>
 #include "Camera.h"
+#include "../main.h"
 
 
 Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
@@ -17,9 +18,9 @@ Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, 
 
 void Camera::refresh() {
     gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
-    glRotatef(this->pitch*57.2958, 1.0f, 0.0f, 0.0f);
-    glRotatef(this->yaw*57.2958, 0.0f, 1.0f, 0.0f);
-    glRotatef(this->roll*57.2958, 0.0f, 0.0f, 1.0f);
+    glRotatef(this->pitch * 57.2958, 1.0f, 0.0f, 0.0f);
+    glRotatef(this->yaw * 57.2958, 0.0f, 1.0f, 0.0f);
+    glRotatef(this->roll * 57.2958, 0.0f, 0.0f, 1.0f);
     glTranslatef(-this->camera_x, -this->camera_y, -this->camera_z);
 }
 
@@ -33,35 +34,35 @@ void Camera::refresh() {
 
 
 void Camera::forward(float diff) {
-    this->camera_x -= sin(this->yaw)*cos(this->pitch)*0.1;
+    this->camera_x -= sin(this->yaw) * cos(this->pitch) * 0.1;
     //this->camera_y += sin(this->pitch)*0.1;
-    this->camera_z -= -cos(this->yaw)*cos(this->pitch)*0.1;
+    this->camera_z -= -cos(this->yaw) * cos(this->pitch) * 0.1;
     glutPostRedisplay();
 }
 
 void Camera::backward(float diff) {
-    this->camera_x += sin(this->yaw)*cos(this->pitch)*0.1;
+    this->camera_x += sin(this->yaw) * cos(this->pitch) * 0.1;
     //this->camera_y -= sin(this->pitch)*0.1;
-    this->camera_z += -cos(this->yaw)*cos(this->pitch)*0.1;
+    this->camera_z += -cos(this->yaw) * cos(this->pitch) * 0.1;
     glutPostRedisplay();
 }
 
 void Camera::left(float diff) {
-    this->camera_x += cos(this->yaw)*0.1;
-    this->camera_z += sin(this->yaw)*0.1;
+    this->camera_x += cos(this->yaw) * 0.1;
+    this->camera_z += sin(this->yaw) * 0.1;
     glutPostRedisplay();
 }
 
 void Camera::right(float diff) {
-    this->camera_x -= cos(this->yaw)*0.1;
-    this->camera_z -= sin(this->yaw)*0.1;
+    this->camera_x -= cos(this->yaw) * 0.1;
+    this->camera_z -= sin(this->yaw) * 0.1;
     glutPostRedisplay();
 }
 
 void Camera::lookAt(float diffX, float diffY) {
 
-    this->pitch = -diffY*1.56/200;
-    this->yaw = diffX*6/200;
+    this->pitch = -diffY * 1.56 / windowPtr->getHeight();
+    this->yaw = diffX * 6 / windowPtr->getWidth();
     glutPostRedisplay();
 }
 
