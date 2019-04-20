@@ -4,6 +4,8 @@
 
 #ifndef PROJECT_MAIN_H
 #define PROJECT_MAIN_H
+
+#include "chunk/Chunk.h"
 #include "player/Player.h"
 #include "window/Window.h"
 

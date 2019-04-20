@@ -5,14 +5,19 @@
 #include "main.h"
 
 #include "camera/Camera.h"
+//#include "chunk/Chunk.h"
 #include "block/Block.h"
 #include "mouse/mouse.h"
 #include "keyboard/keyboard.h"
 #include "player/Player.h"
 #include "window/Window.h"
+#include "world/world.h"
 
+
+// Ugly but GLUT is a C lib not C++ so not easy to do clean OOP...
 Player *playerPtr;
 Window *windowPtr;
+World *worldPtr;
 
 #define WINDOW_SIZE 400
 int count = 0;
@@ -21,18 +26,17 @@ void display() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-
+    std::cout << int(playerPtr->camera.camera_x) / 16 << std::endl;
     glLoadIdentity();
 
     playerPtr->camera.refresh();
-    for (int i = 0; i < 16; ++i) {
-        for (int j = 0; j < 16; ++j) {
-            for (int k = 0; k < 1; ++k) {
-                Block(i, k, j).draw();
-            }
 
-        }
-    }
+    /**
+     * TODO: Getter for the player position
+     */
+    worldPtr->update(playerPtr->camera.camera_x, playerPtr->camera.camera_z);
+
+
     playerPtr->camera.idle(sin((float) count / 40), 0);
     glutSwapBuffers();
     glutPostRedisplay();
@@ -55,6 +59,8 @@ int main(int argc, char **argv) {
     Window window(WINDOW_SIZE, WINDOW_SIZE);
     windowPtr = &window;
 
+    World world();
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);
@@ -71,7 +77,7 @@ int main(int argc, char **argv) {
     glutWarpPointer(200, 200);
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
-
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glutMainLoop();
 
     return 0;

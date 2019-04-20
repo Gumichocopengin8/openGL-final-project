@@ -13,7 +13,7 @@ Block::Block(int x, int y, int z) {
     this->z = z;
 }
 
-void Block::draw() {
+void Block::render() {
 
     // Transforms
     glPushMatrix();

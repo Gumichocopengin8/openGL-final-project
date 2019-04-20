@@ -14,7 +14,7 @@ private:
     int z;
 public:
     Block(int x, int y, int z);
-    void draw();
+    void render();
 };
 
 

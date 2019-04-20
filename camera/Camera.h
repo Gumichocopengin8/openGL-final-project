@@ -7,9 +7,6 @@
 
 class Camera {
 private:
-    double camera_x;
-    double camera_y;
-    double camera_z;
     double pitch; // x rotation
     double yaw; // y rotation
     double roll; // z rotation
@@ -17,6 +14,9 @@ private:
     double y_speed;
     double z_speed;
 public:
+    double camera_x;
+    double camera_y;
+    double camera_z;
     Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll);
     void refresh();
     void move_x(float speed);

@@ -10,9 +10,12 @@
 #define CHUNK_SIZE 16
 
 class Chunk {
-    Block blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
+    int blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
+    int x;
+    int y;
 public:
-    Chunk();
+    Chunk(int chunk_x, int chunk_y);
+    void render();
 };
 
 
