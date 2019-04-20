@@ -8,7 +8,7 @@ Light::Light() {
     mat_ambient[] = { 0.0 , 0.0 , 0.0 , 0.0 };
     mat_diffuse[] = { 0.0 , 0.0 , 0.0 , 0.0 };
     mat_specular[] = { 0.0 , 0.0 , 0.0 , 0.0 };
-    mat_shininess[] = { 30 };
+    mat_shininess[] = { 0 };
 }
 
 void Light::apply() {
@@ -31,7 +31,7 @@ void Light::grass() {
     mat_specular[2] = 0.807843;
 
     mat_shininess[0] = 27.9;
-    apply();
+    this->apply();
 }
 
 void Light::treeTrunk() {
@@ -48,7 +48,7 @@ void Light::treeTrunk() {
     mat_specular[2] = 0;
 
     mat_shininess[0] = 30;
-    apply();
+    this->apply();
 }
 
 void Light::treeLeaves() {
@@ -65,7 +65,7 @@ void Light::treeLeaves() {
     mat_specular[2] = 0;
 
     mat_shininess[0] = 30;
-    apply();
+    this->apply();
 }
 
 
@@ -83,5 +83,5 @@ void Light::ground() {
     mat_specular[2] = 0.166721;
 
     mat_shininess[0] = 25.6;
-    apply();
+    this->apply();
 }
