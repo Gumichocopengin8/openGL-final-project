@@ -9,7 +9,8 @@
 #include "../camera/Camera.h"
 
 class Player {
-    float walking_speed;
+    float walking_acceleration;
+    float walking_speed_max;
     float jumping_speed;
 public:
     Camera camera;

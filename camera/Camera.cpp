@@ -1,16 +1,19 @@
 //
 // Created by Fabien Delattre on 2019-04-19.
 //
-#include <GLUT/glut.h>
-#include <math.h>
-#include <iostream>
+
 #include "Camera.h"
+
 #include "../main.h"
 
+#include <iostream>
+#include <math.h>
+#include <GLUT/glut.h>
 
-#define WALKING_SPEED 0.3
-#define GRAVITY 0.05
 
+#define GRAVITY 0.02
+#define MAX_SPEED 2.5
+#define GROUND_FRICTION 0.19
 
 Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
     this->camera_x = camera_x;
@@ -19,7 +22,9 @@ Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, 
     this->pitch = pitch;
     this->yaw = yaw;
     this->roll = roll;
+    this->x_speed = 0;
     this->y_speed = 0;
+    this->z_speed = 0;
 }
 
 void Camera::refresh() {
@@ -32,13 +37,16 @@ void Camera::refresh() {
     glTranslatef(-this->camera_x, -this->camera_y, -this->camera_z);
 
     // speed update
-    this->camera_y += this->y_speed;
 
-    this->y_speed -= GRAVITY;
-
+    this->move_x(this->x_speed * -GROUND_FRICTION);
     if (this->camera_y < 2) {
-        this->camera_y = 2;
+        this->move_y(-this->y_speed);
+    } else {
+        this->move_y(-GRAVITY);
     }
+    this->move_z(this->z_speed * -GROUND_FRICTION);
+
+
 }
 
 /**
@@ -53,27 +61,37 @@ u: < -sy*sp, cp,  cy*sp >
  **/
 
 void Camera::move_x(float speed) {
-    this->camera_x += sin(this->yaw) * cos(this->pitch) * speed;
+
+    this->x_speed += speed;
+
+    if (this->x_speed > MAX_SPEED) this->x_speed = MAX_SPEED;
+
+    this->camera_x += sin(this->yaw) * cos(this->pitch) * this->x_speed;
     this->camera_y += sin(this->pitch) * speed;
-    this->camera_z += -cos(this->yaw) * cos(this->pitch) * speed;
+    this->camera_z += -cos(this->yaw) * cos(this->pitch) * this->x_speed;
     glutPostRedisplay();
 }
 
 
 void Camera::move_z(float speed) {
-    this->camera_x += cos(this->yaw) * speed;
-    this->camera_z += sin(this->yaw) * speed;
+
+    this->z_speed += speed;
+
+    if (this->z_speed > MAX_SPEED) this->z_speed = MAX_SPEED;
+
+    this->camera_x += cos(this->yaw) * this->z_speed;
+    this->camera_z += sin(this->yaw) * this->z_speed;
     glutPostRedisplay();
 }
 
 void Camera::move_y(float speed) {
 
-    this->camera_x -= -sin(this->yaw) * sin(this->pitch) * speed;
-    this->camera_y += cos(this->pitch) * speed;
-    this->camera_z -= -cos(this->yaw) * cos(this->pitch) * speed;
+    this->y_speed += speed;
+    if (this->y_speed > MAX_SPEED) this->y_speed = MAX_SPEED;
+
+    this->camera_y += cos(this->pitch) * this->y_speed;
     glutPostRedisplay();
 
-    y_speed = 0.5;
 }
 
 void Camera::lookAt(float diffX, float diffY) {
