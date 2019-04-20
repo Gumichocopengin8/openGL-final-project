@@ -3,6 +3,7 @@
 //
 #include <GLUT/glut.h>
 #include <math.h>
+#include <iostream>
 #include "Camera.h"
 #include "../main.h"
 
@@ -14,9 +15,21 @@ Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, 
     this->pitch = pitch;
     this->yaw = yaw;
     this->roll = roll;
+    this->y_speed = 0;
 }
 
 void Camera::refresh() {
+
+    this->camera_y += this->y_speed;
+
+    this->y_speed -= 0.02;
+
+    if (this->camera_y < 2) {
+        this->camera_y = 2;
+    }
+
+    std::cout << this->camera_y << std::endl;
+
     gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
     glRotatef(this->pitch * 57.2958, 1.0f, 0.0f, 0.0f);
     glRotatef(this->yaw * 57.2958, 0.0f, 1.0f, 0.0f);
@@ -70,6 +83,10 @@ void Camera::idle(float diffX, float diffY) {
     this->pitch += diffX/6000;
     this->yaw +=diffY/6000;
     glutPostRedisplay();
+}
+
+void Camera::setYSpeed(double ySpeed) {
+    y_speed = ySpeed;
 }
 
 
