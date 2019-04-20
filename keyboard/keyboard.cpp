@@ -4,37 +4,22 @@
 #include <iostream>
 #include <cstdlib>
 #import <GLUT/glut.h>
-
-float eyex;
-float eyey;
-float eyez;
+#include "../main.h"
 
 void keyboard(unsigned char key, int x, int y) {
 
     std::cout << key << std::endl;
-    if (key == 's') {
-        eyex += 0.2;
-        glutPostRedisplay();
-    }
     if (key == 'z') {
-        eyex -= 0.2;
-        glutPostRedisplay();
+        cameraPtr->forward(0.2);
     }
-    if (key == 'r') {
-        eyey += 0.2;
-        glutPostRedisplay();
-    }
-    if (key == 'f') {
-        eyey -= 0.2;
-        glutPostRedisplay();
+    if (key == 's') {
+        cameraPtr->backward(0.2);
     }
     if (key == 'd') {
-        eyez += 0.2;
-        glutPostRedisplay();
+        cameraPtr->right(0.2);
     }
     if (key == 'q') {
-        eyez -= 0.2;
-        glutPostRedisplay();
+        cameraPtr->left(0.2);
     }
 
     if (key == 'a' || key == 'A') exit(0);

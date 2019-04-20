@@ -3,5 +3,5 @@ project(project)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -framework GLUT -framework OpenGL")
 
-add_executable(project main.cpp mouse/mouse.cpp mouse/mouse.h keyboard/keyboard.cpp keyboard/keyboard.h cube/Cube.cpp cube/Cube.h)
+add_executable(project main.cpp mouse/mouse.cpp mouse/mouse.h keyboard/keyboard.cpp keyboard/keyboard.h cube/Cube.cpp cube/Cube.h camera/Camera.cpp camera/Camera.h main.h)
 
