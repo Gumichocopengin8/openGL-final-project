@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <GLUT/glut.h>
 
+#include <cmath>
 #include "main.h"
 #include "window/Window.h"
 #include "camera/Camera.h"
@@ -12,6 +13,7 @@ Camera  *cameraPtr;
 Window  *windowPtr;
 
 #define WINDOW_SIZE 400
+int count = 0;
 
 void display() {
 
@@ -27,8 +29,10 @@ void display() {
             Cube(i, 0, j).draw();
         }
     }
-
+    cameraPtr->idle(sin((float)count/40), 0);
     glutSwapBuffers();
+    glutPostRedisplay();
+    count+=1;
 }
 
 void reshape(int w, int h) {

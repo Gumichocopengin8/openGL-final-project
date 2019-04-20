@@ -66,5 +66,11 @@ void Camera::lookAt(float diffX, float diffY) {
     glutPostRedisplay();
 }
 
+void Camera::idle(float diffX, float diffY) {
+    this->pitch += diffX/6000;
+    this->yaw +=diffY/6000;
+    glutPostRedisplay();
+}
+
 
 
