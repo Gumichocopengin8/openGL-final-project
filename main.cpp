@@ -5,6 +5,7 @@
 #include "mouse/mouse.h"
 #include "keyboard/keyboard.h"
 
+#define WINDOW_SIZE 512
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -20,7 +21,6 @@ void display() {
     glutSwapBuffers();
 }
 
-
 void reshape(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
@@ -32,8 +32,8 @@ void reshape(int w, int h) {
 int main(int argc, char **argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(400, 400);
-    glutCreateWindow("Computer Graphic project");
+    glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);
+    glutCreateWindow("Terrain");
     glutReshapeFunc(reshape);
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
