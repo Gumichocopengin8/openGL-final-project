@@ -23,7 +23,7 @@ void keyboard(unsigned char key, int x, int y) {
         cameraPtr->left(0.2);
     }
     if (key == ' ') {
-        cameraPtr->setYSpeed(0.2);
+        cameraPtr->jump();
     }
 
     glutPostRedisplay();

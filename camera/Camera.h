@@ -24,7 +24,7 @@ public:
     void right(float diff);
     void lookAt(float diffX, float diffY);
     void idle(float diffX, float diffY);
-    void setYSpeed(double ySpeed);
+    void jump();
 
 };
 
