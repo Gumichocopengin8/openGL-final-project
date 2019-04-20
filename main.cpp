@@ -1,16 +1,18 @@
 #include <cstdlib>
+#include <cmath>
 #include <GLUT/glut.h>
 
-#include <cmath>
 #include "main.h"
-#include "window/Window.h"
+
 #include "camera/Camera.h"
 #include "cube/Cube.h"
 #include "mouse/mouse.h"
 #include "keyboard/keyboard.h"
+#include "player/Player.h"
+#include "window/Window.h"
 
-Camera  *cameraPtr;
-Window  *windowPtr;
+Player *playerPtr;
+Window *windowPtr;
 
 #define WINDOW_SIZE 400
 int count = 0;
@@ -22,17 +24,17 @@ void display() {
 
     glLoadIdentity();
 
-    cameraPtr->refresh();
+    playerPtr->camera.refresh();
 
     for (int i = 0; i < 15; ++i) {
         for (int j = 0; j < 15; ++j) {
             Cube(i, 0, j).draw();
         }
     }
-    cameraPtr->idle(sin((float)count/40), 0);
+    playerPtr->camera.idle(sin((float) count / 40), 0);
     glutSwapBuffers();
     glutPostRedisplay();
-    count+=1;
+    count += 1;
 }
 
 void reshape(int w, int h) {
@@ -55,8 +57,9 @@ int main(int argc, char **argv) {
     glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);
     glutCreateWindow("Terrain");
 
-    Camera camera(0, 2, 0, 0, 0, 0);
-    cameraPtr = &camera;
+    Player player(Camera(0, 2, 0, 0, 0, 0));
+    playerPtr = &player;
+
     glutReshapeFunc(reshape);
     glutDisplayFunc(display);
     glutMouseFunc(mouse);

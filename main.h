@@ -4,11 +4,11 @@
 
 #ifndef PROJECT_MAIN_H
 #define PROJECT_MAIN_H
-#include "camera/Camera.h"
+#include "player/Player.h"
 #include "window/Window.h"
 
 extern Window *windowPtr;
-extern Camera *cameraPtr;
+extern Player *playerPtr;
 
 void display();
 void reshape(int w, int h);

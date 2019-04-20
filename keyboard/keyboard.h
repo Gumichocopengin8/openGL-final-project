@@ -4,10 +4,12 @@
 
 #ifndef PROJECT_KEYBOARD_H
 #define PROJECT_KEYBOARD_H
-extern float eyex;
-extern float eyey;
-extern float eyez;
+
+#include "../main.h"
+
+void keyboard(unsigned char key, int x, int y);
+
+
 #endif //PROJECT_KEYBOARD_H
 
 
-void keyboard(unsigned char key, int x, int y);

@@ -18,13 +18,12 @@ private:
 public:
     Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll);
     void refresh();
-    void forward(float diff);
-    void backward(float diff);
-    void left(float diff);
-    void right(float diff);
+    void move_x(float speed);
+    void move_z(float speed);
+    void move_y(float speed);
     void lookAt(float diffX, float diffY);
     void idle(float diffX, float diffY);
-    void jump();
+
 
 };
 

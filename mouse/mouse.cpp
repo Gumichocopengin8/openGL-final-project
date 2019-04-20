@@ -1,10 +1,9 @@
 //
 // Created by Fabien Delattre on 2019-04-19.
 //
-#include <iostream>
-#include <cstdlib>
-#import <GLUT/glut.h>
-#include "../main.h"
+#include "mouse.h"
+
+
 
 int lastx = -1;
 int lasty = -1;
@@ -21,7 +20,7 @@ void mouse(GLint btn, GLint state, GLint x, GLint y) {
 
 void mouseMotion(int x, int y) {
     //std::cout << x << " " << y << std::endl;
-    if(lastx == -1 || x < 0 || y < 0) {
+    if (lastx == -1 || x < 0 || y < 0) {
         lastx = x;
         lasty = y;
     }
@@ -29,7 +28,7 @@ void mouseMotion(int x, int y) {
     int diffy = y - lasty;
     lastx = x;
     lasty = y;
-    cameraPtr->lookAt(x-200, y-200);
+    playerPtr->lookAt(x - 200, y - 200);
 //    xrot += (float) diffy;
 //    yrot += (float) diffx;
 }
