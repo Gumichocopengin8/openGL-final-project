@@ -8,7 +8,6 @@
 
 void keyboard(unsigned char key, int x, int y) {
 
-    std::cout << key << std::endl;
     if (key == 'z') {
         cameraPtr->forward(0.2);
     }
@@ -20,7 +19,9 @@ void keyboard(unsigned char key, int x, int y) {
     }
     if (key == 'q') {
         cameraPtr->left(0.2);
+
     }
+    glutPostRedisplay();
 
     if (key == 'a' || key == 'A') exit(0);
 

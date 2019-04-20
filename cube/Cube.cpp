@@ -20,34 +20,33 @@ void Cube::draw() {
     glTranslated(x, y, z);
 
     //Colors
-    glColor3f(0.24f, 0.37f,0.13f);
-
+    glColor3f(0.24f, 0.37f, 0.13f);
 
     glBegin(GL_LINE_STRIP);
-    glVertex3f( 1.0f, 1.0f,-1.0f);
-    glVertex3f(-1.0f, 1.0f,-1.0f);
+    glVertex3f(1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-    glVertex3f( 1.0f,-1.0f, 1.0f);
-    glVertex3f(-1.0f,-1.0f, 1.0f);
-    glVertex3f(-1.0f,-1.0f,-1.0f);
-    glVertex3f( 1.0f,-1.0f,-1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
+    glVertex3f(1.0f, 1.0f, 1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f,-1.0f, 1.0f);
-    glVertex3f( 1.0f,-1.0f, 1.0f);
-    glVertex3f( 1.0f,-1.0f,-1.0f);
-    glVertex3f(-1.0f,-1.0f,-1.0f);
-    glVertex3f(-1.0f, 1.0f,-1.0f);
-    glVertex3f( 1.0f, 1.0f,-1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(1.0f, 1.0f, -1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f,-1.0f);
-    glVertex3f(-1.0f,-1.0f,-1.0f);
-    glVertex3f(-1.0f,-1.0f, 1.0f);
-    glVertex3f( 1.0f, 1.0f,-1.0f);
-    glVertex3f( 1.0f, 1.0f, 1.0f);
-    glVertex3f( 1.0f,-1.0f, 1.0f);
-    glVertex3f( 1.0f,-1.0f,-1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, 1.0f, -1.0f);
+    glVertex3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
     glEnd();
 
     glPopMatrix();
