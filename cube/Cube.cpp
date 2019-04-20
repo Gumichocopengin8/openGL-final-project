@@ -14,9 +14,16 @@ Cube::Cube(int x, int y, int z) {
 }
 
 void Cube::draw() {
-    glColor3f(0.24f, 0.37f,0.13f);
-    glBegin(GL_QUADS);
 
+    // Transforms
+    glPushMatrix();
+    glTranslated(x, y, z);
+
+    //Colors
+    glColor3f(0.24f, 0.37f,0.13f);
+
+
+    glBegin(GL_LINE_STRIP);
     glVertex3f( 1.0f, 1.0f,-1.0f);
     glVertex3f(-1.0f, 1.0f,-1.0f);
     glVertex3f(-1.0f, 1.0f, 1.0f);
@@ -42,5 +49,7 @@ void Cube::draw() {
     glVertex3f( 1.0f,-1.0f, 1.0f);
     glVertex3f( 1.0f,-1.0f,-1.0f);
     glEnd();
+
+    glPopMatrix();
 }
 
