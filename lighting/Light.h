@@ -7,7 +7,18 @@
 
 
 class Light {
+public:
+    GLfloat mat_ambient[];
+    GLfloat mat_diffuse[];
+    GLfloat mat_specular[];
+    GLfloat mat_shininess[];
 
+    Light();
+    void apply();
+    void grass();
+    void treeTrunk();
+    void treeLeaves();
+    void ground();
 };
 
 
