@@ -2,23 +2,23 @@
 // Created by Keita Nonaka on 2019-04-20.
 //
 
-#include "Light.h"
+#include "Texture.h"
 
-Light::Light() {
+Texture::Texture() {
     mat_ambient[] = { 0.0 , 0.0 , 0.0 , 0.0 };
     mat_diffuse[] = { 0.0 , 0.0 , 0.0 , 0.0 };
     mat_specular[] = { 0.0 , 0.0 , 0.0 , 0.0 };
     mat_shininess[] = { 0 };
 }
 
-void Light::apply() {
+void Texture::apply() {
     glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
     glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
     glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
     glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
 }
 
-void Light::grass() {
+void Texture::grass() {
     mat_ambient[0] = 0;
     mat_ambient[1] = 0.223529;
     mat_ambient[2] = 0.027451;
@@ -34,7 +34,7 @@ void Light::grass() {
     this->apply();
 }
 
-void Light::treeTrunk() {
+void Texture::treeTrunk() {
     mat_ambient[0] = 0.467;
     mat_ambient[1] = 0.35686;
     mat_ambient[2] = 0.25882;
@@ -51,7 +51,7 @@ void Light::treeTrunk() {
     this->apply();
 }
 
-void Light::treeLeaves() {
+void Texture::treeLeaves() {
     mat_ambient[0] = 0.467;
     mat_ambient[1] = 0.35686;
     mat_ambient[2] = 0.25882;
@@ -69,7 +69,7 @@ void Light::treeLeaves() {
 }
 
 
-void Light::ground() {
+void Texture::ground() {
     mat_ambient[0] = 0.2125;
     mat_ambient[1] = 0.1275;
     mat_ambient[2] = 0.054;
