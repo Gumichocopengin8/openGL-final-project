@@ -2,18 +2,18 @@
 // Created by Keita Nonaka on 2019-04-20.
 //
 
-#ifndef PROJECT_LIGHT_H
-#define PROJECT_LIGHT_H
+#ifndef PROJECT_TEXTURE_H
+#define PROJECT_TEXTURE_H
 
 
-class Light {
+class Texture {
 public:
     GLfloat mat_ambient[];
     GLfloat mat_diffuse[];
     GLfloat mat_specular[];
     GLfloat mat_shininess[];
 
-    Light();
+    Texture();
     void apply();
     void grass();
     void treeTrunk();
@@ -22,4 +22,4 @@ public:
 };
 
 
-#endif //PROJECT_LIGHT_H
+#endif //PROJECT_TEXTURE_H
