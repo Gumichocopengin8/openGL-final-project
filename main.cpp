@@ -26,7 +26,7 @@ void display() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    std::cout << int(playerPtr->camera.camera_x) / 16 << std::endl;
+    //std::cout << int(playerPtr->camera.camera_x) / 16 << std::endl;
     glLoadIdentity();
 
     playerPtr->camera.refresh();
@@ -59,7 +59,8 @@ int main(int argc, char **argv) {
     Window window(WINDOW_SIZE, WINDOW_SIZE);
     windowPtr = &window;
 
-    World world();
+    World world;
+    worldPtr = &world;
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
@@ -68,7 +69,7 @@ int main(int argc, char **argv) {
 
     Player player(Camera(0, 2, 0, 0, 0, 0));
     playerPtr = &player;
-
+    glEnable(GL_CULL_FACE);
     glutReshapeFunc(reshape);
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
@@ -77,7 +78,8 @@ int main(int argc, char **argv) {
     glutWarpPointer(200, 200);
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glutMainLoop();
 
     return 0;
