@@ -2,13 +2,16 @@
 // Created by Keita Nonaka on 2019-04-20.
 //
 
+#include <GLUT/glut.h>
 #include "Texture.h"
 
 Texture::Texture() {
-    mat_ambient[] = { 0.0 , 0.0 , 0.0 , 0.0 };
-    mat_diffuse[] = { 0.0 , 0.0 , 0.0 , 0.0 };
-    mat_specular[] = { 0.0 , 0.0 , 0.0 , 0.0 };
-    mat_shininess[] = { 0 };
+    for(int i = 0; i < 4; i++) {
+        this->mat_ambient[i] = 0.0;
+        this->mat_diffuse[i] = 0.0;
+        this->mat_specular[i] = 0.0;
+    }
+    this->mat_shininess[0] = 0;
 }
 
 void Texture::apply() {

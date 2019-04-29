@@ -22,6 +22,7 @@ void Block::render() {
     //Colors
     glColor3f(0.24f, 0.37f, 0.13f);
 
+
     glBegin(GL_POLYGON);
     // top
 //    glVertex3f(1.0f, 1.0f, -1.0f);

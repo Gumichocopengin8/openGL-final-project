@@ -8,10 +8,10 @@
 
 class Texture {
 public:
-    GLfloat mat_ambient[];
-    GLfloat mat_diffuse[];
-    GLfloat mat_specular[];
-    GLfloat mat_shininess[];
+    GLfloat mat_ambient[4];
+    GLfloat mat_diffuse[4];
+    GLfloat mat_specular[4];
+    GLfloat mat_shininess[4];
 
     Texture();
     void apply();
