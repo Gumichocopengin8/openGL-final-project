@@ -7,6 +7,7 @@
 #include "camera/Camera.h"
 //#include "chunk/Chunk.h"
 #include "block/Block.h"
+#include "light/Light.h"
 #include "mouse/mouse.h"
 #include "keyboard/keyboard.h"
 #include "player/Player.h"
@@ -21,6 +22,11 @@ World *worldPtr;
 
 #define WINDOW_SIZE 400
 int count = 0;
+
+void init() {
+    Light light;
+    light.ApplyLight();
+}
 
 void display() {
 
@@ -69,6 +75,7 @@ int main(int argc, char **argv) {
 
     Player player(Camera(0, 2, 0, 0, 0, 0));
     playerPtr = &player;
+    init();
     glEnable(GL_CULL_FACE);
     glutReshapeFunc(reshape);
     glutDisplayFunc(display);
