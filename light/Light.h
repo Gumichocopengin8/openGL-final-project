@@ -8,10 +8,11 @@
 
 class Light {
 private:
-    GLfloat diffuse[4];
-    GLfloat specular[4];
-    GLfloat ambient[4];
-    GLfloat position[4];
+    float diffuse[4];
+    float specular[4];
+    float ambient[4];
+    float position[4];
+    float spotDirrection[3];
 public:
     Light();
     void ApplyLight();

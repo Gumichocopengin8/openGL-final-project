@@ -3,6 +3,7 @@
 //
 
 #include "Block.h"
+#include "../texture/Texture.h"
 #include <cstdlib>
 #import <GLUT/glut.h>
 
@@ -19,8 +20,10 @@ void Block::render() {
     glPushMatrix();
     glTranslated(x, y, z);
 
-    //Colors
-    glColor3f(0.24f, 0.37f, 0.13f);
+    // Texture
+    Texture texture;
+    texture.ground();
+
 
 
     glBegin(GL_POLYGON);
