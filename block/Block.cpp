@@ -99,7 +99,6 @@ void Block::render() {
 //
 
     glEnd();
-
     glPopMatrix();
 }
 

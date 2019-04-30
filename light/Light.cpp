@@ -32,8 +32,8 @@ void Light::ApplyLight() {
     glLightfv(GL_LIGHT0 , GL_DIFFUSE , this->specular);
     glLightfv(GL_LIGHT0 , GL_AMBIENT , this->ambient);
     glLightfv(GL_LIGHT0 , GL_SPECULAR , this->position);
-    glLightfv( GL_LIGHT0, GL_SPOT_DIRECTION, this->spotDirection);
-    glLightf( GL_LIGHT0, GL_SPOT_EXPONENT, 10);
+    glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, this->spotDirection);
+    glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 10);
     glutSwapBuffers();
 }
 

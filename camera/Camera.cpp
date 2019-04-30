@@ -9,6 +9,7 @@
 #include <iostream>
 #include <math.h>
 #include <GLUT/glut.h>
+using namespace std;
 
 
 #define GRAVITY 0.02
@@ -42,7 +43,7 @@ void Camera::refresh() {
     this->move_y(-GRAVITY);
     this->move_z(this->z_speed * -GROUND_FRICTION);
 
-    std::cout << this->camera_x << " " << this->camera_y << " " << this->camera_z << std::endl;
+    cout << this->camera_x << " " << this->camera_y << " " << this->camera_z << endl;
 }
 
 /**
@@ -105,13 +106,13 @@ void Camera::move_y(float speed) {
     if (this->y_speed > MAX_SPEED) this->y_speed = MAX_SPEED;
 
     double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
-    //std::cout << new_camera_y << std::endl;
+    //cout << new_camera_y << endl;
     // If no collision
     if (worldPtr->getBlock(round(this->camera_x), new_camera_y - 1, round(this->camera_z)) == 0) {
         this->camera_y = new_camera_y;
     } else {
-        //std::cout << "ICICICICICICI" << std::endl;
-        //std::cout << "this->camera_y " << this->camera_y << std::endl;
+        //cout << "ICICICICICICI" << endl;
+        //cout << "this->camera_y " << this->camera_y << endl;
         this->y_speed = 0;
     }
 

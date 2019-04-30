@@ -6,6 +6,7 @@
 
 #include "Chunk.h"
 #include "PerlinNoise.hpp"
+using namespace std;
 
 Chunk::Chunk(int chunk_x, int chunk_z) {
     this->x = chunk_x;
@@ -14,7 +15,7 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
     double frequency = 1;
     int octaves = 60;
 
-    std::uint32_t seed = 1;
+    uint32_t seed = 1;
 
 
     const siv::PerlinNoise perlin(seed);
@@ -25,10 +26,10 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
 //    {
 //        for (int x = 0; x < 16; ++x)
 //        {
-//            std::cout << perlin.octaveNoise0_1(x / fx, y / fy, octaves) << " ";
+//            cout << perlin.octaveNoise0_1(x / fx, y / fy, octaves) << " ";
 //        }
 //
-//        std::cout << "" << std::endl;
+//        cout << "" << endl;
 //    }
 
     for (int i = 0; i < CHUNK_SIZE; ++i) {
