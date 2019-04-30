@@ -20,7 +20,7 @@ Player *playerPtr;
 Window *windowPtr;
 World *worldPtr;
 
-#define WINDOW_SIZE 400
+#define WINDOW_SIZE 512
 int count = 0;
 
 void init() {

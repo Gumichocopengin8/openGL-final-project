@@ -81,9 +81,9 @@ void Texture::ground() {
     this->diffuse[1] = 0.4284;
     this->diffuse[2] = 0.18144;
 
-    this->specular[0] = 0.393548;
-    this->specular[1] = 0.271906;
-    this->specular[2] = 0.166721;
+    this->specular[0] = 0.001;
+    this->specular[1] = 0.001;
+    this->specular[2] = 0.001;
 
     this->shininess[0] = 100;
     this->apply();
