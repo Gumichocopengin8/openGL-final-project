@@ -12,10 +12,11 @@
 class Chunk {
     int blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
     int x;
-    int y;
+    int z;
 public:
-    Chunk(int chunk_x, int chunk_y);
+    Chunk(int chunk_x, int chunk_z);
     void render();
+    int getBlock(int x, int y, int z);
 };
 
 

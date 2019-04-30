@@ -29,6 +29,7 @@ void display() {
     //std::cout << int(playerPtr->camera.camera_x) / 16 << std::endl;
     glLoadIdentity();
 
+
     playerPtr->camera.refresh();
 
     /**
@@ -37,6 +38,8 @@ void display() {
     worldPtr->update(playerPtr->camera.camera_x, playerPtr->camera.camera_z);
 
 
+    //std::cout << worldPtr->getBlock((int) playerPtr->camera.camera_x, (int) playerPtr->camera.camera_y, (int) playerPtr->camera.camera_z) << std::endl;
+
     playerPtr->camera.idle(sin((float) count / 40), 0);
     glutSwapBuffers();
     glutPostRedisplay();
@@ -44,7 +47,7 @@ void display() {
 }
 
 void reshape(int w, int h) {
-    glutWarpPointer(w/2, h/2);
+    glutWarpPointer(w / 2, h / 2);
     windowPtr->setWidth(w);
     windowPtr->setHeight(h);
     glViewport(0, 0, w, h);
@@ -67,7 +70,7 @@ int main(int argc, char **argv) {
     glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);
     glutCreateWindow("Terrain");
 
-    Player player(Camera(0, 2, 0, 0, 0, 0));
+    Player player(Camera(0, 10, 0, 0, 0, 0));
     playerPtr = &player;
     glEnable(GL_CULL_FACE);
     glutReshapeFunc(reshape);
@@ -79,7 +82,7 @@ int main(int argc, char **argv) {
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
 
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glutMainLoop();
 
     return 0;

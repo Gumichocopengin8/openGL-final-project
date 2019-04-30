@@ -17,6 +17,7 @@ public:
     void update(double x, double y);
     void loadChunk(int chunk_x, int chunk_y);
     Chunk* generateChunk(int chunk_x, int chunk_y);
+    int getBlock(int x, int y, int z);
 };
 
 

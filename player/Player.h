@@ -5,8 +5,9 @@
 #ifndef PROJECT_PLAYER_H
 #define PROJECT_PLAYER_H
 
-
+#include <iostream>
 #include "../camera/Camera.h"
+
 
 class Player {
     float walking_acceleration;
