@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "../main.h"
+using namespace std;
 
 Player::Player(Camera camera) : camera(camera) {
     this->walking_acceleration = 0.07;
@@ -14,27 +15,27 @@ Player::Player(Camera camera) : camera(camera) {
 void Player::forward() {
 
     this->camera.move_x(-this->walking_acceleration);
-    std::cout << this->camera.z_speed << std::endl;
+    cout << this->camera.z_speed << endl;
 }
 
 void Player::backward() {
     this->camera.move_x(this->walking_acceleration);
-    std::cout << this->camera.z_speed << std::endl;
+    cout << this->camera.z_speed << endl;
 }
 
 void Player::right() {
     this->camera.move_z(-this->walking_acceleration);
-    std::cout << this->camera.z_speed << std::endl;
+    cout << this->camera.z_speed << endl;
 }
 
 void Player::left() {
     this->camera.move_z(this->walking_acceleration);
-    std::cout << this->camera.z_speed << std::endl;
+    cout << this->camera.z_speed << endl;
 }
 
 void Player::jump() {
     this->camera.move_y(this->jumping_speed);
-    std::cout << this->camera.z_speed << std::endl;
+    cout << this->camera.z_speed << endl;
 }
 
 void Player::lookAt(float diffX, float diffY) {

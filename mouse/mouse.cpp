@@ -2,7 +2,7 @@
 // Created by Fabien Delattre on 2019-04-19.
 //
 #include "mouse.h"
-
+using namespace std;
 
 
 int lastx = -1;
@@ -19,7 +19,7 @@ void mouse(GLint btn, GLint state, GLint x, GLint y) {
 }
 
 void mouseMotion(int x, int y) {
-    //std::cout << x << " " << y << std::endl;
+    //cout << x << " " << y << endl;
     if (lastx == -1 || x < 0 || y < 0) {
         lastx = x;
         lasty = y;
