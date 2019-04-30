@@ -7,12 +7,12 @@
 
 
 class Texture {
+private:
+    float ambient[4];
+    float diffuse[4];
+    float specular[4];
+    float shininess[4];
 public:
-    GLfloat mat_ambient[];
-    GLfloat mat_diffuse[];
-    GLfloat mat_specular[];
-    GLfloat mat_shininess[];
-
     Texture();
     void apply();
     void grass();
