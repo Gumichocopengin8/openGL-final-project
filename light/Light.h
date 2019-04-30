@@ -12,7 +12,7 @@ private:
     float specular[4];
     float ambient[4];
     float position[4];
-    float spotDirrection[3];
+    float spotDirection[3];
 public:
     Light();
     void ApplyLight();

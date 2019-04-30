@@ -7,18 +7,18 @@
 
 Light::Light() {
     for(int i = 0; i < 4; i++) {
-        diffuse[i] = 1.0;
-        specular[i] = 1.0;
-        ambient[i] = 0.25;
+        this->diffuse[i] = 1.0;
+        this->specular[i] = 1.0;
+        this->ambient[i] = 2.25;
     }
-    position[0] = 50.0;
-    position[1] = 40.0;
-    position[2] = 100.0;
-    position[3] = 0.0;
+    this->position[0] = 50.0;
+    this->position[1] = 40.0;
+    this->position[2] = 10.0;
+    this->position[3] = 0.0;
 
-    spotDirrection[0] = 50;
-    spotDirrection[1] = 10.0;
-    spotDirrection[2] = 10;
+    this->spotDirection[0] = 0;
+    this->spotDirection[1] = 0.0;
+    this->spotDirection[2] = 0;
 }
 
 void Light::ApplyLight() {
@@ -32,7 +32,8 @@ void Light::ApplyLight() {
     glLightfv(GL_LIGHT0 , GL_DIFFUSE , this->specular);
     glLightfv(GL_LIGHT0 , GL_AMBIENT , this->ambient);
     glLightfv(GL_LIGHT0 , GL_SPECULAR , this->position);
-    glLightfv( GL_LIGHT0, GL_SPOT_DIRECTION, spotDirrection );
+    glLightfv( GL_LIGHT0, GL_SPOT_DIRECTION, this->spotDirection);
+    glLightf( GL_LIGHT0, GL_SPOT_EXPONENT, 10);
     glutSwapBuffers();
 }
 
