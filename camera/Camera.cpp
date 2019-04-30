@@ -76,7 +76,7 @@ void Camera::move_x(float speed) {
         this->x_speed = 0;
     }
 
-    glutPostRedisplay();
+
 }
 
 
@@ -97,7 +97,6 @@ void Camera::move_z(float speed) {
         this->z_speed = 0;
     }
 
-    glutPostRedisplay();
 }
 
 void Camera::move_y(float speed) {
@@ -117,21 +116,17 @@ void Camera::move_y(float speed) {
     }
 
 
-    glutPostRedisplay();
-
 }
 
 void Camera::lookAt(float diffX, float diffY) {
 
     this->pitch = -diffY * 1.7 / windowPtr->getHeight();
     this->yaw = diffX * 6 / windowPtr->getWidth();
-    glutPostRedisplay();
 }
 
 void Camera::idle(float diffX, float diffY) {
     this->pitch += diffX / 6000;
     this->yaw += diffY / 6000;
-    glutPostRedisplay();
 }
 
 
