@@ -27,8 +27,8 @@ void Texture::grass() {
     this->ambient[2] = 0.027451;
 
     this->diffuse[0] = 0;
-    this->diffuse[1] = 0.568627;
-    this->diffuse[2] = 0.113725;
+    this->diffuse[1] = 0.0568627;
+    this->diffuse[2] = 0.0113725;
     this->specular[0] = 0.992157;
     this->specular[1] = 0.941176;
     this->specular[2] = 0.807843;
