@@ -8,7 +8,8 @@
 #import <GLUT/glut.h>
 
 
-Block::Block(int x, int y, int z) {
+Block::Block(int type, int x, int y, int z) {
+    this->type = type;
     this->x = x;
     this->y = y;
     this->z = z;
@@ -22,7 +23,13 @@ void Block::render() {
 
     // Texture
     Texture texture;
-    texture.ground();
+
+    if(this->type == 1) {
+        texture.ground();
+    } else {
+        texture.grass();
+    }
+
 
 
 
@@ -84,14 +91,14 @@ void Block::render() {
 //    glVertex3f(  1.0f,  1.0f, -1.0f ); // Top-Left of back face
 //
 //    // Left face
-//    //glColor3f(   0.0f,  0.0f,  1.0f);  // Blue
+//    glColor3f(   0.0f,  0.0f,  1.0f);  // Blue
 //    glVertex3f( -1.0f,  1.0f,  1.0f);  // Top-Right of left face
 //    glVertex3f( -1.0f,  1.0f, -1.0f);  // Top-Left of left face
 //    glVertex3f( -1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
 //    glVertex3f( -1.0f, -1.0f,  1.0f);  // Bottom-Right of left face
 //
 //    // Right face
-//    //glColor3f(   1.0f,  0.0f,  1.0f);  // Violet
+//    glColor3f(   1.0f,  0.0f,  1.0f);  // Violet
 //    glVertex3f(  1.0f,  1.0f,  1.0f);  // Top-Right of left face
 //    glVertex3f(  1.0f,  1.0f, -1.0f);  // Top-Left of left face
 //    glVertex3f(  1.0f, -1.0f, -1.0f);  // Bottom-Left of left face

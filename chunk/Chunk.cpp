@@ -37,7 +37,12 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
             for (int k = 0; k < CHUNK_SIZE; ++k) {
 
                 if(j == round(perlin.octaveNoise0_1(i / fx, k / fy, octaves) * 3)) {
-                    this->blocks[i][j][k] = 1;
+                    if(j <= 1) {
+                        this->blocks[i][j][k] = 1; // GROUND
+                    } else {
+                        this->blocks[i][j][k] = 2; // GROUND
+                    }
+
                 } else {
                     this->blocks[i][j][k] = 0;
                 }
@@ -51,9 +56,8 @@ void Chunk::render() {
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         for (int j = 0; j < CHUNK_SIZE; ++j) {
             for (int k = 0; k < CHUNK_SIZE; ++k) {
-                if (this->blocks[i][j][k] == 1) {
-                    Block(this->x * 16 + i, j, this->z * 16 + k).render();
-                } else {
+                if (this->blocks[i][j][k] != 0) {
+                    Block(this->blocks[i][j][k], this->x * 16 + i, j, this->z * 16 + k).render();
                 }
             }
         }

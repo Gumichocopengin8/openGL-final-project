@@ -9,11 +9,13 @@
 class Block {
 
 private:
+    int type;
     int x;
     int y;
     int z;
+
 public:
-    Block(int x, int y, int z);
+    Block(int type, int x, int y, int z);
     void render();
 };
 
