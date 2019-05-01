@@ -4,6 +4,7 @@
 
 #include "Block.h"
 #include "../texture/Texture.h"
+#include <iostream>
 #include <cstdlib>
 #import <GLUT/glut.h>
 
@@ -24,13 +25,12 @@ void Block::render() {
     // Texture
     Texture texture;
 
-    if(this->type == 1) {
+    if (this->type == GROUND) { texture.ground(); }
+    else if (this->type == GRASS) { texture.grass(); }
+    else {
         texture.ground();
-    } else {
-        texture.grass();
+        std::cerr << "Unknown type " << this->type << std::endl;
     }
-
-
 
 
     glBegin(GL_POLYGON);

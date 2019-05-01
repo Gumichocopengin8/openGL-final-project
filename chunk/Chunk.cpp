@@ -38,9 +38,9 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
 
                 if(j == round(perlin.octaveNoise0_1(i / fx, k / fy, octaves) * 3)) {
                     if(j <= 1) {
-                        this->blocks[i][j][k] = 1; // GROUND
+                        this->blocks[i][j][k] = GROUND;
                     } else {
-                        this->blocks[i][j][k] = 2; // GROUND
+                        this->blocks[i][j][k] = GRASS;
                     }
 
                 } else {

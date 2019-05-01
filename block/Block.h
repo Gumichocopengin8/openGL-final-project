@@ -5,6 +5,7 @@
 #ifndef PROJECT_BLOCK_H
 #define PROJECT_BLOCK_H
 
+#include "types_of_block.h"
 
 class Block {
 
