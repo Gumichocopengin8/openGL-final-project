@@ -18,6 +18,7 @@ private:
 
 public:
     Block(int type, int x, int y, int z);
+
     void render();
 };
 

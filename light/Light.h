@@ -15,7 +15,9 @@ private:
     float spotDirection[3];
 public:
     float position[4];
+
     Light();
+
     void ApplyLight();
 };
 

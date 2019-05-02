@@ -6,7 +6,7 @@
 #include "Light.h"
 
 Light::Light() {
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         this->diffuse[i] = 1.0;
         this->specular[i] = 1.0;
         this->ambient[i] = 2.25;
@@ -24,10 +24,9 @@ Light::Light() {
 void Light::ApplyLight() {
 
 
-
-    glLightfv(GL_LIGHT0 , GL_DIFFUSE , this->diffuse);
-    glLightfv(GL_LIGHT0 , GL_AMBIENT , this->ambient);
-    glLightfv(GL_LIGHT0 , GL_SPECULAR , this->specular);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, this->diffuse);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, this->ambient);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, this->specular);
     //glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, this->spotDirection);
     //glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, 10);
     glutSwapBuffers();
