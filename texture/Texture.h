@@ -24,6 +24,10 @@ public:
     void treeLeaves();
 
     void ground();
+
+    void snow();
+
+    void water();
 };
 
 
