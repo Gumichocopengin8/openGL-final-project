@@ -123,6 +123,3 @@ void Texture::water() {
     this->shininess[0] = 30;
     this->apply();
 }
-
-
-

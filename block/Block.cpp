@@ -35,11 +35,6 @@ void Block::render() {
         cerr << "Unknown type " << this->type << endl;
     }
 
-//    GLUquadricObj *sphere;
-//    sphere = gluNewQuadric();
-//    gluQuadricDrawStyle(sphere, GLU_FILL);
-//    gluSphere(sphere, 1.0, 4.0, 4.0);
-
 
     glutSolidCube(1);
 

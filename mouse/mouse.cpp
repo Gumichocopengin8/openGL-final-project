@@ -10,17 +10,14 @@ int lastx = -1;
 int lasty = -1;
 
 void mouse(GLint btn, GLint state, GLint x, GLint y) {
-    if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+    if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
         glutPostRedisplay();
-    }
 
-    if (btn == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
+    if (btn == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
         exit(0);
-    }
 }
 
 void mouseMotion(int x, int y) {
-    //cout << x << " " << y << endl;
     if (lastx == -1 || x < 0 || y < 0) {
         lastx = x;
         lasty = y;

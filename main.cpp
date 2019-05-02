@@ -33,7 +33,6 @@ void display() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
-    //std::cout << int(playerPtr->camera.camera_x) / 16 << std::endl;
     glLoadIdentity();
 
 
@@ -43,9 +42,6 @@ void display() {
      * TODO: Getter for the player position
      */
     worldPtr->update(playerPtr->camera.camera_x, playerPtr->camera.camera_z);
-
-
-    //std::cout << worldPtr->getBlock((int) playerPtr->camera.camera_x, (int) playerPtr->camera.camera_y, (int) playerPtr->camera.camera_z) << std::endl;
 
     playerPtr->camera.idle(sin((float) count / 40), 0);
     glutSwapBuffers();
@@ -87,7 +83,6 @@ int main(int argc, char **argv) {
     glutPassiveMotionFunc(mouseMotion);
     glutKeyboardFunc(keyboard);
     glutWarpPointer(200, 200);
-    //glClearColor(0.439, 0.729, 0.988, 0.0);
     glClearColor(0., 0., 0., 0.0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);

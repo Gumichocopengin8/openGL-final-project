@@ -9,8 +9,7 @@ using namespace std;
 
 Player::Player(Camera camera) : camera(camera) {
     this->walking_acceleration = 0.07;
-    this->walking_speed_max = 2;
-    this->jumping_speed = 0.3;
+    this->vertical_speed = 0.3;
 }
 
 void Player::forward() {
@@ -31,7 +30,11 @@ void Player::left() {
 }
 
 void Player::jump() {
-    this->camera.move_y(this->jumping_speed);
+    this->camera.move_y(this->vertical_speed);
+}
+
+void Player::down() {
+    this->camera.move_y(-this->vertical_speed);
 }
 
 void Player::lookAt(float diffX, float diffY) {

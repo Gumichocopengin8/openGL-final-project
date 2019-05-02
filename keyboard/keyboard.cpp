@@ -16,6 +16,7 @@ void keyboard(unsigned char key, int x, int y) {
     if (key == 'd') playerPtr->right();
     if (key == 'a') playerPtr->left();
     if (key == ' ') playerPtr->jump();
+    if (key == 'y') playerPtr->down();
 
     glutPostRedisplay();
 }
