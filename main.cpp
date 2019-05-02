@@ -60,7 +60,7 @@ void reshape(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60, (double) w / h, 0.5, 100);
+    gluPerspective(60, (double) w / h, 0.5, 70);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -87,7 +87,8 @@ int main(int argc, char **argv) {
     glutPassiveMotionFunc(mouseMotion);
     glutKeyboardFunc(keyboard);
     glutWarpPointer(200, 200);
-    glClearColor(0.439, 0.729, 0.988, 0.0);
+    //glClearColor(0.439, 0.729, 0.988, 0.0);
+    glClearColor(0., 0., 0., 0.0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
