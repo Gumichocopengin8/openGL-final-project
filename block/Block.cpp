@@ -7,9 +7,13 @@
 #include <iostream>
 #include <cstdlib>
 #import <GLUT/glut.h>
+<<<<<<< HEAD
 
 #include "../main.h"
 
+=======
+using namespace std;
+>>>>>>> fb4a45edbaa1b285abda08792eee9050b0d4b97a
 
 Block::Block(int type, int x, int y, int z) {
     this->type = type;
@@ -31,8 +35,12 @@ void Block::render() {
     else if (this->type == GRASS) { texture.grass(); }
     else {
         texture.ground();
-        std::cerr << "Unknown type " << this->type << std::endl;
+        cerr << "Unknown type " << this->type << endl;
     }
+//    GLUquadricObj *sphere;
+//    sphere = gluNewQuadric();
+//    gluQuadricDrawStyle(sphere, GLU_FILL);
+//    gluSphere(sphere, 1.0, 10.0, 10.0);
 
 
 
@@ -128,8 +136,5 @@ void Block::render() {
 
 
 
-
-
     glPopMatrix();
 }
-
