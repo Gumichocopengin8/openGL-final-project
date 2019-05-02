@@ -5,6 +5,7 @@
 #ifndef PROJECT_TYPES_OF_BLOCK_H
 #define PROJECT_TYPES_OF_BLOCK_H
 
+#define AIR 0
 #define GROUND 1
 #define GRASS 2
 

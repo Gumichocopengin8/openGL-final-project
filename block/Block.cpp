@@ -8,6 +8,8 @@
 #include <cstdlib>
 #import <GLUT/glut.h>
 
+#include "../main.h"
+
 
 Block::Block(int type, int x, int y, int z) {
     this->type = type;
@@ -33,79 +35,101 @@ void Block::render() {
     }
 
 
-    glBegin(GL_POLYGON);
-    // top
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
 
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, 1.0f, 1.0f);
-    glVertex3f(-1.0f, 1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, -1.0f);
-    glVertex3f(-1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, 1.0f, -1.0f);
-    glVertex3f(1.0f, 1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, 1.0f);
-    glVertex3f(1.0f, -1.0f, -1.0f);
+    // Top face
+    if(worldPtr->getBlock(this->x, this->y+1, this->z) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-right of top face
+        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-left of top face
+        glVertex3f(-1.0f, 1.0f, 1.0f);  // Bottom-left of top face
+        glVertex3f(1.0f, 1.0f, 1.0f);  // Bottom-right of top face
+        glEnd();
+    }
 
 
-//// Top face
-//    //glColor3f(   0.0f, 1.0f,  0.0f );  // Green
-//    glVertex3f(  1.0f, 1.0f, -1.0f );  // Top-right of top face
-//    glVertex3f( -1.0f, 1.0f, -1.0f );  // Top-left of top face
-//    glVertex3f( -1.0f, 1.0f,  1.0f );  // Bottom-left of top face
-//    glVertex3f(  1.0f, 1.0f,  1.0f );  // Bottom-right of top face
-//
 //    // Bottom face
-//    //glColor3f(   1.0f,  0.5f,  0.0f ); // Orange
-//    glVertex3f(  1.0f, -1.0f, -1.0f ); // Top-right of bottom face
-//    glVertex3f( -1.0f, -1.0f, -1.0f ); // Top-left of bottom face
-//    glVertex3f( -1.0f, -1.0f,  1.0f ); // Bottom-left of bottom face
-//    glVertex3f(  1.0f, -1.0f,  1.0f ); // Bottom-right of bottom face
-//
-//    // Front face
-//    //glColor3f(   1.0f,  0.0f, 0.0f );  // Red
-//    glVertex3f(  1.0f,  1.0f, 1.0f );  // Top-Right of front face
-//    glVertex3f( -1.0f,  1.0f, 1.0f );  // Top-left of front face
-//    glVertex3f( -1.0f, -1.0f, 1.0f );  // Bottom-left of front face
-//    glVertex3f(  1.0f, -1.0f, 1.0f );  // Bottom-right of front face
-//
+//    if(worldPtr->getBlock(this->x, this->y-1, this->z) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(1.0f, -1.0f, -1.0f); // Top-right of bottom face
+        glVertex3f(-1.0f, -1.0f, -1.0f); // Top-left of bottom face
+        glVertex3f(-1.0f, -1.0f, 1.0f); // Bottom-left of bottom face
+        glVertex3f(1.0f, -1.0f, 1.0f); // Bottom-right of bottom face
+        glEnd();
+//    }
+
+    // Front face
+    //if(worldPtr->getBlock(this->x+1, this->y, this->z) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of front face
+        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-left of front face
+        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-left of front face
+        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-right of front face
+        glEnd();
+    //}
 //    // Back face
-//    //glColor3f(   1.0f,  1.0f,  0.0f ); // Yellow
-//    glVertex3f(  1.0f, -1.0f, -1.0f ); // Bottom-Left of back face
-//    glVertex3f( -1.0f, -1.0f, -1.0f ); // Bottom-Right of back face
-//    glVertex3f( -1.0f,  1.0f, -1.0f ); // Top-Right of back face
-//    glVertex3f(  1.0f,  1.0f, -1.0f ); // Top-Left of back face
+    //if(worldPtr->getBlock(this->x-1, this->y, this->z) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(1.0f, -1.0f, -1.0f); // Bottom-Left of back face
+        glVertex3f(-1.0f, -1.0f, -1.0f); // Bottom-Right of back face
+        glVertex3f(-1.0f, 1.0f, -1.0f); // Top-Right of back face
+        glVertex3f(1.0f, 1.0f, -1.0f); // Top-Left of back face
+        glEnd();
+    //}
 //
 //    // Left face
-//    glColor3f(   0.0f,  0.0f,  1.0f);  // Blue
-//    glVertex3f( -1.0f,  1.0f,  1.0f);  // Top-Right of left face
-//    glVertex3f( -1.0f,  1.0f, -1.0f);  // Top-Left of left face
-//    glVertex3f( -1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
-//    glVertex3f( -1.0f, -1.0f,  1.0f);  // Bottom-Right of left face
+    //if(worldPtr->getBlock(this->x, this->y, this->z+1) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-Right of left face
+        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-Left of left face
+        glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
+        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-Right of left face
+        glEnd();
+    //}
 //
 //    // Right face
-//    glColor3f(   1.0f,  0.0f,  1.0f);  // Violet
-//    glVertex3f(  1.0f,  1.0f,  1.0f);  // Top-Right of left face
-//    glVertex3f(  1.0f,  1.0f, -1.0f);  // Top-Left of left face
-//    glVertex3f(  1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
-//    glVertex3f(  1.0f, -1.0f,  1.0f);  // Bottom-Right of l
-//
+    //if(worldPtr->getBlock(this->x, this->y, this->z-1) == AIR) {
+        glBegin(GL_POLYGON);
+        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-Right of l
+        glVertex3f(1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
+        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-Left of left face
+        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of left face
+        glEnd();
+    //}
 
-    glEnd();
+
+
+    // top
+//    glVertex3f(1.0f, 1.0f, -1.0f);
+//    glVertex3f(-1.0f, 1.0f, -1.0f);
+//    glVertex3f(-1.0f, 1.0f, 1.0f);
+//    glVertex3f(1.0f, 1.0f, 1.0f);
+//    glVertex3f(1.0f, -1.0f, 1.0f);
+//    glVertex3f(-1.0f, -1.0f, 1.0f);
+//    glVertex3f(-1.0f, -1.0f, -1.0f);
+//    glVertex3f(1.0f, -1.0f, -1.0f);
+//
+//    glVertex3f(1.0f, 1.0f, 1.0f);
+//    glVertex3f(-1.0f, 1.0f, 1.0f);
+//    glVertex3f(-1.0f, -1.0f, 1.0f);
+//    glVertex3f(1.0f, -1.0f, 1.0f);
+//    glVertex3f(1.0f, -1.0f, -1.0f);
+//    glVertex3f(-1.0f, -1.0f, -1.0f);
+//    glVertex3f(-1.0f, 1.0f, -1.0f);
+//    glVertex3f(1.0f, 1.0f, -1.0f);
+//    glVertex3f(-1.0f, 1.0f, 1.0f);
+//    glVertex3f(-1.0f, 1.0f, -1.0f);
+//    glVertex3f(-1.0f, -1.0f, -1.0f);
+//    glVertex3f(-1.0f, -1.0f, 1.0f);
+//    glVertex3f(1.0f, 1.0f, -1.0f);
+//    glVertex3f(1.0f, 1.0f, 1.0f);
+//    glVertex3f(1.0f, -1.0f, 1.0f);
+//    glVertex3f(1.0f, -1.0f, -1.0f);
+
+
+
+
+
+
     glPopMatrix();
 }
 

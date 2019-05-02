@@ -7,6 +7,7 @@
 
 #include "types_of_block.h"
 
+
 class Block {
 
 private:

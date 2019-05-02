@@ -15,27 +15,22 @@ Player::Player(Camera camera) : camera(camera) {
 void Player::forward() {
 
     this->camera.move_x(-this->walking_acceleration);
-    cout << this->camera.z_speed << endl;
 }
 
 void Player::backward() {
     this->camera.move_x(this->walking_acceleration);
-    cout << this->camera.z_speed << endl;
 }
 
 void Player::right() {
     this->camera.move_z(-this->walking_acceleration);
-    cout << this->camera.z_speed << endl;
 }
 
 void Player::left() {
     this->camera.move_z(this->walking_acceleration);
-    cout << this->camera.z_speed << endl;
 }
 
 void Player::jump() {
     this->camera.move_y(this->jumping_speed);
-    cout << this->camera.z_speed << endl;
 }
 
 void Player::lookAt(float diffX, float diffY) {

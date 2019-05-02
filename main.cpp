@@ -59,7 +59,7 @@ void reshape(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(60, (double) w / h, 1, 20);
+    gluPerspective(60, (double) w / h, 0.5, 100);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -89,7 +89,9 @@ int main(int argc, char **argv) {
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
 
+
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glColorMaterial (GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glutMainLoop();
 
     return 0;

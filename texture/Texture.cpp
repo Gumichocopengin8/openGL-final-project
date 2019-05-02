@@ -38,8 +38,6 @@ void Texture::ground() {
     this->shininess[0] = 100;
     this->apply();
 }
-
-
 void Texture::grass() {
     this->ambient[0] = 0;
     this->ambient[1] = 0.223529;

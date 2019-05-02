@@ -40,10 +40,14 @@ void Camera::refresh() {
     // speed update
 
     this->move_x(this->x_speed * -GROUND_FRICTION);
-    this->move_y(-GRAVITY);
+    this->move_y(this->y_speed * -GROUND_FRICTION);
+    //this->move_y(-GRAVITY);
     this->move_z(this->z_speed * -GROUND_FRICTION);
 
-    cout << this->camera_x << " " << this->camera_y << " " << this->camera_z << endl;
+    //cout << round(this->camera_x) << " " << round(this->camera_y) << " " << round(this->camera_z) << endl;
+    //cout << this->camera_x << " " << (this->camera_y) << " " << (this->camera_z) << endl;
+    //cout << "worldPtr->getBlock(-7, 2, 14) " << worldPtr->getBlock(-7, 2, 14) << endl;
+    //cout << "worldPtr->getBlock(-7, 2, 15) " << worldPtr->getBlock(-7, 2, 15) << endl;
 }
 
 /**
@@ -69,6 +73,10 @@ void Camera::move_x(float speed) {
     double new_camera_z = this->camera_z - cos(this->yaw) * cos(this->pitch) * this->x_speed;
 
     // If no collision
+
+    //if(speed > 0)std::cout << "getBlock(" << round(new_camera_x) << ", " << round(new_camera_y) - 1 << ", " << round(new_camera_z) << ") = " << worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - 1, round(new_camera_z)) << std::endl;
+
+
     if (worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - 1, round(new_camera_z)) == 0) {
         this->camera_x = new_camera_x;
         this->camera_y = new_camera_y;

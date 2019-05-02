@@ -13,9 +13,9 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
     this->z = chunk_z;
 
     double frequency = 1;
-    int octaves = 60;
+    int octaves = 6;
 
-    uint32_t seed = 1;
+    uint32_t seed = rand();
 
 
     const siv::PerlinNoise perlin(seed);
@@ -36,7 +36,8 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
         for (int j = 0; j < CHUNK_SIZE; ++j) {
             for (int k = 0; k < CHUNK_SIZE; ++k) {
 
-                if(j == round(perlin.octaveNoise0_1(i / fx, k / fy, octaves) * 3)) {
+                if(j == round(perlin.octaveNoise0_1(i / fx, k / fy, octaves) * 10)) {
+                //if(j == 0) {
                     if(j <= 1) {
                         this->blocks[i][j][k] = GROUND;
                     } else {

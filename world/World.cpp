@@ -60,15 +60,15 @@ int World::getBlock(int x, int y, int z) {
 
     //std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
 
-    std::string key = std::to_string((int) x / 16) + "_" + std::to_string(int(z / 16));
+    std::string key = std::to_string(int(x / 16)) + "_" + std::to_string(int(z / 16));
 
     Chunk *chunk = NULL;
 
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
     } else {
-        std::cerr << "The requested block belongs to a not loaded chunk." << std::endl;
-        return 0;
+        //std::cerr << "The requested block belongs to a not loaded chunk." << std::endl;
+        return 10;
 
     }
 
@@ -95,8 +95,8 @@ int World::getBlock(int x, int y, int z) {
         z += 16;
     }
 
-    std::cout << "key: " << key << std::endl;
-    std::cout << "getBlock(" << x << ", " << y << ", " << z << ") = " << chunk->getBlock(x, y, z) << std::endl;
+    //std::cout << "key: " << key << std::endl;
+    //std::cout << "getBlock(" << x << ", " << y << ", " << z << ") = " << chunk->getBlock(x, y, z) << std::endl;
 
     return chunk->getBlock(x, y, z);
 
