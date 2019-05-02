@@ -13,7 +13,6 @@
 using namespace std;
 
 
-#define GRAVITY 0.02
 #define MAX_SPEED 2.5
 #define GROUND_FRICTION 0.1
 
@@ -30,7 +29,6 @@ Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, 
 }
 
 void Camera::refresh(Light light) {
-
     // transformations update
     gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
     glRotatef(this->pitch * 57.2958, 1.0f, 0.0f, 0.0f);
@@ -61,7 +59,6 @@ u: < -sy*sp, cp,  cy*sp >
  **/
 
 void Camera::move_x(float speed) {
-
     this->x_speed += speed;
 
     if (this->x_speed > MAX_SPEED) this->x_speed = MAX_SPEED;
@@ -75,13 +72,10 @@ void Camera::move_x(float speed) {
     this->camera_x = new_camera_x;
     this->camera_y = new_camera_y;
     this->camera_z = new_camera_z;
-
-
 }
 
 
 void Camera::move_z(float speed) {
-
     this->z_speed += speed;
 
     if (this->z_speed > MAX_SPEED) this->z_speed = MAX_SPEED;
@@ -94,19 +88,15 @@ void Camera::move_z(float speed) {
 }
 
 void Camera::move_y(float speed) {
-
     this->y_speed += speed;
     if (this->y_speed > MAX_SPEED) this->y_speed = MAX_SPEED;
 
     double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
 
     this->camera_y = new_camera_y;
-
-
 }
 
 void Camera::lookAt(float diffX, float diffY) {
-
     this->pitch = -diffY * 1.7 / windowPtr->getHeight();
     this->yaw = diffX * 6 / windowPtr->getWidth();
 }
@@ -115,7 +105,3 @@ void Camera::idle(float diffX, float diffY) {
     this->pitch += diffX / 6000;
     this->yaw += diffY / 6000;
 }
-
-
-
-
