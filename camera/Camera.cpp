@@ -28,7 +28,7 @@ Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, 
     this->z_speed = 0;
 }
 
-void Camera::refresh() {
+void Camera::refresh(Light light) {
 
     // transformations update
     gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);
@@ -36,7 +36,10 @@ void Camera::refresh() {
     glRotatef(this->yaw * 57.2958, 0.0f, 1.0f, 0.0f);
     glRotatef(this->roll * 57.2958, 0.0f, 0.0f, 1.0f);
     glTranslatef(-this->camera_x, -this->camera_y, -this->camera_z);
-
+    light.position[0] = this->camera_x;
+    light.position[1] = this->camera_y;
+    light.position[2] = this->camera_z;
+    glLightfv(GL_LIGHT0 , GL_POSITION , light.position);
     // speed update
 
     this->move_x(this->x_speed * -GROUND_FRICTION);

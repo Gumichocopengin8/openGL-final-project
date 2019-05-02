@@ -22,9 +22,10 @@ World *worldPtr;
 
 #define WINDOW_SIZE 512
 int count = 0;
+Light light;
 
 void init() {
-    Light light;
+
     light.ApplyLight();
 }
 
@@ -36,7 +37,7 @@ void display() {
     glLoadIdentity();
 
 
-    playerPtr->camera.refresh();
+    playerPtr->camera.refresh(light);
 
     /**
      * TODO: Getter for the player position
@@ -88,7 +89,10 @@ int main(int argc, char **argv) {
     glutWarpPointer(200, 200);
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
-
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_NORMALIZE);
+    glShadeModel(GL_SMOOTH);
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glColorMaterial (GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);

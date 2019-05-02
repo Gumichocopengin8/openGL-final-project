@@ -34,76 +34,78 @@ void Block::render() {
         texture.ground();
         cerr << "Unknown type " << this->type << endl;
     }
-//    GLUquadricObj *sphere;
-//    sphere = gluNewQuadric();
-//    gluQuadricDrawStyle(sphere, GLU_FILL);
-//    gluSphere(sphere, 1.0, 10.0, 10.0);
 
 
-
-    // Top face
-    if(worldPtr->getBlock(this->x, this->y+1, this->z) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-right of top face
-        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-left of top face
-        glVertex3f(-1.0f, 1.0f, 1.0f);  // Bottom-left of top face
-        glVertex3f(1.0f, 1.0f, 1.0f);  // Bottom-right of top face
-        glEnd();
-    }
+    GLUquadricObj *sphere;
+    sphere = gluNewQuadric();
+    gluQuadricDrawStyle(sphere, GLU_FILL);
+    gluSphere(sphere, 1.0, 5.0, 5.0);
 
 
-//    // Bottom face
-//    if(worldPtr->getBlock(this->x, this->y-1, this->z) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(1.0f, -1.0f, -1.0f); // Top-right of bottom face
-        glVertex3f(-1.0f, -1.0f, -1.0f); // Top-left of bottom face
-        glVertex3f(-1.0f, -1.0f, 1.0f); // Bottom-left of bottom face
-        glVertex3f(1.0f, -1.0f, 1.0f); // Bottom-right of bottom face
-        glEnd();
+//
+//    // Top face
+//    if(worldPtr->getBlock(this->x, this->y+1, this->z) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-right of top face
+//        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-left of top face
+//        glVertex3f(-1.0f, 1.0f, 1.0f);  // Bottom-left of top face
+//        glVertex3f(1.0f, 1.0f, 1.0f);  // Bottom-right of top face
+//        glEnd();
 //    }
-
-    // Front face
-    //if(worldPtr->getBlock(this->x+1, this->y, this->z) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of front face
-        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-left of front face
-        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-left of front face
-        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-right of front face
-        glEnd();
-    //}
-//    // Back face
-    //if(worldPtr->getBlock(this->x-1, this->y, this->z) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(1.0f, -1.0f, -1.0f); // Bottom-Left of back face
-        glVertex3f(-1.0f, -1.0f, -1.0f); // Bottom-Right of back face
-        glVertex3f(-1.0f, 1.0f, -1.0f); // Top-Right of back face
-        glVertex3f(1.0f, 1.0f, -1.0f); // Top-Left of back face
-        glEnd();
-    //}
 //
-//    // Left face
-    //if(worldPtr->getBlock(this->x, this->y, this->z+1) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-Right of left face
-        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-Left of left face
-        glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
-        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-Right of left face
-        glEnd();
-    //}
 //
-//    // Right face
-    //if(worldPtr->getBlock(this->x, this->y, this->z-1) == AIR) {
-        glBegin(GL_POLYGON);
-        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-Right of l
-        glVertex3f(1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
-        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-Left of left face
-        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of left face
-        glEnd();
-    //}
+////    // Bottom face
+////    if(worldPtr->getBlock(this->x, this->y-1, this->z) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(1.0f, -1.0f, -1.0f); // Top-right of bottom face
+//        glVertex3f(-1.0f, -1.0f, -1.0f); // Top-left of bottom face
+//        glVertex3f(-1.0f, -1.0f, 1.0f); // Bottom-left of bottom face
+//        glVertex3f(1.0f, -1.0f, 1.0f); // Bottom-right of bottom face
+//        glEnd();
+////    }
+//
+//    // Front face
+//    //if(worldPtr->getBlock(this->x+1, this->y, this->z) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of front face
+//        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-left of front face
+//        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-left of front face
+//        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-right of front face
+//        glEnd();
+//    //}
+////    // Back face
+//    //if(worldPtr->getBlock(this->x-1, this->y, this->z) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(1.0f, -1.0f, -1.0f); // Bottom-Left of back face
+//        glVertex3f(-1.0f, -1.0f, -1.0f); // Bottom-Right of back face
+//        glVertex3f(-1.0f, 1.0f, -1.0f); // Top-Right of back face
+//        glVertex3f(1.0f, 1.0f, -1.0f); // Top-Left of back face
+//        glEnd();
+//    //}
+////
+////    // Left face
+//    //if(worldPtr->getBlock(this->x, this->y, this->z+1) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(-1.0f, 1.0f, 1.0f);  // Top-Right of left face
+//        glVertex3f(-1.0f, 1.0f, -1.0f);  // Top-Left of left face
+//        glVertex3f(-1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
+//        glVertex3f(-1.0f, -1.0f, 1.0f);  // Bottom-Right of left face
+//        glEnd();
+//    //}
+////
+////    // Right face
+//    //if(worldPtr->getBlock(this->x, this->y, this->z-1) == AIR) {
+//        glBegin(GL_POLYGON);
+//        glVertex3f(1.0f, -1.0f, 1.0f);  // Bottom-Right of l
+//        glVertex3f(1.0f, -1.0f, -1.0f);  // Bottom-Left of left face
+//        glVertex3f(1.0f, 1.0f, -1.0f);  // Top-Left of left face
+//        glVertex3f(1.0f, 1.0f, 1.0f);  // Top-Right of left face
+//        glEnd();
+//    //}
 
 
-
-    // top
+//    glBegin(GL_POLYGON);
+//    // top
 //    glVertex3f(1.0f, 1.0f, -1.0f);
 //    glVertex3f(-1.0f, 1.0f, -1.0f);
 //    glVertex3f(-1.0f, 1.0f, 1.0f);
@@ -129,8 +131,8 @@ void Block::render() {
 //    glVertex3f(1.0f, 1.0f, 1.0f);
 //    glVertex3f(1.0f, -1.0f, 1.0f);
 //    glVertex3f(1.0f, -1.0f, -1.0f);
-
-
+//
+//    glEnd();
 
 
     glPopMatrix();
