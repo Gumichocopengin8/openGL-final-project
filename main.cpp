@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
     glShadeModel(GL_SMOOTH);
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glColorMaterial (GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
     glutMainLoop();
 
     return 0;

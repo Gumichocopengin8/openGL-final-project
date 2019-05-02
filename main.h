@@ -15,7 +15,9 @@ extern Player *playerPtr;
 extern World *worldPtr;
 
 void display();
+
 void reshape(int w, int h);
+
 int main(int argc, char **argv);
 
 #endif //PROJECT_MAIN_H

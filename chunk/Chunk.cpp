@@ -44,8 +44,8 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
         }
     }
 
-    for (int i = 5; i < CHUNK_SIZE-5; ++i) {
-        for (int j = 5; j < CHUNK_SIZE-5; ++j) {
+    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
+        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
             int prob_tree = rand() % 1000;
             if (prob_tree < 2) {

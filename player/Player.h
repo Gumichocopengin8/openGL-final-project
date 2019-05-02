@@ -15,12 +15,19 @@ class Player {
     float jumping_speed;
 public:
     Camera camera;
+
     Player(Camera camera);
+
     void forward();
+
     void backward();
+
     void right();
+
     void left();
+
     void jump();
+
     void lookAt(float diffX, float diffY);
 };
 

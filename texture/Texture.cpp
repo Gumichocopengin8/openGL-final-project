@@ -6,7 +6,7 @@
 #include "Texture.h"
 
 Texture::Texture() {
-    for(int i = 0; i < 4; i++) {
+    for (int i = 0; i < 4; i++) {
         this->ambient[i] = 0.0;
         this->diffuse[i] = 0.0;
         this->specular[i] = 0.0;
@@ -38,6 +38,7 @@ void Texture::ground() {
     this->shininess[0] = 100;
     this->apply();
 }
+
 void Texture::grass() {
     this->ambient[0] = 0;
     this->ambient[1] = 0.223529;
