@@ -9,6 +9,7 @@
 #include <iostream>
 #include <math.h>
 #include <GLUT/glut.h>
+
 using namespace std;
 
 
@@ -39,18 +40,13 @@ void Camera::refresh(Light light) {
     light.position[0] = this->camera_x;
     light.position[1] = this->camera_y;
     light.position[2] = this->camera_z;
-    glLightfv(GL_LIGHT0 , GL_POSITION , light.position);
+    glLightfv(GL_LIGHT0, GL_POSITION, light.position);
     // speed update
 
     this->move_x(this->x_speed * -GROUND_FRICTION);
     this->move_y(this->y_speed * -GROUND_FRICTION);
     //this->move_y(-GRAVITY);
     this->move_z(this->z_speed * -GROUND_FRICTION);
-
-    //cout << round(this->camera_x) << " " << round(this->camera_y) << " " << round(this->camera_z) << endl;
-    //cout << this->camera_x << " " << (this->camera_y) << " " << (this->camera_z) << endl;
-    //cout << "worldPtr->getBlock(-7, 2, 14) " << worldPtr->getBlock(-7, 2, 14) << endl;
-    //cout << "worldPtr->getBlock(-7, 2, 15) " << worldPtr->getBlock(-7, 2, 15) << endl;
 }
 
 /**
@@ -75,18 +71,10 @@ void Camera::move_x(float speed) {
     double new_camera_y = this->camera_y + sin(this->pitch) * speed;
     double new_camera_z = this->camera_z - cos(this->yaw) * cos(this->pitch) * this->x_speed;
 
-    // If no collision
 
-    //if(speed > 0)std::cout << "getBlock(" << round(new_camera_x) << ", " << round(new_camera_y) - 1 << ", " << round(new_camera_z) << ") = " << worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - 1, round(new_camera_z)) << std::endl;
-
-
-    if (worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - 1, round(new_camera_z)) == 0) {
-        this->camera_x = new_camera_x;
-        this->camera_y = new_camera_y;
-        this->camera_z = new_camera_z;
-    } else {
-        this->x_speed = 0;
-    }
+    this->camera_x = new_camera_x;
+    this->camera_y = new_camera_y;
+    this->camera_z = new_camera_z;
 
 
 }
@@ -101,14 +89,8 @@ void Camera::move_z(float speed) {
     double new_camera_x = this->camera_x + cos(this->yaw) * this->z_speed;
     double new_camera_z = this->camera_z + sin(this->yaw) * this->z_speed;
 
-    // If no collision
-    if (worldPtr->getBlock(round(new_camera_x), round(this->camera_y) - 1, round(new_camera_z)) == 0) {
-        this->camera_x = new_camera_x;
-        this->camera_z = new_camera_z;
-    } else {
-        this->z_speed = 0;
-    }
-
+    this->camera_x = new_camera_x;
+    this->camera_z = new_camera_z;
 }
 
 void Camera::move_y(float speed) {
@@ -117,15 +99,8 @@ void Camera::move_y(float speed) {
     if (this->y_speed > MAX_SPEED) this->y_speed = MAX_SPEED;
 
     double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
-    //cout << new_camera_y << endl;
-    // If no collision
-    if (worldPtr->getBlock(round(this->camera_x), new_camera_y - 1, round(this->camera_z)) == 0) {
-        this->camera_y = new_camera_y;
-    } else {
-        //cout << "ICICICICICICI" << endl;
-        //cout << "this->camera_y " << this->camera_y << endl;
-        this->y_speed = 0;
-    }
+
+    this->camera_y = new_camera_y;
 
 
 }

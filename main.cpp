@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
     glutInitWindowSize(WINDOW_SIZE, WINDOW_SIZE);
     glutCreateWindow("Terrain");
 
-    Player player(Camera(0, 10, 0, 0, 0, 0));
+    Player player(Camera(0, 20, 0, 0, 0, 0));
     playerPtr = &player;
     init();
     glEnable(GL_CULL_FACE);
