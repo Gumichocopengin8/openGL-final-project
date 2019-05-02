@@ -7,13 +7,10 @@
 #include <iostream>
 #include <cstdlib>
 #import <GLUT/glut.h>
-<<<<<<< HEAD
 
 #include "../main.h"
 
-=======
 using namespace std;
->>>>>>> fb4a45edbaa1b285abda08792eee9050b0d4b97a
 
 Block::Block(int type, int x, int y, int z) {
     this->type = type;
