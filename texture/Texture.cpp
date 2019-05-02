@@ -44,12 +44,13 @@ void Texture::grass() {
     this->ambient[1] = 0.223529;
     this->ambient[2] = 0.027451;
 
-    this->diffuse[0] = 0;
-    this->diffuse[1] = 0.0568627;
-    this->diffuse[2] = 0.0113725;
-    this->specular[0] = 0.992157;
-    this->specular[1] = 0.941176;
-    this->specular[2] = 0.807843;
+    this->diffuse[0] = 0.6;
+    this->diffuse[1] = 0.6568627;
+    this->diffuse[2] = 0.6113725;
+
+    this->specular[0] = 0.092157;
+    this->specular[1] = 0.041176;
+    this->specular[2] = 0.007843;
 
     this->shininess[0] = 27.9;
     this->apply();

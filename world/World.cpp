@@ -19,8 +19,8 @@ void World::update(double x, double y) {
     int chunk_y = round(y / CHUNK_SIZE);
 
 
-    for (int i = chunk_x - 2; i <= chunk_x + 2; i++) {
-        for (int j = chunk_y - 2; j <= chunk_y + 2; j++) {
+    for (int i = chunk_x - 3; i <= chunk_x + 3; i++) {
+        for (int j = chunk_y - 3; j <= chunk_y + 3; j++) {
             this->loadChunk(i, j);
         }
     }

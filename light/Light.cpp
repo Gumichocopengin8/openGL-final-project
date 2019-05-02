@@ -6,10 +6,10 @@
 #include "Light.h"
 
 Light::Light() {
-    for (int i = 0; i < 4; i++) {
-        this->diffuse[i] = 1.0;
-        this->specular[i] = 1.0;
-        this->ambient[i] = 2.25;
+    for(int i = 0; i < 4; i++) {
+        this->diffuse[i] = 0.3;
+        this->specular[i] = 1.3;
+        this->ambient[i] = 0.65;
     }
     this->position[0] = 0.0;
     this->position[1] = 0.0;
