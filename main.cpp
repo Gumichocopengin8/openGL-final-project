@@ -89,13 +89,9 @@ int main(int argc, char **argv) {
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
 
-<<<<<<< HEAD
 
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glColorMaterial (GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-=======
-//    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
->>>>>>> fb4a45edbaa1b285abda08792eee9050b0d4b97a
     glutMainLoop();
 
     return 0;
