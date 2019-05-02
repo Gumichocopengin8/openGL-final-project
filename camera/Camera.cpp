@@ -38,7 +38,7 @@ void Camera::refresh(Light light) {
     glRotatef(this->roll * 57.2958, 0.0f, 0.0f, 1.0f);
     glTranslatef(-this->camera_x, -this->camera_y, -this->camera_z);
     light.position[0] = this->camera_x;
-    light.position[1] = this->camera_y;
+    light.position[1] = this->camera_y + 100;
     light.position[2] = this->camera_z;
     glLightfv(GL_LIGHT0, GL_POSITION, light.position);
     // speed update

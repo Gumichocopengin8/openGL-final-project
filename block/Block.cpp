@@ -35,10 +35,13 @@ void Block::render() {
         cerr << "Unknown type " << this->type << endl;
     }
 
-    GLUquadricObj *sphere;
-    sphere = gluNewQuadric();
-    gluQuadricDrawStyle(sphere, GLU_FILL);
-    gluSphere(sphere, 1.0, 4.0, 4.0);
+//    GLUquadricObj *sphere;
+//    sphere = gluNewQuadric();
+//    gluQuadricDrawStyle(sphere, GLU_FILL);
+//    gluSphere(sphere, 1.0, 4.0, 4.0);
+
+
+    glutSolidCube(1);
 
 
 //
@@ -105,33 +108,33 @@ void Block::render() {
 
 //    glBegin(GL_POLYGON);
 //    // top
-//    glVertex3f(1.0f, 1.0f, -1.0f);
-//    glVertex3f(-1.0f, 1.0f, -1.0f);
-//    glVertex3f(-1.0f, 1.0f, 1.0f);
-//    glVertex3f(1.0f, 1.0f, 1.0f);
-//    glVertex3f(1.0f, -1.0f, 1.0f);
-//    glVertex3f(-1.0f, -1.0f, 1.0f);
-//    glVertex3f(-1.0f, -1.0f, -1.0f);
-//    glVertex3f(1.0f, -1.0f, -1.0f);
-//
-//    glVertex3f(1.0f, 1.0f, 1.0f);
-//    glVertex3f(-1.0f, 1.0f, 1.0f);
-//    glVertex3f(-1.0f, -1.0f, 1.0f);
-//    glVertex3f(1.0f, -1.0f, 1.0f);
-//    glVertex3f(1.0f, -1.0f, -1.0f);
-//    glVertex3f(-1.0f, -1.0f, -1.0f);
-//    glVertex3f(-1.0f, 1.0f, -1.0f);
-//    glVertex3f(1.0f, 1.0f, -1.0f);
-//    glVertex3f(-1.0f, 1.0f, 1.0f);
-//    glVertex3f(-1.0f, 1.0f, -1.0f);
-//    glVertex3f(-1.0f, -1.0f, -1.0f);
-//    glVertex3f(-1.0f, -1.0f, 1.0f);
-//    glVertex3f(1.0f, 1.0f, -1.0f);
-//    glVertex3f(1.0f, 1.0f, 1.0f);
-//    glVertex3f(1.0f, -1.0f, 1.0f);
-//    glVertex3f(1.0f, -1.0f, -1.0f);
-//
-//    glEnd();
+    glVertex3f(1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
+
+    glVertex3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(-1.0f, 1.0f, 1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, 1.0f, 1.0f);
+    glVertex3f(-1.0f, 1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, -1.0f);
+    glVertex3f(-1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, 1.0f, -1.0f);
+    glVertex3f(1.0f, 1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, 1.0f);
+    glVertex3f(1.0f, -1.0f, -1.0f);
+
+    glEnd();
 
 
     glPopMatrix();
