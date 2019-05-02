@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "../main.h"
+
 using namespace std;
 
 Player::Player(Camera camera) : camera(camera) {

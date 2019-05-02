@@ -14,10 +14,15 @@ private:
     float shininess[4];
 public:
     Texture();
+
     void apply();
+
     void grass();
+
     void treeTrunk();
+
     void treeLeaves();
+
     void ground();
 };
 

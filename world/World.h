@@ -11,12 +11,16 @@
 #include "../chunk/Chunk.h"
 
 class World {
-    std::map<std::string, Chunk*> chunks;
+    std::map<std::string, Chunk *> chunks;
 public:
     World();
+
     void update(double x, double y);
+
     void loadChunk(int chunk_x, int chunk_y);
-    Chunk* generateChunk(int chunk_x, int chunk_y);
+
+    Chunk *generateChunk(int chunk_x, int chunk_y);
+
     int getBlock(int x, int y, int z);
 };
 
