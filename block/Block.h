@@ -5,15 +5,18 @@
 #ifndef PROJECT_BLOCK_H
 #define PROJECT_BLOCK_H
 
+#include "types_of_block.h"
 
 class Block {
 
 private:
+    int type;
     int x;
     int y;
     int z;
+
 public:
-    Block(int x, int y, int z);
+    Block(int type, int x, int y, int z);
     void render();
 };
 

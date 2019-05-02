@@ -6,6 +6,7 @@
 #define PROJECT_CHUNK_H
 
 #include "../block/Block.h"
+#include "../block/types_of_block.h"
 
 #define CHUNK_SIZE 16
 

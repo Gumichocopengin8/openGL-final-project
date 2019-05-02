@@ -4,11 +4,13 @@
 
 #include "Block.h"
 #include "../texture/Texture.h"
+#include <iostream>
 #include <cstdlib>
 #import <GLUT/glut.h>
+using namespace std;
 
-
-Block::Block(int x, int y, int z) {
+Block::Block(int type, int x, int y, int z) {
+    this->type = type;
     this->x = x;
     this->y = y;
     this->z = z;
@@ -22,7 +24,13 @@ void Block::render() {
 
     // Texture
     Texture texture;
-    texture.grass();
+
+    if (this->type == GROUND) { texture.ground(); }
+    else if (this->type == GRASS) { texture.grass(); }
+    else {
+        texture.ground();
+        cerr << "Unknown type " << this->type << endl;
+    }
     GLUquadricObj *sphere;
     sphere = gluNewQuadric();
     gluQuadricDrawStyle(sphere, GLU_FILL);
@@ -30,4 +38,3 @@ void Block::render() {
 
     glPopMatrix();
 }
-

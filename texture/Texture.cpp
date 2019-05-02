@@ -21,6 +21,25 @@ void Texture::apply() {
     glMaterialfv(GL_FRONT, GL_SHININESS, this->shininess);
 }
 
+
+void Texture::ground() {
+    this->ambient[0] = 0.2125;
+    this->ambient[1] = 0.1275;
+    this->ambient[2] = 0.054;
+
+    this->diffuse[0] = 0.714;
+    this->diffuse[1] = 0.4284;
+    this->diffuse[2] = 0.18144;
+
+    this->specular[0] = 0.001;
+    this->specular[1] = 0.001;
+    this->specular[2] = 0.001;
+
+    this->shininess[0] = 100;
+    this->apply();
+}
+
+
 void Texture::grass() {
     this->ambient[0] = 0;
     this->ambient[1] = 0.223529;
@@ -72,19 +91,4 @@ void Texture::treeLeaves() {
 }
 
 
-void Texture::ground() {
-    this->ambient[0] = 0.2125;
-    this->ambient[1] = 0.1275;
-    this->ambient[2] = 0.054;
 
-    this->diffuse[0] = 0.714;
-    this->diffuse[1] = 0.4284;
-    this->diffuse[2] = 0.18144;
-
-    this->specular[0] = 0.001;
-    this->specular[1] = 0.001;
-    this->specular[2] = 0.001;
-
-    this->shininess[0] = 100;
-    this->apply();
-}
