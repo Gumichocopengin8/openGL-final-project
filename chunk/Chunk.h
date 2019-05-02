@@ -9,12 +9,13 @@
 #include "../block/types_of_block.h"
 
 #define CHUNK_SIZE 16
+#define CHUNK_HEIGHT 128
 
 class Chunk {
-    int blocks[CHUNK_SIZE][CHUNK_SIZE][CHUNK_SIZE];
     int x;
     int z;
 public:
+    int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     Chunk(int chunk_x, int chunk_z);
     void render();
     int getBlock(int x, int y, int z);

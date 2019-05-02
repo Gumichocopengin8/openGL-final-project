@@ -15,7 +15,7 @@ using namespace std;
 
 #define GRAVITY 0.02
 #define MAX_SPEED 2.5
-#define GROUND_FRICTION 0.19
+#define GROUND_FRICTION 0.1
 
 Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
     this->camera_x = camera_x;
