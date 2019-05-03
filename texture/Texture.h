@@ -31,7 +31,7 @@ public:
 
     void cloud();
 
-    void sand();
+    void orange();
 
     void lawngreen();
 };
