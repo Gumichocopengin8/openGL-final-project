@@ -9,7 +9,9 @@
 #include "PerlinNoise.hpp"
 
 #include "../structures/Tree.h"
+
 #include "../structures/Cactus.h"
+#include "../structures/Cloud.h"
 
 #include "../main.h"
 
@@ -120,12 +122,18 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
 
             this->heights[i][j] = height;
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+
                 if (k <= height) {
-                    if(this->biome == PLAINS) {
-                        this->blocks[i][k][j] = GRASS;
+                    if(k <= 7) {
+                        this->blocks[i][k][j] = WATER;
                     } else {
-                        this->blocks[i][k][j] = SNOW;
+                        if(this->biome == PLAINS) {
+                            this->blocks[i][k][j] = GRASS;
+                        } else {
+                            this->blocks[i][k][j] = SNOW;
+                        }
                     }
+
 
                 }
             }
@@ -164,6 +172,21 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
         }
     }
 
+    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
+        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
+
+            int prob_cloud = this->random(1000);
+            if (prob_cloud < 5) {
+                int surface_height = 0;
+                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+                    if (this->blocks[i][k][j] != AIR) {
+                        surface_height = k;
+                    }
+                }
+                Cloud(i + 10, surface_height + 25, j, this);
+            }
+        }
+    }
 
 // Remove hidden blocks
     for (int i = 1; i < CHUNK_SIZE - 1; ++i) {
@@ -193,6 +216,13 @@ void Chunk::render() {
             }
         }
     }
+}
+
+int Chunk::random(int max) {
+    random_device seed_gen;
+    mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
+    uniform_int_distribution<> dist(0, max);
+    return dist(engine);
 }
 
 int Chunk::getBlock(int x, int y, int z) {

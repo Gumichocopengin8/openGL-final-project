@@ -28,6 +28,8 @@ public:
     void snow();
 
     void water();
+
+    void cloud();
 };
 
 

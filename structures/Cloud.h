@@ -5,10 +5,13 @@
 #ifndef PROJECT_CLOUD_H
 #define PROJECT_CLOUD_H
 
+#include "../chunk/Chunk.h"
 
 class Cloud {
 public:
-    Cloud();
+    Cloud(int x, int y, int z, Chunk *chunk);
+
+    int random(int max);
 };
 
 

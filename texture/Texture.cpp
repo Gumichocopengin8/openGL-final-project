@@ -123,3 +123,20 @@ void Texture::water() {
     this->shininess[0] = 30;
     this->apply();
 }
+
+void Texture::cloud() {
+    this->ambient[0] = 0.75686;
+    this->ambient[1] = 0.75686;
+    this->ambient[2] = 0.75686;
+
+    this->diffuse[0] = 0.75686;
+    this->diffuse[1] = 0.75686;
+    this->diffuse[2] = 0.75686;
+
+    this->specular[0] = 0.2;
+    this->specular[1] = 0.2;
+    this->specular[2] = 0;
+
+    this->shininess[0] = 30;
+    this->apply();
+}
