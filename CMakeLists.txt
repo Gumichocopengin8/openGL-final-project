@@ -34,4 +34,4 @@ add_executable(
         block/types_of_block.h
         structures/Tree.cpp
         structures/Tree.h
-        chunk/types_of_biome.h biome/Biome.cpp biome/Biome.h)
+        chunk/types_of_biome.h biome/Biome.cpp biome/Biome.h structures/Cactus.cpp structures/Cactus.h)

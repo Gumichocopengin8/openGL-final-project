@@ -9,6 +9,7 @@
 #include "PerlinNoise.hpp"
 
 #include "../structures/Tree.h"
+#include "../structures/Cactus.h"
 
 #include "../main.h"
 
@@ -147,6 +148,19 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
 
                 Tree(i, surface_height, j, this);
             }
+
+            if (prob_tree > 2 && prob_tree < 4) {
+
+                int surface_height = 0;
+                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+                    if (this->blocks[i][k][j] == GRASS) {
+                        surface_height = k;
+                    }
+                }
+
+                Cactus(i, surface_height, j, this);
+            }
+
         }
     }
 
