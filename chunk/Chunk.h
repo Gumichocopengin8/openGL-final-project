@@ -14,11 +14,12 @@
 class Chunk {
     int x;
     int z;
+    int biome;
 public:
     int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     int heights[CHUNK_SIZE][CHUNK_SIZE];
 
-    Chunk(int chunk_x, int chunk_z);
+    Chunk(int chunk_x, int chunk_z, int biome);
 
     void render();
 

@@ -19,7 +19,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
     for (int i = 0; i < height_tree; ++i) {
         if (chunk->blocks[x][y + i][z] == AIR) {
-            chunk->blocks[x][y + i][z] = 1;
+            chunk->blocks[x][y + i][z] = TREETRUNK;
         }
     }
 
@@ -32,7 +32,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
                 if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
                     if (chunk->blocks[x + i][k][z + j] == AIR) {
-                        chunk->blocks[x + i][k][z + j] = 2;
+                        chunk->blocks[x + i][k][z + j] = TREELEAVES;
                     }
                 }
 

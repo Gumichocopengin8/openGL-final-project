@@ -47,8 +47,11 @@ void World::loadChunk(int chunk_x, int chunk_y) {
 Chunk *World::generateChunk(int chunk_x, int chunk_y) {
     std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
 
+
+    int biome = this->chooseChunkBiome(chunk_x, chunk_y);
+
     Chunk *chunk = NULL;
-    chunk = new Chunk(chunk_x, chunk_y);
+    chunk = new Chunk(chunk_x, chunk_y, 0);
 
     return chunk;
 }
@@ -104,4 +107,9 @@ int World::getTerrainHeight(int x, int z) {
 
     return chunk->getHeight(x, z);
 
+}
+
+int World::chooseChunkBiome(int chunk_x, int chunk_y) {
+
+    return 0;
 }

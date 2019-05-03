@@ -14,9 +14,11 @@
 
 using namespace std;
 
-Chunk::Chunk(int chunk_x, int chunk_z) {
+Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
     this->x = chunk_x;
     this->z = chunk_z;
+    this->biome = biome;
+
 
     // PerlinNoise Setup
     uint32_t seed = rand();
