@@ -30,6 +30,10 @@ void Block::render() {
 
     if (this->type == GROUND) { texture.ground(); }
     else if (this->type == GRASS) { texture.grass(); }
+    else if (this->type == TREETRUNK) { texture.treeTrunk(); }
+    else if (this->type == TREELEAVES) { texture.treeLeaves(); }
+    else if (this->type == SNOW) { texture.snow(); }
+    else if (this->type == WATER) { texture.water(); }
     else {
         texture.ground();
         cerr << "Unknown type " << this->type << endl;

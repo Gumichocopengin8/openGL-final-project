@@ -51,7 +51,7 @@ Chunk *World::generateChunk(int chunk_x, int chunk_y) {
     int biome = this->chooseChunkBiome(chunk_x, chunk_y);
 
     Chunk *chunk = NULL;
-    chunk = new Chunk(chunk_x, chunk_y, 0);
+    chunk = new Chunk(chunk_x, chunk_y, biome);
 
     return chunk;
 }
@@ -111,5 +111,44 @@ int World::getTerrainHeight(int x, int z) {
 
 int World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
-    return 0;
+
+    int biome_odd = random() % 2;
+
+    getNeighborsChunks(chunk_x, chunk_y);
+
+    return biome_odd + 1;
+}
+
+std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
+
+
+    std::vector<Chunk *> neighbors;
+
+    //std::cout << "BIOMES NEIGHBORS" << std::endl;
+
+    for (int i = -1; i <= 1; ++i) {
+        for (int j = -1; j <= 1; ++j) {
+            if (i != 0 && j != 0) {
+                std::string key = std::to_string(x + i) + "_" + std::to_string(z + j);
+                if (this->chunks.count(key) > 0) {
+                    neighbors.push_back(this->chunks[key]);
+                    std::cout << this->chunks[key]->biome << std::endl;
+                }
+            }
+        }
+    }
+
+
+//    if (this->chunks.count(key) > 0) {
+//        chunk = this->chunks[key];
+//    } else {
+//        chunk = this->generateChunk(chunk_x, chunk_y);
+//        this->chunks[key] = chunk;
+//    }
+//
+//
+//    std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
+
+
+    return std::vector<Chunk *>();
 }

@@ -7,8 +7,10 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 #include "../chunk/Chunk.h"
+#include "../chunk/types_of_biome.h"
 
 class World {
 
@@ -29,6 +31,9 @@ public:
     int getBlock(int x, int y, int z);
 
     int getTerrainHeight(int x, int z);
+
+    std::vector<Chunk*> getNeighborsChunks(int x, int z);
+
 };
 
 

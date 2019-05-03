@@ -120,7 +120,12 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
             this->heights[i][j] = height;
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
                 if (k <= height) {
-                    this->blocks[i][k][j] = GRASS;
+                    if(this->biome == PLAINS) {
+                        this->blocks[i][k][j] = GRASS;
+                    } else {
+                        this->blocks[i][k][j] = SNOW;
+                    }
+
                 }
             }
         }
