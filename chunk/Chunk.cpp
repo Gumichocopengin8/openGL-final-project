@@ -138,8 +138,6 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
 
                 Tree(i, surface_height, j, this);
             }
-
-
         }
     }
 
@@ -160,8 +158,6 @@ Chunk::Chunk(int chunk_x, int chunk_z) {
             }
         }
     }
-
-
 }
 
 void Chunk::render() {

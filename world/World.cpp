@@ -27,7 +27,6 @@ void World::update(double x, double y) {
 
 }
 
-
 void World::loadChunk(int chunk_x, int chunk_y) {
 
     std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
@@ -70,7 +69,6 @@ int World::getBlock(int x, int y, int z) {
 
     }
 
-
     x = x % 16;
     if (x < 0) {
         x += 16;
@@ -81,10 +79,8 @@ int World::getBlock(int x, int y, int z) {
         z += 16;
     }
 
-    //std::cout << "key: " << key << std::endl;
-    //std::cout << "getBlock(" << x << ", " << y << ", " << z << ") = " << chunk->getBlock(x, y, z) << std::endl;
-
     return chunk->getBlock(x, y, z);
+
 }
 
 int World::getTerrainHeight(int x, int z) {
@@ -107,4 +103,5 @@ int World::getTerrainHeight(int x, int z) {
     }
 
     return chunk->getHeight(x, z);
+
 }

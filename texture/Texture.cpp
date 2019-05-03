@@ -90,5 +90,36 @@ void Texture::treeLeaves() {
     this->apply();
 }
 
+void Texture::snow() {
+    this->ambient[0] = 1;
+    this->ambient[1] = 1;
+    this->ambient[2] = 1;
 
+    this->diffuse[0] = 0;
+    this->diffuse[1] = 1;
+    this->diffuse[2] = 1;
 
+    this->specular[0] = 0.2;
+    this->specular[1] = 0.2;
+    this->specular[2] = 0;
+
+    this->shininess[0] = 30;
+    this->apply();
+}
+
+void Texture::water() {
+    this->ambient[0] = 0;
+    this->ambient[1] = 0.35686;
+    this->ambient[2] = 0.85882;
+
+    this->diffuse[0] = 0;
+    this->diffuse[1] = 0.55686;
+    this->diffuse[2] = 0.85882;
+
+    this->specular[0] = 0.2;
+    this->specular[1] = 0.2;
+    this->specular[2] = 0;
+
+    this->shininess[0] = 30;
+    this->apply();
+}

@@ -11,8 +11,8 @@
 
 class Player {
     float walking_acceleration;
-    float walking_speed_max;
-    float jumping_speed;
+    float run_speed;
+    float vertical_speed;
 public:
     Camera camera;
 
@@ -26,7 +26,17 @@ public:
 
     void left();
 
+    void run_forward();
+
+    void run_backward();
+
+    void run_right();
+
+    void run_left();
+
     void jump();
+
+    void down();
 
     void lookAt(float diffX, float diffY);
 };

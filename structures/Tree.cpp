@@ -39,6 +39,4 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
             }
         }
     }
-
-
 }
