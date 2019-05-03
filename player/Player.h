@@ -7,36 +7,31 @@
 
 #include <iostream>
 #include "../camera/Camera.h"
+#include <map>
 
 
 class Player {
     float walking_acceleration;
-    float run_speed;
+    float running_acceleration;
     float vertical_speed;
 public:
+
+    std::map<char, bool> keys;
     Camera camera;
 
     Player(Camera camera);
 
-    void forward();
+    void takeAction();
 
-    void backward();
+    void forward(bool run);
 
-    void right();
+    void backward(bool run);
 
-    void left();
+    void right(bool run);
 
-    void run_forward();
-
-    void run_backward();
-
-    void run_right();
-
-    void run_left();
+    void left(bool run);
 
     void jump();
-
-    void down();
 
     void lookAt(float diffX, float diffY);
 };

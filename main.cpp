@@ -35,7 +35,7 @@ void display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
+    playerPtr->takeAction();
     playerPtr->camera.refresh(light);
 
     /**
@@ -81,9 +81,12 @@ int main(int argc, char **argv) {
     glutDisplayFunc(display);
     glutMouseFunc(mouse);
     glutPassiveMotionFunc(mouseMotion);
-    glutKeyboardFunc(keyboard);
+
+    glutKeyboardFunc(keydown);
+    glutKeyboardUpFunc(keyup);
+
+
     glutWarpPointer(200, 200);
-    //glClearColor(0., 0., 0., 0.0);
     glClearColor(0.439, 0.729, 0.988, 0.0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
