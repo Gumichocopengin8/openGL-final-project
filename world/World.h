@@ -11,8 +11,10 @@
 #include "../chunk/Chunk.h"
 
 class World {
-    std::map<std::string, Chunk *> chunks;
+
 public:
+
+    std::map<std::string, Chunk *> chunks;
     World();
 
     void update(double x, double y);
@@ -22,6 +24,7 @@ public:
     Chunk *generateChunk(int chunk_x, int chunk_y);
 
     int getBlock(int x, int y, int z);
+    int getTerrainHeight(int x, int z);
 };
 
 
