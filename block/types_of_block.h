@@ -12,6 +12,7 @@
 #define TREELEAVES 4
 #define SNOW 5
 #define WATER 6
+#define CLOUD 7
 
 
 #endif //PROJECT_TYPES_OF_BLOCK_H
