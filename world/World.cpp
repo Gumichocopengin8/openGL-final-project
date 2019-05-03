@@ -108,11 +108,11 @@ int World::getTerrainHeight(int x, int z) {
 int World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
 
-    int biome_odd = random() % 2;
+    //int biome_odd = random() % 2;
 
-    getNeighborsChunks(chunk_x, chunk_y);
-
-    return biome_odd + 1;
+    //getNeighborsChunks(chunk_x, chunk_y);
+    return 1;
+    //return biome_odd + 1;
 }
 
 std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
@@ -128,7 +128,6 @@ std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
                 std::string key = std::to_string(x + i) + "_" + std::to_string(z + j);
                 if (this->chunks.count(key) > 0) {
                     neighbors.push_back(this->chunks[key]);
-                    std::cout << this->chunks[key]->biome << std::endl;
                 }
             }
         }

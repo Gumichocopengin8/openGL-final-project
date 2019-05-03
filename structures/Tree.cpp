@@ -4,13 +4,13 @@
 
 #include "Tree.h"
 #include <random>
+#include <cmath>
 
-
-#define MIN_HEIGHT_TREE 10
-#define MAX_HEIGHT_TREE 15
+#define MIN_HEIGHT_TREE 8
+#define MAX_HEIGHT_TREE 12
 
 #define MIN_RADIUS_TREE 3
-#define MAX_RADIUS_TREE 8
+#define MAX_RADIUS_TREE 6
 
 
 Tree::Tree(int x, int y, int z, Chunk *chunk) {
@@ -26,16 +26,42 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
     int radius_tree = MIN_RADIUS_TREE + rand() % (MAX_RADIUS_TREE - MIN_RADIUS_TREE);
 
-    for (int i = -radius_tree; i < radius_tree; ++i) {
-        for (int j = -radius_tree; j < radius_tree; ++j) {
-            for (int k = y + height_tree - radius_tree; k < y + height_tree + radius_tree; ++k) {
 
+    for (int i = -radius_tree+1; i <= radius_tree-1; i++) {
+        for (int j = -radius_tree+1; j <= radius_tree-1; j++) {
+            for (int k = y + height_tree - radius_tree + 1; k < y + height_tree - radius_tree + 2; ++k) {
                 if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
                     if (chunk->blocks[x + i][k][z + j] == AIR) {
                         chunk->blocks[x + i][k][z + j] = TREELEAVES;
                     }
                 }
+            }
+        }
+    }
 
+
+    for (int i = -radius_tree; i <= radius_tree; i++) {
+        for (int j = -radius_tree; j <= radius_tree; j++) {
+            for (int k = y + height_tree - radius_tree + 2; k < y + height_tree + radius_tree-1; ++k) {
+                if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
+                    if (chunk->blocks[x + i][k][z + j] == AIR) {
+                        chunk->blocks[x + i][k][z + j] = TREELEAVES;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+    for (int i = -radius_tree+1; i <= radius_tree-1; i++) {
+        for (int j = -radius_tree+1; j <= radius_tree-1; j++) {
+            for (int k = y + height_tree + radius_tree-1; k < y + height_tree + radius_tree; ++k) {
+                    if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
+                        if (chunk->blocks[x + i][k][z + j] == AIR) {
+                            chunk->blocks[x + i][k][z + j] = TREELEAVES;
+                        }
+                    }
             }
         }
     }

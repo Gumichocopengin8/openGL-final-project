@@ -74,11 +74,11 @@ void Texture::treeTrunk() {
 }
 
 void Texture::treeLeaves() {
-    this->ambient[0] = 0.467;
-    this->ambient[1] = 0.35686;
-    this->ambient[2] = 0.25882;
+    this->ambient[0] = 0.067;
+    this->ambient[1] = 0.25686;
+    this->ambient[2] = 0.05882;
 
-    this->diffuse[0] = 0;
+    this->diffuse[0] = 0.4;
     this->diffuse[1] = 0.55686;
     this->diffuse[2] = 0.25882;
 

@@ -134,11 +134,13 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
     for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
-            int prob_tree = rand() % 1000;
+//            int prob_tree = rand() % 1000;
+            int prob_tree = rand() % 100;
             if (prob_tree < 2) {
+
                 int surface_height = 0;
                 for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] != AIR) {
+                    if (this->blocks[i][k][j] == GRASS) {
                         surface_height = k;
                     }
                 }
