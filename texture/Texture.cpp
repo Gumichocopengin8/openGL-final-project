@@ -141,7 +141,7 @@ void Texture::cloud() {
     this->apply();
 }
 
-void Texture::sand() {
+void Texture::orange() {
     this->ambient[0] = 1;
     this->ambient[1] = 0.64705;
     this->ambient[2] = 0;
