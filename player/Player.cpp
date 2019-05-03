@@ -69,7 +69,6 @@ void Player::takeAction() {
         playerPtr->left(true);
     }
 
-
     if (this->keys['d']) {
         playerPtr->right(false);
     }
