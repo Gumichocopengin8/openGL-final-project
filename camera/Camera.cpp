@@ -7,14 +7,17 @@
 #include "../main.h"
 
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <GLUT/glut.h>
 
 using namespace std;
 
-
-#define MAX_SPEED 2.5
+#define GRAVITY 0.05
+#define MAX_HORIZONTAL_SPEED 0.15
+#define MAX_VERTICAL_SPEED 1
 #define GROUND_FRICTION 0.1
+#define CAMERA_HEIGHT 1.5
+
 
 Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
     this->camera_x = camera_x;
@@ -43,7 +46,7 @@ void Camera::refresh(Light light) {
 
     this->move_x(this->x_speed * -GROUND_FRICTION);
     this->move_y(this->y_speed * -GROUND_FRICTION);
-    //this->move_y(-GRAVITY);
+    this->move_y(-GRAVITY);
     this->move_z(this->z_speed * -GROUND_FRICTION);
 }
 
@@ -60,8 +63,10 @@ u: < -sy*sp, cp,  cy*sp >
 
 void Camera::move_x(float speed) {
     this->x_speed += speed;
+    std::cout << this->x_speed << std::endl;
 
-    if (this->x_speed > MAX_SPEED) this->x_speed = MAX_SPEED;
+    if (this->x_speed > MAX_HORIZONTAL_SPEED) this->x_speed = MAX_HORIZONTAL_SPEED;
+    if (this->x_speed < -MAX_HORIZONTAL_SPEED) this->x_speed = -MAX_HORIZONTAL_SPEED;
 
 
     double new_camera_x = this->camera_x + sin(this->yaw) * cos(this->pitch) * this->x_speed;
@@ -69,16 +74,25 @@ void Camera::move_x(float speed) {
     double new_camera_z = this->camera_z - cos(this->yaw) * cos(this->pitch) * this->x_speed;
 
 
-    this->camera_x = new_camera_x;
-    this->camera_y = new_camera_y;
-    this->camera_z = new_camera_z;
+    if (worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - CAMERA_HEIGHT, round(new_camera_z)) == 0) {
+        this->camera_x = new_camera_x;
+        this->camera_y = new_camera_y;
+        this->camera_z = new_camera_z;
+    } else {
+        this->x_speed = 0;
+    }
+
+//    this->camera_x = new_camera_x;
+//    this->camera_y = new_camera_y;
+//    this->camera_z = new_camera_z;
 }
 
 
 void Camera::move_z(float speed) {
     this->z_speed += speed;
 
-    if (this->z_speed > MAX_SPEED) this->z_speed = MAX_SPEED;
+    if (this->z_speed > MAX_HORIZONTAL_SPEED) this->z_speed = MAX_HORIZONTAL_SPEED;
+    if (this->z_speed < -MAX_HORIZONTAL_SPEED) this->z_speed = -MAX_HORIZONTAL_SPEED;
 
     double new_camera_x = this->camera_x + cos(this->yaw) * this->z_speed;
     double new_camera_z = this->camera_z + sin(this->yaw) * this->z_speed;
@@ -89,11 +103,20 @@ void Camera::move_z(float speed) {
 
 void Camera::move_y(float speed) {
     this->y_speed += speed;
-    if (this->y_speed > MAX_SPEED) this->y_speed = MAX_SPEED;
+    if (this->y_speed > MAX_VERTICAL_SPEED) this->y_speed = MAX_VERTICAL_SPEED;
+    if (this->y_speed < -MAX_VERTICAL_SPEED) this->y_speed = -MAX_VERTICAL_SPEED;
 
     double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
 
-    this->camera_y = new_camera_y;
+    //this->camera_y = new_camera_y;
+
+    if (worldPtr->getBlock(round(this->camera_x), new_camera_y - CAMERA_HEIGHT, round(this->camera_z)) == 0) {
+        this->camera_y = new_camera_y;
+    } else {
+        this->y_speed = 0;
+    }
+
+
 }
 
 void Camera::lookAt(float diffX, float diffY) {

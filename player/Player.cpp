@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include "../main.h"
+#include <cmath>
 
 using namespace std;
 
@@ -46,7 +47,7 @@ void Player::run_left() {
 }
 
 void Player::jump() {
-    this->camera.move_y(this->vertical_speed);
+    if(abs(this->camera.y_speed) < 0.01)this->camera.move_y(this->vertical_speed);
 }
 
 void Player::down() {
