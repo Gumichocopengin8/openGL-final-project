@@ -8,7 +8,7 @@
 #import <GLUT/glut.h>
 
 void keyboard(unsigned char key, int x, int y) {
-
+    std::cout << key << std::endl;
     switch (key) {
         case 'q':
         case 'Q':

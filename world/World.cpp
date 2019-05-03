@@ -19,8 +19,8 @@ void World::update(double x, double y) {
     int chunk_y = floor(y / CHUNK_SIZE);
 
 
-    for (int i = chunk_x - 3; i <= chunk_x + 3; i++) {
-        for (int j = chunk_y - 3; j <= chunk_y + 3; j++) {
+    for (int i = chunk_x - 2; i <= chunk_x + 2; i++) {
+        for (int j = chunk_y - 2; j <= chunk_y + 2; j++) {
             this->loadChunk(i, j);
         }
     }
@@ -58,18 +58,14 @@ Chunk *World::generateChunk(int chunk_x, int chunk_y) {
 
 int World::getBlock(int x, int y, int z) {
 
-    //std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
-
-    std::string key = std::to_string(floor(x / 16.0)) + "_" + std::to_string(floor(z / 16.0));
+    std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
 
     Chunk *chunk = NULL;
 
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
     } else {
-        //std::cerr << "The requested block belongs to a not loaded chunk." << std::endl;
-        return 10;
-
+        return -1;
     }
 
     x = x % 16;
