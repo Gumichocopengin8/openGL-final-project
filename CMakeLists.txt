@@ -32,6 +32,8 @@ add_executable(
         light/Light.cpp
         light/Light.h
         block/types_of_block.h
+        structures/Cloud.cpp
+        structures/Cloud.h
         structures/Tree.cpp
         structures/Tree.h
         chunk/types_of_biome.h biome/Biome.cpp biome/Biome.h)
