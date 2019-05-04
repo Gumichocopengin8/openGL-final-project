@@ -122,6 +122,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
 
 
             this->heights[i][j] = height;
+
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
 
                 if (k <= height) {
@@ -191,28 +192,24 @@ void Chunk::generateStructures() {
     for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
-            int prob = this->random(100);
-            if (prob < 2) {
-                int surface_height = 0;
-                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] == GRASS) {
-                        surface_height = k;
-                    }
-                }
 
+            // Get surface_height
+            int surface_height = this->heights[i][j];
+
+            int random_number = this->random(100);
+
+            // Trees
+            if (random_number < this->biome->tree_frequency * 100) {
                 Tree(i, surface_height, j, this);
+                break;
             }
 
-            if (prob > 2 && prob < 4) {
-                int surface_height = 0;
-                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] == GRASS) {
-                        surface_height = k;
-                    }
-                }
-
+            // Cactus
+            if (random_number < this->biome->cactus_frequency * 100) {
                 Cactus(i, surface_height, j, this);
+                break;
             }
+
         }
     }
 
@@ -233,3 +230,12 @@ void Chunk::generateStructures() {
         }
     }
 }
+
+float Chunk::distance_to(Chunk *other) {
+    return pow(other->x - this->x, 2) + pow(other->z - this->z, 2);
+}
+
+float Chunk::distance_to(float x, float z) {
+    return pow(x - this->x, 2) + pow(z - this->z, 2);
+}
+

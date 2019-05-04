@@ -17,6 +17,8 @@ struct BiomeType {
     float tree_frequency = 0;
     float cactus_frequency = 0;
 
+
+
 };
 
 

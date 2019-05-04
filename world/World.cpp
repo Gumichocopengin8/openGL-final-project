@@ -6,6 +6,7 @@
 #include <string>
 #include <cmath>
 #include "World.h"
+#include "../main.h"
 
 World::World() {
     this->chunks = std::map<std::string, Chunk *>();
@@ -49,8 +50,7 @@ void World::loadChunk(int chunk_x, int chunk_y) {
 Chunk *World::generateChunk(int chunk_x, int chunk_y) {
     std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
 
-
-    BiomeType* biome = this->chooseChunkBiome(chunk_x, chunk_y);
+    BiomeType *biome = this->chooseChunkBiome(chunk_x, chunk_y);
 
     Chunk *chunk = NULL;
     chunk = new Chunk(chunk_x, chunk_y, biome);
@@ -107,14 +107,52 @@ int World::getTerrainHeight(int x, int z) {
 
 }
 
-BiomeType* World::chooseChunkBiome(int chunk_x, int chunk_y) {
+BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
+
+    // For the first chunk
+    if (this->biomes.empty()) {
+        auto it = this->biome_types.begin();
+        std::advance(it, rand() % this->biome_types.size());
+        std::string key = it->first;
+        Biome biome(chunk_x, chunk_y, this->biome_types[key]);
+        this->biomes.push_back(biome);
+        return this->biome_types[key];
+    }
 
 
-    //int biome_odd = random() % 2;
+    // Get the nearest biome
+    float best_distance = this->biomes[0].distance_to(chunk_x, chunk_y);
+    Biome best_distance_biome = this->biomes[0];
 
-    //getNeighborsChunks(chunk_x, chunk_y);
-    return this->biome_types["prairie"];
-    //return biome_odd + 1;
+    for (int i = 1; i < this->biomes.size(); ++i) {
+        float distance = this->biomes[i].distance_to(chunk_x, chunk_y);
+        if (distance < best_distance) {
+            best_distance = distance;
+            best_distance_biome = this->biomes[i];
+        }
+    }
+
+    if (best_distance > 50) {
+
+        std::vector<BiomeType *> possibleBiomeTypes;
+
+        for (auto const &biome_type : this->biome_types) {
+            if (biome_type.second != best_distance_biome.type) {
+                possibleBiomeTypes.push_back(biome_type.second);
+            }
+        }
+
+
+        auto it = possibleBiomeTypes.begin();
+        std::advance(it, rand() % possibleBiomeTypes.size());
+        return *it;
+
+    }
+
+
+    return best_distance_biome.type ;
+
+
 }
 
 std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
@@ -155,15 +193,19 @@ void World::initializeBiomes() {
 
     this->biome_types["prairie"] = new BiomeType();
     this->biome_types["prairie"]->ground = GRASS;
-    this->biome_types["prairie"]->tree_frequency = 0.2;
+    this->biome_types["prairie"]->tree_frequency = 0.02;
 
-    this->biome_types["forest"] = new BiomeType();
-    this->biome_types["forest"]->ground = GRASS;
-    this->biome_types["forest"]->tree_frequency = 0.8;
 
-    this->biome_types["desert"] = new BiomeType();
-    this->biome_types["desert"]->ground = SNOW;
-    this->biome_types["desert"]->cactus_frequency = 0.5;
+    this->biome_types["icy"] = new BiomeType();
+    this->biome_types["icy"]->ground = SNOW;
+
+//    this->biome_types["forest"] = new BiomeType();
+//    this->biome_types["forest"]->ground = GRASS;
+//    this->biome_types["forest"]->tree_frequency = 0.8;
+
+//    this->biome_types["desert"] = new BiomeType();
+//    this->biome_types["desert"]->ground = SNOW;
+//    this->biome_types["desert"]->cactus_frequency = 0.5;
 
 
 }

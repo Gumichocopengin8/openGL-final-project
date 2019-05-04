@@ -39,7 +39,7 @@ void Block::render() {
     else if (this->type == LAWNGREEN ) { texture.lawngreen(); }
     else {
         texture.ground();
-        cerr << "Unknown type " << this->type << endl;
+        //cerr << "Unknown type " << this->type << endl;
     }
 
 

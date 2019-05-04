@@ -37,7 +37,7 @@ void Player::left(bool run) {
 }
 
 void Player::jump() {
-    if (abs(this->camera.y_speed) < 0.01)this->camera.move_y(this->vertical_speed);
+    if (abs(this->camera.y_speed) < 0.03)this->camera.move_y(this->vertical_speed);
 }
 
 void Player::lookAt(float diffX, float diffY) {

@@ -15,6 +15,7 @@ public:
     BiomeType* type;
 
     Biome(int x, int z, BiomeType* type);
+    float distance_to(float x, float z);
 };
 
 

@@ -13,11 +13,12 @@
 #define CHUNK_HEIGHT 128
 
 class Chunk {
+public:
+
     int x;
     int z;
     BiomeType* biome;
 
-public:
     int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     int heights[CHUNK_SIZE][CHUNK_SIZE];
     //BiomeType biome;
@@ -27,6 +28,8 @@ public:
     int random(int max);
     int getBlock(int x, int y, int z);
     int getHeight(int x, int z);
+    float distance_to(Chunk* other);
+    float distance_to(float x, float z);
     void generateStructures();
     void removeHiddenBlocks();
 };
