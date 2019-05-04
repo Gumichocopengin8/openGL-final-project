@@ -15,5 +15,7 @@
 #define CLOUD 7
 #define ORANGE 8
 #define LAWNGREEN 9
+#define SAND 10
+#define ROCK 11
 
 #endif //PROJECT_TYPES_OF_BLOCK_H

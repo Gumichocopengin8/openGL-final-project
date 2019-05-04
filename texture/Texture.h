@@ -34,6 +34,10 @@ public:
     void orange();
 
     void lawngreen();
+
+    void sand();
+
+    void rock();
 };
 
 
