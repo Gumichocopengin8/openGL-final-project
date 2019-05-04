@@ -12,6 +12,7 @@ class Tree {
 public:
     Tree(int x, int y, int z, Chunk *chunk);
 
+    int chooseTexture();
 };
 
 
