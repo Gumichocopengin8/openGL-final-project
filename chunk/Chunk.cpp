@@ -115,9 +115,9 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             if (old_height_i != -1 && old_height_j != -1) {
                 float new_percent =
                         1 / ((1 - new_percent_i) / new_percent_i + (1 - new_percent_j) / new_percent_j + 1);
-                height = new_percent * height +
-                         (new_percent * (1 - new_percent_i) / new_percent_i) * old_height_i +
-                         (new_percent * (1 - new_percent_j) / new_percent_j) * old_height_j;
+                height = round(new_percent * height +
+                               (new_percent * (1 - new_percent_i) / new_percent_i) * old_height_i +
+                               (new_percent * (1 - new_percent_j) / new_percent_j) * old_height_j);
             }
 
 
@@ -131,6 +131,8 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                     } else {
                         this->blocks[i][k][j] = this->biome->ground;
                     }
+                } else {
+                    this->blocks[i][k][j] = AIR;
                 }
             }
         }
@@ -147,7 +149,7 @@ void Chunk::render() {
     for (int i = 0; i < CHUNK_SIZE; ++i) {
         for (int j = 0; j < CHUNK_HEIGHT; ++j) {
             for (int k = 0; k < CHUNK_SIZE; ++k) {
-                if (this->blocks[i][j][k] != 0) {
+                if (this->blocks[i][j][k] != AIR) {
                     Block(this->blocks[i][j][k], this->x * 16 + i, j, this->z * 16 + k).render();
                 }
             }

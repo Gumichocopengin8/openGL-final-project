@@ -16,33 +16,30 @@ World::World() {
 }
 
 void World::update(double x, double y) {
-
-
     int chunk_x = floor(x / CHUNK_SIZE);
     int chunk_y = floor(y / CHUNK_SIZE);
-
 
     for (int i = chunk_x - 2; i <= chunk_x + 2; i++) {
         for (int j = chunk_y - 2; j <= chunk_y + 2; j++) {
             this->loadChunk(i, j);
         }
     }
-
 }
 
 void World::loadChunk(int chunk_x, int chunk_y) {
 
     std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
-
-
-    Chunk *chunk = NULL;
+    Chunk *chunk = nullptr;
 
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
     } else {
         chunk = this->generateChunk(chunk_x, chunk_y);
+
         this->chunks[key] = chunk;
+
     }
+
 
     chunk->render();
 }
@@ -52,8 +49,9 @@ Chunk *World::generateChunk(int chunk_x, int chunk_y) {
 
     BiomeType *biome = this->chooseChunkBiome(chunk_x, chunk_y);
 
-    Chunk *chunk = NULL;
+    Chunk *chunk = nullptr;
     chunk = new Chunk(chunk_x, chunk_y, biome);
+
 
     return chunk;
 }
@@ -62,7 +60,7 @@ int World::getBlock(int x, int y, int z) {
 
     std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
 
-    Chunk *chunk = NULL;
+    Chunk *chunk = nullptr;
     ///Chunk
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
@@ -132,7 +130,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
         }
     }
 
-    if (best_distance > 50) {
+    if (best_distance > 20) {
 
         std::vector<BiomeType *> possibleBiomeTypes;
 
@@ -145,12 +143,13 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
         auto it = possibleBiomeTypes.begin();
         std::advance(it, rand() % possibleBiomeTypes.size());
+        Biome biome(chunk_x, chunk_y, *it);
+        this->biomes.push_back(biome);
         return *it;
-
     }
 
 
-    return best_distance_biome.type ;
+    return best_distance_biome.type;
 
 
 }
