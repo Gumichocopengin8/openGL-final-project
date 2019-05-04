@@ -63,7 +63,6 @@ u: < -sy*sp, cp,  cy*sp >
 
 void Camera::move_x(float speed) {
     this->x_speed += speed;
-    std::cout << this->x_speed << std::endl;
 
     if (this->x_speed > MAX_HORIZONTAL_SPEED) this->x_speed = MAX_HORIZONTAL_SPEED;
     if (this->x_speed < -MAX_HORIZONTAL_SPEED) this->x_speed = -MAX_HORIZONTAL_SPEED;

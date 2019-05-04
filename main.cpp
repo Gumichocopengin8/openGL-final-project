@@ -14,6 +14,7 @@
 #include "window/Window.h"
 #include "world/world.h"
 
+#include "biome/BiomeType.h"
 
 // Ugly but GLUT is a C lib not C++ so not easy to do clean OOP...
 Player *playerPtr;
@@ -28,6 +29,7 @@ void init() {
 
     light.ApplyLight();
 }
+
 
 void display() {
 
@@ -61,7 +63,6 @@ void reshape(int w, int h) {
 }
 
 int main(int argc, char **argv) {
-
     Window window(WINDOW_SIZE, WINDOW_SIZE);
     windowPtr = &window;
 

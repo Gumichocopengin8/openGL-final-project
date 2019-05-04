@@ -9,15 +9,16 @@
 #include "PerlinNoise.hpp"
 
 #include "../structures/Tree.h"
-
 #include "../structures/Cactus.h"
 #include "../structures/Cloud.h"
+
+//#include "../biome/BiomeType.h"
 
 #include "../main.h"
 
 using namespace std;
 
-Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
+Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
     this->x = chunk_x;
     this->z = chunk_z;
     this->biome = biome;
@@ -127,80 +128,18 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
                     if (k <= 7) {
                         this->blocks[i][k][j] = WATER;
                     } else {
-                        if (this->biome == PLAINS) {
-                            this->blocks[i][k][j] = GRASS;
-                        } else {
-                            this->blocks[i][k][j] = SNOW;
-                        }
+                        this->blocks[i][k][j] = this->biome->ground;
                     }
-
-
                 }
             }
         }
     }
 
-    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
-        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
-//            int prob_tree = rand() % 1000;
-            int prob = this->random(100);
-            if (prob < 2) {
-                int surface_height = 0;
-                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] == GRASS) {
-                        surface_height = k;
-                    }
-                }
+    this->generateStructures();
 
-                Tree(i, surface_height, j, this);
-            }
 
-            if (prob > 2 && prob < 4) {
-                int surface_height = 0;
-                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] == GRASS) {
-                        surface_height = k;
-                    }
-                }
-
-                Cactus(i, surface_height, j, this);
-            }
-        }
-    }
-
-    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
-        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
-
-            int prob = this->random(1000);
-            if (prob < 50) {
-                int surface_height = 0;
-                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] != AIR) {
-                        surface_height = k;
-                    }
-                }
-                Cloud(i + 10, surface_height + 20, j, this);
-            }
-        }
-    }
-
-// Remove hidden blocks
-    for (int i = 1; i < CHUNK_SIZE - 1; ++i) {
-        for (int j = 1; j < CHUNK_HEIGHT - 1; ++j) {
-            for (int k = 1; k < CHUNK_SIZE - 1; ++k) {
-                if (
-                        this->blocks[i - 1][j][k] != AIR &&
-                        this->blocks[i + 1][j][k] != AIR &&
-                        this->blocks[i][j - 1][k] != AIR &&
-                        this->blocks[i][j + 1][k] != AIR &&
-                        this->blocks[i][j][k - 1] != AIR &&
-                        this->blocks[i][j][k + 1] != AIR) {
-                    this->blocks[i][j][k] = AIR;
-                }
-            }
-        }
-    }
+    this->removeHiddenBlocks();
 }
 
 void Chunk::render() {
@@ -228,4 +167,69 @@ int Chunk::getBlock(int x, int y, int z) {
 
 int Chunk::getHeight(int x, int z) {
     return this->heights[x][z];
+}
+
+void Chunk::removeHiddenBlocks() {
+    for (int i = 1; i < CHUNK_SIZE - 1; ++i) {
+        for (int j = 1; j < CHUNK_HEIGHT - 1; ++j) {
+            for (int k = 1; k < CHUNK_SIZE - 1; ++k) {
+                if (
+                        this->blocks[i - 1][j][k] != AIR &&
+                        this->blocks[i + 1][j][k] != AIR &&
+                        this->blocks[i][j - 1][k] != AIR &&
+                        this->blocks[i][j + 1][k] != AIR &&
+                        this->blocks[i][j][k - 1] != AIR &&
+                        this->blocks[i][j][k + 1] != AIR) {
+                    this->blocks[i][j][k] = AIR;
+                }
+            }
+        }
+    }
+}
+
+void Chunk::generateStructures() {
+    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
+        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
+
+            int prob = this->random(100);
+            if (prob < 2) {
+                int surface_height = 0;
+                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+                    if (this->blocks[i][k][j] == GRASS) {
+                        surface_height = k;
+                    }
+                }
+
+                Tree(i, surface_height, j, this);
+            }
+
+            if (prob > 2 && prob < 4) {
+                int surface_height = 0;
+                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+                    if (this->blocks[i][k][j] == GRASS) {
+                        surface_height = k;
+                    }
+                }
+
+                Cactus(i, surface_height, j, this);
+            }
+        }
+    }
+
+    // Cloud
+    for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
+        for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
+
+            int prob = this->random(1000);
+            if (prob < 50) {
+                int surface_height = 0;
+                for (int k = 0; k < CHUNK_HEIGHT; ++k) {
+                    if (this->blocks[i][k][j] != AIR) {
+                        surface_height = k;
+                    }
+                }
+                Cloud(i + 10, surface_height + 20, j, this);
+            }
+        }
+    }
 }

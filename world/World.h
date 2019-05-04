@@ -10,13 +10,18 @@
 #include <vector>
 
 #include "../chunk/Chunk.h"
-#include "../chunk/types_of_biome.h"
+#include "../biome/BiomeType.h"
+#include "../biome/Biome.h"
 
 class World {
 
 public:
 
     std::map<std::string, Chunk *> chunks;
+    std::vector<Biome> biomes;
+
+    std::map<std::string, BiomeType *> biome_types;
+
 
     World();
 
@@ -26,14 +31,16 @@ public:
 
     Chunk *generateChunk(int chunk_x, int chunk_y);
 
-    int chooseChunkBiome(int chunk_x, int chunk_y);
+    BiomeType *chooseChunkBiome(int chunk_x, int chunk_y);
 
     int getBlock(int x, int y, int z);
 
     int getTerrainHeight(int x, int z);
 
-    std::vector<Chunk*> getNeighborsChunks(int x, int z);
+    std::vector<Chunk *> getNeighborsChunks(int x, int z);
 
+
+    void initializeBiomes();
 };
 
 

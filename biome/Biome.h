@@ -1,34 +1,21 @@
 //
-// Created by Fabien Delattre on 2019-05-03.
+// Created by Fabien Delattre on 2019-05-04.
 //
 
 #ifndef PROJECT_BIOME_H
 #define PROJECT_BIOME_H
 
-#include "../block/types_of_block.h"
+#include "BiomeType.h"
 
-struct Biome {
-    int ground;
-    float treesFrequency;
-    float cactusFrequency;
+class Biome {
 
-    Biome(
-            int ground = GRASS,
-            float treesFrequency = 0
-            float cactusFrequency = 0) :
+public:
+    int x;
+    int z;
+    BiomeType* type;
 
-            ground(ground),
-            treesFequency(treesFrequency),
-            cactusFequency(cactusFrequency)
-
-            {};
+    Biome(int x, int z, BiomeType* type);
 };
-
-
-Biome prarie(ground=GRASS, treesFequency=0.1);
-Biome forest(ground=GRASS, treesFequency=0.8);
-Biome desert(cactusFrequency=0.1);
-
 
 
 #endif //PROJECT_BIOME_H
