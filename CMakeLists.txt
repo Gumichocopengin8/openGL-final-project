@@ -36,4 +36,4 @@ add_executable(
         structures/Cloud.h
         structures/Tree.cpp
         structures/Tree.h
-        chunk/types_of_biome.h biome/Biome.cpp biome/Biome.h structures/Cactus.cpp structures/Cactus.h)
+        chunk/types_of_biome.h biome/Biome.h structures/Cactus.cpp structures/Cactus.h)
