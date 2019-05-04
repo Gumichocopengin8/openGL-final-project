@@ -26,13 +26,14 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
     int radius_tree = MIN_RADIUS_TREE + rand() % (MAX_RADIUS_TREE - MIN_RADIUS_TREE);
 
+    int texture = this->chooseTexture();
 
     for (int i = -radius_tree+1; i <= radius_tree-1; i++) {
         for (int j = -radius_tree+1; j <= radius_tree-1; j++) {
             for (int k = y + height_tree - radius_tree + 1; k < y + height_tree - radius_tree + 2; ++k) {
                 if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
                     if (chunk->blocks[x + i][k][z + j] == AIR) {
-                        chunk->blocks[x + i][k][z + j] = TREELEAVES;
+                        chunk->blocks[x + i][k][z + j] = texture;
                     }
                 }
             }
@@ -45,7 +46,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
             for (int k = y + height_tree - radius_tree + 2; k < y + height_tree + radius_tree-1; ++k) {
                 if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
                     if (chunk->blocks[x + i][k][z + j] == AIR) {
-                        chunk->blocks[x + i][k][z + j] = TREELEAVES;
+                        chunk->blocks[x + i][k][z + j] = texture;
                     }
                 }
             }
@@ -59,10 +60,23 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
             for (int k = y + height_tree + radius_tree-1; k < y + height_tree + radius_tree; ++k) {
                     if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
                         if (chunk->blocks[x + i][k][z + j] == AIR) {
-                            chunk->blocks[x + i][k][z + j] = TREELEAVES;
+                            chunk->blocks[x + i][k][z + j] = texture;
                         }
                     }
             }
         }
     }
+}
+
+int Tree::chooseTexture() {
+    int num = rand() % 100;
+    int texture = 0;
+    if(0 <= num && num < 33) {
+        texture = TREELEAVES;
+    } else if (33 <= num && num < 66) {
+        texture = ORANGE;
+    } else {
+        texture = LAWNGREEN;
+    }
+    return texture;
 }

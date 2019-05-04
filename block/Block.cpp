@@ -35,6 +35,8 @@ void Block::render() {
     else if (this->type == SNOW) { texture.snow(); }
     else if (this->type == WATER) { texture.water(); }
     else if (this->type == CLOUD ) { texture.cloud(); }
+    else if (this->type == ORANGE ) { texture.orange(); }
+    else if (this->type == LAWNGREEN ) { texture.lawngreen(); }
     else {
         texture.ground();
         cerr << "Unknown type " << this->type << endl;
