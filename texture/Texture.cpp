@@ -160,12 +160,46 @@ void Texture::orange() {
 
 void Texture::lawngreen() {
     this->ambient[0] = 0.48627;
-    this->ambient[1] = 0.98823;
+    this->ambient[1] = 0.78823;
     this->ambient[2] = 0;
 
     this->diffuse[0] = 0.48627;
-    this->diffuse[1] = 0.98823;
+    this->diffuse[1] = 0.78823;
     this->diffuse[2] = 0;
+
+    this->specular[0] = 0.2;
+    this->specular[1] = 0.2;
+    this->specular[2] = 0;
+
+    this->shininess[0] = 30;
+    this->apply();
+}
+
+void Texture::sand() {
+    this->ambient[0] = 0.76078;
+    this->ambient[1] = 0.69803;
+    this->ambient[2] = 0.50196;
+
+    this->diffuse[0] = 0.76078;
+    this->diffuse[1] = 0.69803;
+    this->diffuse[2] = 0.50196;
+
+    this->specular[0] = 0.2;
+    this->specular[1] = 0.2;
+    this->specular[2] = 0;
+
+    this->shininess[0] = 30;
+    this->apply();
+}
+
+void Texture::rock() {
+    this->ambient[0] = 0.50196;
+    this->ambient[1] = 0.51764;
+    this->ambient[2] = 0.52941;
+
+    this->diffuse[0] = 0.50196;
+    this->diffuse[1] = 0.51764;
+    this->diffuse[2] = 0.52941;
 
     this->specular[0] = 0.2;
     this->specular[1] = 0.2;
