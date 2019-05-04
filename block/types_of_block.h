@@ -13,6 +13,7 @@
 #define SNOW 5
 #define WATER 6
 #define CLOUD 7
-
+#define ORANGE 8
+#define LAWNGREEN 9
 
 #endif //PROJECT_TYPES_OF_BLOCK_H

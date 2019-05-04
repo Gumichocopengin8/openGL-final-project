@@ -21,8 +21,6 @@ add_executable(
         player/Player.h
         chunk/Chunk.cpp
         chunk/Chunk.h
-        region/Region.cpp
-        region/Region.h
         world/World.cpp
         world/World.h
         world/SkyBox.cpp

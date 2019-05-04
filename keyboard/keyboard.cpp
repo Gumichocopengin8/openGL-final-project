@@ -6,10 +6,11 @@
 #include <cstdlib>
 #include <iostream>
 #import <GLUT/glut.h>
+using namespace std;
 
 
 void keydown(unsigned char key, int x, int y) {
-    std::cout << key << std::endl;
+    cout << key << endl;
     switch (key) {
         case 'q':
         case 'Q':
@@ -21,7 +22,6 @@ void keydown(unsigned char key, int x, int y) {
 }
 
 void keyup(unsigned char key, int x, int y) {
-
     playerPtr->keys[key] = false;
 }
 

@@ -30,6 +30,10 @@ public:
     void water();
 
     void cloud();
+
+    void orange();
+
+    void lawngreen();
 };
 
 

@@ -124,10 +124,10 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
 
                 if (k <= height) {
-                    if(k <= 7) {
+                    if (k <= 7) {
                         this->blocks[i][k][j] = WATER;
                     } else {
-                        if(this->biome == PLAINS) {
+                        if (this->biome == PLAINS) {
                             this->blocks[i][k][j] = GRASS;
                         } else {
                             this->blocks[i][k][j] = SNOW;
@@ -144,9 +144,8 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
 //            int prob_tree = rand() % 1000;
-            int prob_tree = rand() % 100;
-            if (prob_tree < 2) {
-
+            int prob = this->random(100);
+            if (prob < 2) {
                 int surface_height = 0;
                 for (int k = 0; k < CHUNK_HEIGHT; ++k) {
                     if (this->blocks[i][k][j] == GRASS) {
@@ -157,8 +156,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
                 Tree(i, surface_height, j, this);
             }
 
-            if (prob_tree > 2 && prob_tree < 4) {
-
+            if (prob > 2 && prob < 4) {
                 int surface_height = 0;
                 for (int k = 0; k < CHUNK_HEIGHT; ++k) {
                     if (this->blocks[i][k][j] == GRASS) {
@@ -168,22 +166,21 @@ Chunk::Chunk(int chunk_x, int chunk_z, int biome) {
 
                 Cactus(i, surface_height, j, this);
             }
-
         }
     }
 
     for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
-            int prob_cloud = this->random(1000);
-            if (prob_cloud < 5) {
+            int prob = this->random(1000);
+            if (prob < 50) {
                 int surface_height = 0;
                 for (int k = 0; k < CHUNK_HEIGHT; ++k) {
                     if (this->blocks[i][k][j] != AIR) {
                         surface_height = k;
                     }
                 }
-                Cloud(i + 10, surface_height + 25, j, this);
+                Cloud(i + 10, surface_height + 20, j, this);
             }
         }
     }

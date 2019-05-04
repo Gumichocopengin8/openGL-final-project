@@ -12,24 +12,28 @@ using namespace std;
 
 Player::Player(Camera camera) : camera(camera) {
     this->walking_acceleration = 0.07;
-    this->running_acceleration = 0.12;
+    this->running_acceleration = 0.2;
     this->vertical_speed = 0.3;
 }
 
 void Player::forward(bool run) {
-    this->camera.move_x(-this->walking_acceleration);
+    float speed = run ? this->running_acceleration : this->walking_acceleration;
+    this->camera.move_x(-speed);
 }
 
 void Player::backward(bool run) {
-    this->camera.move_x(this->walking_acceleration);
+    float speed = run ? this->running_acceleration : this->walking_acceleration;
+    this->camera.move_x(speed);
 }
 
 void Player::right(bool run) {
-    this->camera.move_z(-this->walking_acceleration);
+    float speed = run ? this->running_acceleration : this->walking_acceleration;
+    this->camera.move_z(-speed);
 }
 
 void Player::left(bool run) {
-    this->camera.move_z(this->walking_acceleration);
+    float speed = run ? this->running_acceleration : this->walking_acceleration;
+    this->camera.move_z(speed);
 }
 
 void Player::jump() {
@@ -64,7 +68,6 @@ void Player::takeAction() {
     if (this->keys['A']) {
         playerPtr->left(true);
     }
-
 
     if (this->keys['d']) {
         playerPtr->right(false);
