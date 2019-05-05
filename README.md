@@ -10,6 +10,8 @@ Our project is to make terrain like Minecraft.
 
 It took 1-2 weeks to create this world.
 
+Check out [this video!](https://youtu.be/PEkNHBw66G8)
+
 ## How to run
 
 - Download `CLion` by JetBrains
