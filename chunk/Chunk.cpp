@@ -191,7 +191,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                             if (this->biome != worldPtr->chunks[key]->biome) {
                                 int random_number = rand() % 100;
 
-                                int prob_actual_next_ground = 100;
+                                int prob_actual_next_ground = 0;
                                 if (j == 0) prob_actual_next_ground = 80;
                                 if (j == 1) prob_actual_next_ground = 20;
                                 //if (j == CHUNK_SIZE - 3) prob_actual_next_ground = 60;
