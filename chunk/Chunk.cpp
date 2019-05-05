@@ -11,6 +11,7 @@
 #include "../structures/Tree.h"
 #include "../structures/Cactus.h"
 #include "../structures/Cloud.h"
+#include "../structures/SnowFlake.h"
 
 //#include "../biome/BiomeType.h"
 
@@ -132,7 +133,6 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             this->heights[i][j] = height;
 
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-
                 if (k <= height) {
                     int water_level = 7;
 
@@ -172,10 +172,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
         }
     }
 
-
     this->generateStructures();
-
-
     this->removeHiddenBlocks();
 }
 
@@ -228,7 +225,6 @@ void Chunk::generateStructures() {
     for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
 
-
             // Get surface_height
             int surface_height = this->heights[i][j];
 
@@ -245,7 +241,6 @@ void Chunk::generateStructures() {
                 Cactus(i, surface_height, j, this);
                 break;
             }
-
         }
     }
 
