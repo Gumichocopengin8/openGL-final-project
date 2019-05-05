@@ -21,7 +21,6 @@ public:
 
     int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     int heights[CHUNK_SIZE][CHUNK_SIZE];
-    //BiomeType biome;
 
     Chunk(int chunk_x, int chunk_z, BiomeType *biome);
 

@@ -109,11 +109,6 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
     // For the first chunk
     if (this->biomes.empty()) {
-//        auto it = this->biome_types.begin();
-//        advance(it, rand() % this->biome_types.size());
-//        string key = it->first;
-//
-
         // Force desert because the biome is cool
         string key = "desert";
 
@@ -153,18 +148,12 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
         return this->biome_types[*it];
     }
 
-
     return best_distance_biome.type;
-
-
 }
 
 vector<Chunk *> World::getNeighborsChunks(int x, int z) {
 
-
     vector<Chunk *> neighbors;
-
-    //cout << "BIOMES NEIGHBORS" << endl;
 
     for (int i = -1; i <= 1; ++i) {
         for (int j = -1; j <= 1; ++j) {
@@ -177,36 +166,15 @@ vector<Chunk *> World::getNeighborsChunks(int x, int z) {
         }
     }
 
-
-//    if (this->chunks.count(key) > 0) {
-//        chunk = this->chunks[key];
-//    } else {
-//        chunk = this->generateChunk(chunk_x, chunk_y);
-//        this->chunks[key] = chunk;
-//    }
-//
-//
-//    string key = to_string(chunk_x) + "_" + to_string(chunk_y);
-
-
     return vector<Chunk *>();
 }
 
 void World::initializeBiomes() {
 
-
     this->biome_types["prairie"] = new BiomeType();
     this->biome_types["prairie"]->id = "prairie";
     this->biome_types["prairie"]->ground = GRASS;
     this->biome_types["prairie"]->tree_frequency = 0.02;
-
-
-//    this->biome_types["icy"] = new BiomeType();
-//    this->biome_types["icy"]->ground = SNOW;
-
-//    this->biome_types["forest"] = new BiomeType();
-//    this->biome_types["forest"]->ground = GRASS;
-//    this->biome_types["forest"]->tree_frequency = 0.1;
 
     this->biome_types["desert"] = new BiomeType();
     this->biome_types["desert"]->id = "desert";
@@ -218,5 +186,4 @@ void World::initializeBiomes() {
     this->biome_types["mountain"]->id = "mountain";
     this->biome_types["mountain"]->ground = GRASS;
     this->biome_types["mountain"]->rock_frequency = 0.05;
-
 }

@@ -40,9 +40,6 @@ void display() {
     playerPtr->takeAction();
     playerPtr->camera.refresh(light);
 
-    /**
-     * TODO: Getter for the player position
-     */
     worldPtr->update(playerPtr->camera.camera_x, playerPtr->camera.camera_z);
 
     playerPtr->camera.idle(sin((float) count++ / 40), 0);
