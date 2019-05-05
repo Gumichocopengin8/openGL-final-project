@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(project)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -framework GLUT -framework OpenGL")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os")
 
 add_executable(
         project
