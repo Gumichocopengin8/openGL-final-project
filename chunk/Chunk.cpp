@@ -10,6 +10,7 @@
 
 #include "../structures/Tree.h"
 #include "../structures/Cactus.h"
+#include "../structures/Rock.h"
 #include "../structures/Cloud.h"
 #include "../structures/SnowFlake.h"
 
@@ -308,6 +309,12 @@ void Chunk::generateStructures() {
             // Cactus
             if (random_number < this->biome->cactus_frequency * 100) {
                 Cactus(i, surface_height, j, this);
+                break;
+            }
+
+            // Cactus
+            if (random_number < this->biome->rock_frequency * 100) {
+                Rock(i, surface_height, j, this);
                 break;
             }
         }

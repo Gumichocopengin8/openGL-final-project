@@ -17,6 +17,7 @@ struct BiomeType {
     int ground = GRASS;
     float tree_frequency = 0;
     float cactus_frequency = 0;
+    float rock_frequency = 0;
 };
 
 

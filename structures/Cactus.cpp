@@ -20,18 +20,7 @@ Cactus::Cactus(int x, int y, int z, Chunk *chunk) {
     if(z + 4 < z_max)z_max = z + 4;
 
 
-    for (int i = x_min; i <= x_max; ++i) {
-        for (int j = z_min; j <= z_max; ++j) {
-            int r = rand()%2;
-            if(r == 0) {
-                for (int k = 0; k <= CHUNK_HEIGHT; ++k) {
-                    if(chunk->blocks[i][k][j] == GRASS) {
-                        chunk->blocks[i][k][j] = SNOW;
-                    }
-                }
-            }
-        }
-    }
+
 
     if(x > 2 && x < 14 && z > 2 && z < 14) {
         int rand_dir = rand()%2;

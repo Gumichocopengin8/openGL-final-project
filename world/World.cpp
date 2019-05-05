@@ -216,5 +216,6 @@ void World::initializeBiomes() {
     this->biome_types["mountain"] = new BiomeType();
     this->biome_types["mountain"]->id = "mountain";
     this->biome_types["mountain"]->ground = GRASS;
+    this->biome_types["mountain"]->rock_frequency = 0.05;
 
 }

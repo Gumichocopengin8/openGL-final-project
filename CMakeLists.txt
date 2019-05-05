@@ -40,4 +40,4 @@ add_executable(
         structures/SnowFlake.h
         biome/BiomeType.h
         biome/Biome.cpp
-        biome/Biome.h)
+        biome/Biome.h structures/Rock.cpp structures/Rock.h)
