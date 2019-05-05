@@ -23,8 +23,6 @@ add_executable(
         chunk/Chunk.h
         world/World.cpp
         world/World.h
-        world/SkyBox.cpp
-        world/SkyBox.h
         texture/Texture.h
         texture/Texture.cpp
         light/Light.cpp
@@ -35,4 +33,9 @@ add_executable(
         structures/Tree.cpp
         structures/Tree.h
         structures/Cactus.cpp
-        structures/Cactus.h biome/BiomeType.h biome/Biome.cpp biome/Biome.h)
+        structures/Cactus.h
+        structures/SnowFlake.cpp
+        structures/SnowFlake.h
+        biome/BiomeType.h
+        biome/Biome.cpp
+        biome/Biome.h)
