@@ -13,6 +13,7 @@
 
 struct BiomeType {
 
+    std::string id;
     int ground = GRASS;
     float tree_frequency = 0;
     float cactus_frequency = 0;
