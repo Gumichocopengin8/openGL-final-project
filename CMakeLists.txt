@@ -23,8 +23,6 @@ add_executable(
         chunk/Chunk.h
         world/World.cpp
         world/World.h
-        world/SkyBox.cpp
-        world/SkyBox.h
         texture/Texture.h
         texture/Texture.cpp
         light/Light.cpp
