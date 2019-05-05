@@ -5,6 +5,7 @@
 #include "Cloud.h"
 #include <random>
 #include <iostream>
+
 using namespace std;
 
 
@@ -17,7 +18,7 @@ Cloud::Cloud(int x, int y, int z, Chunk *chunk) {
     for (int i = -radius_cloud; i < radius_cloud; ++i) {
         for (int j = -radius_cloud; j < radius_cloud; ++j) {
             if (z + j < 16 && x + i < 16 && x + i > -1 && z + j > -1) {
-                if (chunk->blocks[x + i][y][z + j] == AIR && z % 3 != 0 )
+                if (chunk->blocks[x + i][y][z + j] == AIR && z % 3 != 0)
                     chunk->blocks[x + i][y][z + j] = CLOUD;
             }
         }

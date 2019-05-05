@@ -126,14 +126,14 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
 
                     if (k <= water_level) {
                         this->blocks[i][water_level][j] = WATER;
-                    }  else {
+                    } else {
 
                         this->blocks[i][k][j] = this->biome->ground;
 
 
                         std::string key;
 
-                        key = std::to_string(this->x+1) + "_" + std::to_string(this->z);
+                        key = std::to_string(this->x + 1) + "_" + std::to_string(this->z);
                         if (worldPtr->chunks.count(key) > 0) {
                             if (this->biome != worldPtr->chunks[key]->biome) {
                                 int random_number = rand() % 100;
@@ -151,7 +151,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                         }
 
 
-                        key = std::to_string(this->x) + "_" + std::to_string(this->z+1);
+                        key = std::to_string(this->x) + "_" + std::to_string(this->z + 1);
                         if (worldPtr->chunks.count(key) > 0) {
                             if (this->biome != worldPtr->chunks[key]->biome) {
                                 int random_number = rand() % 100;
@@ -169,7 +169,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                         }
 
 
-                        key = std::to_string(this->x-1) + "_" + std::to_string(this->z);
+                        key = std::to_string(this->x - 1) + "_" + std::to_string(this->z);
                         if (worldPtr->chunks.count(key) > 0) {
                             if (this->biome != worldPtr->chunks[key]->biome) {
                                 int random_number = rand() % 100;
@@ -187,7 +187,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                         }
 
 
-                        key = std::to_string(this->x) + "_" + std::to_string(this->z-1);
+                        key = std::to_string(this->x) + "_" + std::to_string(this->z - 1);
                         if (worldPtr->chunks.count(key) > 0) {
                             if (this->biome != worldPtr->chunks[key]->biome) {
                                 int random_number = rand() % 100;
@@ -205,12 +205,6 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                         }
 
 
-
-
-
-
-
-
                     }
 
                     int snow_level_min = 23;
@@ -219,7 +213,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
 
                     //int snow = (rand() % (k+1) - snow_level_min) * snow_progress;
 
-                    if(k > snow_level_min + 3 * sin(0.1 * (i + j))) {
+                    if (k > snow_level_min + 3 * sin(0.1 * (i + j))) {
                         this->blocks[i][k][j] = SNOW;
                     }
 

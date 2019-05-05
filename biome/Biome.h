@@ -16,9 +16,10 @@ public:
     std::string id;
     int x;
     int z;
-    BiomeType* type;
+    BiomeType *type;
 
-    Biome(std::string id, int x, int z, BiomeType* type);
+    Biome(std::string id, int x, int z, BiomeType *type);
+
     float distance_to(float x, float z);
 };
 

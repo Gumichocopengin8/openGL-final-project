@@ -17,20 +17,28 @@ public:
 
     int x;
     int z;
-    BiomeType* biome;
+    BiomeType *biome;
 
     int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     int heights[CHUNK_SIZE][CHUNK_SIZE];
     //BiomeType biome;
 
-    Chunk(int chunk_x, int chunk_z, BiomeType* biome);
+    Chunk(int chunk_x, int chunk_z, BiomeType *biome);
+
     void render();
+
     int random(int max);
+
     int getBlock(int x, int y, int z);
+
     int getHeight(int x, int z);
-    float distance_to(Chunk* other);
+
+    float distance_to(Chunk *other);
+
     float distance_to(float x, float z);
+
     void generateStructures();
+
     void removeHiddenBlocks();
 };
 

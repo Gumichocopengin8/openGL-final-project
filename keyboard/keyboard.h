@@ -8,6 +8,7 @@
 #include "../main.h"
 
 void keydown(unsigned char key, int x, int y);
+
 void keyup(unsigned char key, int x, int y);
 
 #endif //PROJECT_KEYBOARD_H

@@ -34,11 +34,11 @@ void Block::render() {
     else if (this->type == TREELEAVES) { texture.treeLeaves(); }
     else if (this->type == SNOW) { texture.snow(); }
     else if (this->type == WATER) { texture.water(); }
-    else if (this->type == CLOUD ) { texture.cloud(); }
-    else if (this->type == ORANGE ) { texture.orange(); }
-    else if (this->type == LAWNGREEN ) { texture.lawngreen(); }
-    else if (this->type == SAND ) { texture.sand(); }
-    else if (this->type == ROCK ) { texture.rock(); }
+    else if (this->type == CLOUD) { texture.cloud(); }
+    else if (this->type == ORANGE) { texture.orange(); }
+    else if (this->type == LAWNGREEN) { texture.lawngreen(); }
+    else if (this->type == SAND) { texture.sand(); }
+    else if (this->type == ROCK) { texture.rock(); }
     else { texture.ground(); }
 
     glutSolidCube(1);

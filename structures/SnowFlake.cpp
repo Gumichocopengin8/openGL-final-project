@@ -17,7 +17,7 @@ void SnowFlake::snowGenerate(int x, int y, int z, Chunk *chunk) {
 
 void SnowFlake::snowFall() {
     this->fall_speed += 1;
-    if(this->fall_speed > 20) {
+    if (this->fall_speed > 20) {
         this->fall_speed = 0;
     }
 }
