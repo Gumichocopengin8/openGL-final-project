@@ -6,15 +6,16 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -framework GLUT -framework Op
 add_executable(
         project
         main.cpp
+        main.h
         mouse/mouse.cpp
         mouse/mouse.h
         keyboard/keyboard.cpp
         keyboard/keyboard.h
         block/Block.cpp
         block/Block.h
+        block/types_of_block.h
         camera/Camera.cpp
         camera/Camera.h
-        main.h
         window/Window.cpp
         window/Window.h
         player/Player.cpp
@@ -23,11 +24,10 @@ add_executable(
         chunk/Chunk.h
         world/World.cpp
         world/World.h
-        texture/Texture.h
         texture/Texture.cpp
+        texture/Texture.h
         light/Light.cpp
         light/Light.h
-        block/types_of_block.h
         structures/Cloud.cpp
         structures/Cloud.h
         structures/Tree.cpp

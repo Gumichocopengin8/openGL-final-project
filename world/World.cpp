@@ -7,10 +7,11 @@
 #include <cmath>
 #include "World.h"
 #include "../main.h"
+using namespace std;
 
 World::World() {
-    this->chunks = std::map<std::string, Chunk *>();
-    this->biome_types = std::map<std::string, BiomeType *>();
+    this->chunks = map<string, Chunk *>();
+    this->biome_types = map<string, BiomeType *>();
 
     this->initializeBiomes();
 }
@@ -28,16 +29,14 @@ void World::update(double x, double y) {
 
 void World::loadChunk(int chunk_x, int chunk_y) {
 
-    std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
+    string key = to_string(chunk_x) + "_" + to_string(chunk_y);
     Chunk *chunk = nullptr;
 
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
     } else {
         chunk = this->generateChunk(chunk_x, chunk_y);
-
         this->chunks[key] = chunk;
-
     }
 
 
@@ -45,7 +44,7 @@ void World::loadChunk(int chunk_x, int chunk_y) {
 }
 
 Chunk *World::generateChunk(int chunk_x, int chunk_y) {
-    std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
+    string key = to_string(chunk_x) + "_" + to_string(chunk_y);
 
     BiomeType *biome = this->chooseChunkBiome(chunk_x, chunk_y);
 
@@ -58,7 +57,7 @@ Chunk *World::generateChunk(int chunk_x, int chunk_y) {
 
 int World::getBlock(int x, int y, int z) {
 
-    std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
+    string key = to_string(int(floor(x / 16.0))) + "_" + to_string(int(floor(z / 16.0)));
 
     Chunk *chunk = nullptr;
     ///Chunk
@@ -83,7 +82,7 @@ int World::getBlock(int x, int y, int z) {
 }
 
 int World::getTerrainHeight(int x, int z) {
-    std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
+    string key = to_string(int(floor(x / 16.0))) + "_" + to_string(int(floor(z / 16.0)));
     Chunk *chunk = nullptr;
     if (this->chunks.count(key) > 0) {
         chunk = this->chunks[key];
@@ -110,12 +109,12 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
     // For the first chunk
     if (this->biomes.empty()) {
 //        auto it = this->biome_types.begin();
-//        std::advance(it, rand() % this->biome_types.size());
-//        std::string key = it->first;
+//        advance(it, rand() % this->biome_types.size());
+//        string key = it->first;
 //
 
         // Force desert because the biome is cool
-        std::string key = "desert";
+        string key = "desert";
 
         Biome biome(key, chunk_x, chunk_y, this->biome_types[key]);
         this->biomes.push_back(biome);
@@ -137,7 +136,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
     if (best_distance > 20) {
 
-        std::vector<std::string> possibleBiomeTypes;
+        vector<string> possibleBiomeTypes;
 
         for (auto const &biome_type : this->biome_types) {
             if (biome_type.second != best_distance_biome.type) {
@@ -147,7 +146,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
 
         auto it = possibleBiomeTypes.begin();
-        std::advance(it, rand() % possibleBiomeTypes.size());
+        advance(it, rand() % possibleBiomeTypes.size());
         Biome biome(*it, chunk_x, chunk_y, this->biome_types[*it]);
         this->biomes.push_back(biome);
         return this->biome_types[*it];
@@ -159,17 +158,17 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
 }
 
-std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
+vector<Chunk *> World::getNeighborsChunks(int x, int z) {
 
 
-    std::vector<Chunk *> neighbors;
+    vector<Chunk *> neighbors;
 
-    //std::cout << "BIOMES NEIGHBORS" << std::endl;
+    //cout << "BIOMES NEIGHBORS" << endl;
 
     for (int i = -1; i <= 1; ++i) {
         for (int j = -1; j <= 1; ++j) {
             if (i != 0 && j != 0) {
-                std::string key = std::to_string(x + i) + "_" + std::to_string(z + j);
+                string key = to_string(x + i) + "_" + to_string(z + j);
                 if (this->chunks.count(key) > 0) {
                     neighbors.push_back(this->chunks[key]);
                 }
@@ -186,10 +185,10 @@ std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
 //    }
 //
 //
-//    std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
+//    string key = to_string(chunk_x) + "_" + to_string(chunk_y);
 
 
-    return std::vector<Chunk *>();
+    return vector<Chunk *>();
 }
 
 void World::initializeBiomes() {

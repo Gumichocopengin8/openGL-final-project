@@ -39,13 +39,8 @@ void Block::render() {
     else if (this->type == LAWNGREEN ) { texture.lawngreen(); }
     else if (this->type == SAND ) { texture.sand(); }
     else if (this->type == ROCK ) { texture.rock(); }
-    else {
-        texture.ground();
-        //cerr << "Unknown type " << this->type << endl;
-    }
-
+    else { texture.ground(); }
 
     glutSolidCube(1);
-
     glPopMatrix();
 }
