@@ -10,7 +10,7 @@ Our project is to make terrain like Minecraft.
 
 It took 1-2 weeks to create this world.
 
-Check out [this video!](https://youtu.be/PEkNHBw66G8)
+Check out [this video!](https://youtu.be/Iv7E1rnGXKs)
 
 ## How to run
 
