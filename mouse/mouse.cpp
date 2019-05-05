@@ -22,11 +22,7 @@ void mouseMotion(int x, int y) {
         lastx = x;
         lasty = y;
     }
-    int diffx = x - lastx;
-    int diffy = y - lasty;
     lastx = x;
     lasty = y;
     playerPtr->lookAt(x - 200, y - 200);
-//    xrot += (float) diffy;
-//    yrot += (float) diffx;
 }

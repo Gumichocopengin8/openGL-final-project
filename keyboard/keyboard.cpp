@@ -16,11 +16,9 @@ void keydown(unsigned char key, int x, int y) {
             exit(0);
         default:
             playerPtr->keys[key] = true;
-
     }
 }
 
 void keyup(unsigned char key, int x, int y) {
     playerPtr->keys[key] = false;
 }
-

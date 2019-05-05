@@ -45,10 +45,9 @@ void display() {
      */
     worldPtr->update(playerPtr->camera.camera_x, playerPtr->camera.camera_z);
 
-    playerPtr->camera.idle(sin((float) count / 40), 0);
+    playerPtr->camera.idle(sin((float) count++ / 40), 0);
     glutSwapBuffers();
     glutPostRedisplay();
-    count += 1;
 }
 
 void reshape(int w, int h) {

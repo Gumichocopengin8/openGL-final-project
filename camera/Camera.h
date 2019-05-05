@@ -34,8 +34,6 @@ public:
     void lookAt(float diffX, float diffY);
 
     void idle(float diffX, float diffY);
-
-
 };
 
 
