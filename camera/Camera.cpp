@@ -80,12 +80,7 @@ void Camera::move_x(float speed) {
     } else {
         this->x_speed = 0;
     }
-
-//    this->camera_x = new_camera_x;
-//    this->camera_y = new_camera_y;
-//    this->camera_z = new_camera_z;
 }
-
 
 void Camera::move_z(float speed) {
     this->z_speed += speed;
@@ -106,8 +101,6 @@ void Camera::move_y(float speed) {
     if (this->y_speed < -MAX_VERTICAL_SPEED) this->y_speed = -MAX_VERTICAL_SPEED;
 
     double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
-
-    //this->camera_y = new_camera_y;
 
     if (worldPtr->getBlock(round(this->camera_x), new_camera_y - CAMERA_HEIGHT, round(this->camera_z)) == 0) {
         this->camera_y = new_camera_y;

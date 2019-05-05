@@ -36,26 +36,21 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
 
     for (int i = 0; i < CHUNK_SIZE; i++) {
         float new_percent_i = i;
-        if (CHUNK_SIZE - 1 - i < new_percent_i) {
+        if (CHUNK_SIZE - 1 - i < new_percent_i)
             new_percent_i = CHUNK_SIZE - 1 - i;
-        }
+
         new_percent_i++;
         new_percent_i *= 0.2;
-        if (new_percent_i > 1) {
-            new_percent_i = 1;
-        }
+        if (new_percent_i > 1)new_percent_i = 1;
+
         for (int j = 0; j < CHUNK_SIZE; j++) {
-
-
             float new_percent_j = j;
-            if (CHUNK_SIZE - 1 - j < new_percent_j) {
+
+            if (CHUNK_SIZE - 1 - j < new_percent_j)
                 new_percent_j = CHUNK_SIZE - 1 - j;
-            }
             new_percent_j++;
             new_percent_j *= 0.2;
-            if (new_percent_j > 1) {
-                new_percent_j = 1;
-            }
+            if (new_percent_j > 1) new_percent_j = 1;
 
 
             int height;
@@ -71,44 +66,35 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             int old_height_j = -1;
 
 
-
             // Get adjacent i height
 
             if (i < 5) {
                 int temp_old_height = worldPtr->getTerrainHeight(this->x * 16 - 1, this->z * 16 + j);
 
-                if (temp_old_height != -1) {
+                if (temp_old_height != -1)
                     old_height_i = temp_old_height;
-                }
             }
 
             if (i > 10) {
                 int temp_old_height = worldPtr->getTerrainHeight((1 + this->x) * 16, this->z * 16 + j);
-                if (temp_old_height != -1) {
+                if (temp_old_height != -1)
                     old_height_i = temp_old_height;
-                }
             }
 
-
             // Get adjacent j height
-
 
             if (j < 5) {
                 int temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, this->z * 16 - 1);
 
-
-                if (temp_old_height != -1) {
+                if (temp_old_height != -1)
                     old_height_j = temp_old_height;
-                }
             }
 
             if (j > 10) {
                 int temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, (1 + this->z) * 16);
 
-
-                if (temp_old_height != -1) {
+                if (temp_old_height != -1)
                     old_height_j = temp_old_height;
-                }
             }
 
 
@@ -311,7 +297,6 @@ void Chunk::generateStructures() {
 
             // Get surface_height
             int surface_height = this->heights[i][j];
-
             int random_number = this->random(100);
 
             // Trees
@@ -331,14 +316,11 @@ void Chunk::generateStructures() {
     // Cloud
     for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
         for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
-
             int prob = this->random(1000);
             if (prob < 50) {
                 int surface_height = 0;
                 for (int k = 0; k < CHUNK_HEIGHT; ++k) {
-                    if (this->blocks[i][k][j] != AIR) {
-                        surface_height = k;
-                    }
+                    if (this->blocks[i][k][j] != AIR) surface_height = k;
                 }
                 Cloud(i + 10, surface_height + 20, j, this);
             }
@@ -353,4 +335,3 @@ float Chunk::distance_to(Chunk *other) {
 float Chunk::distance_to(float x, float z) {
     return pow(x - this->x, 2) + pow(z - this->z, 2);
 }
-
