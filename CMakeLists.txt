@@ -35,4 +35,9 @@ add_executable(
         structures/Tree.cpp
         structures/Tree.h
         structures/Cactus.cpp
-        structures/Cactus.h biome/BiomeType.h biome/Biome.cpp biome/Biome.h)
+        structures/Cactus.h
+        structures/SnowFlake.cpp
+        structures/SnowFlake.h
+        biome/BiomeType.h
+        biome/Biome.cpp
+        biome/Biome.h)
