@@ -56,7 +56,15 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
                 new_percent_j = 1;
             }
 
-            int height = round(perlin.octaveNoise0_1(i / fx, j / fy, octaves) * 20);
+
+            int height;
+
+            if (this->biome->id == "mountain") {
+                height = round(perlin.octaveNoise0_1(i / fx, j / fy, octaves) * 40);
+            } else {
+                height = round(perlin.octaveNoise0_1(i / fx, j / fy, octaves) * 20);
+            }
+
 
             int old_height_i = -1;
             int old_height_j = -1;
@@ -126,14 +134,40 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             for (int k = 0; k < CHUNK_HEIGHT; ++k) {
 
                 if (k <= height) {
-                    if (k <= 7) {
-                        this->blocks[i][k][j] = WATER;
-                    } else {
+                    int water_level = 7;
+
+
+                    if (k <= water_level) {
+                        this->blocks[i][water_level][j] = WATER;
+                    }  else {
                         this->blocks[i][k][j] = this->biome->ground;
                     }
+
+                    int snow_level_min = 23;
+                    //int snow_progress = 15;
+
+
+                    //int snow = (rand() % (k+1) - snow_level_min) * snow_progress;
+
+                    if(k > snow_level_min) {
+                        this->blocks[i][k][j] = SNOW;
+                    }
+
+
+                    // DEBUG
+
+//                    if (i == 0 || j == 0 || i == CHUNK_SIZE -1 || j == CHUNK_SIZE - 1) {
+//                        this->blocks[i][k][j] = GROUND;
+//                    }
+
+
                 } else {
-                    this->blocks[i][k][j] = AIR;
+                    if (this->blocks[i][k][j] != WATER) {
+                        this->blocks[i][k][j] = AIR;
+                    }
                 }
+
+
             }
         }
     }

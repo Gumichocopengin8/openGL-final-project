@@ -6,7 +6,8 @@
 
 #include "Biome.h"
 
-Biome::Biome(int x, int z, BiomeType *type) {
+Biome::Biome(std::string id, int x, int z, BiomeType *type) {
+    this->id = id;
     this->x = x;
     this->z = z;
     this->type = type;

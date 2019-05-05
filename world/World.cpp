@@ -109,10 +109,15 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
     // For the first chunk
     if (this->biomes.empty()) {
-        auto it = this->biome_types.begin();
-        std::advance(it, rand() % this->biome_types.size());
-        std::string key = it->first;
-        Biome biome(chunk_x, chunk_y, this->biome_types[key]);
+//        auto it = this->biome_types.begin();
+//        std::advance(it, rand() % this->biome_types.size());
+//        std::string key = it->first;
+//
+
+        // Force desert because the biome is cool
+        std::string key = "desert";
+
+        Biome biome(key, chunk_x, chunk_y, this->biome_types[key]);
         this->biomes.push_back(biome);
         return this->biome_types[key];
     }
@@ -132,20 +137,20 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
     if (best_distance > 20) {
 
-        std::vector<BiomeType *> possibleBiomeTypes;
+        std::vector<std::string> possibleBiomeTypes;
 
         for (auto const &biome_type : this->biome_types) {
             if (biome_type.second != best_distance_biome.type) {
-                possibleBiomeTypes.push_back(biome_type.second);
+                possibleBiomeTypes.push_back(biome_type.first);
             }
         }
 
 
         auto it = possibleBiomeTypes.begin();
         std::advance(it, rand() % possibleBiomeTypes.size());
-        Biome biome(chunk_x, chunk_y, *it);
+        Biome biome(*it, chunk_x, chunk_y, this->biome_types[*it]);
         this->biomes.push_back(biome);
-        return *it;
+        return this->biome_types[*it];
     }
 
 
@@ -191,20 +196,26 @@ void World::initializeBiomes() {
 
 
     this->biome_types["prairie"] = new BiomeType();
+    this->biome_types["prairie"]->id = "prairie";
     this->biome_types["prairie"]->ground = GRASS;
     this->biome_types["prairie"]->tree_frequency = 0.02;
 
 
-    this->biome_types["icy"] = new BiomeType();
-    this->biome_types["icy"]->ground = SNOW;
+//    this->biome_types["icy"] = new BiomeType();
+//    this->biome_types["icy"]->ground = SNOW;
 
 //    this->biome_types["forest"] = new BiomeType();
 //    this->biome_types["forest"]->ground = GRASS;
-//    this->biome_types["forest"]->tree_frequency = 0.8;
+//    this->biome_types["forest"]->tree_frequency = 0.1;
 
-//    this->biome_types["desert"] = new BiomeType();
-//    this->biome_types["desert"]->ground = SNOW;
-//    this->biome_types["desert"]->cactus_frequency = 0.5;
+    this->biome_types["desert"] = new BiomeType();
+    this->biome_types["desert"]->id = "desert";
+    this->biome_types["desert"]->ground = SAND;
+    this->biome_types["desert"]->cactus_frequency = 0.02;
 
+
+    this->biome_types["mountain"] = new BiomeType();
+    this->biome_types["mountain"]->id = "mountain";
+    this->biome_types["mountain"]->ground = GRASS;
 
 }
