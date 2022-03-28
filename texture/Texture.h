@@ -6,14 +6,16 @@
 #define PROJECT_TEXTURE_H
 
 
+#include <iostream>
+
 class Texture {
 private:
-  float ambient[4]{};
-  float diffuse[4]{};
-  float specular[4]{};
-  float shininess[4]{};
+  float ambient[4];
+  float diffuse[4];
+  float specular[4];
+  float shininess[4];
 public:
-  explicit Texture() = default;
+  explicit Texture() : ambient{}, diffuse{}, specular{}, shininess{} {};
 
   void apply();
 

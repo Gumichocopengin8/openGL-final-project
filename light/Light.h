@@ -16,7 +16,7 @@ private:
 public:
   float position[4]{0, 0, 0, 1.0}; // TODO: getter setter
 
-  explicit Light();
+  explicit Light() = default;
 
   void ApplyLight();
 };

@@ -5,8 +5,6 @@
 #include <GLUT/glut.h>
 #include "Light.h"
 
-Light::Light() {}
-
 void Light::ApplyLight() {
   glLightfv(GL_LIGHT0, GL_DIFFUSE, this->diffuse);
   glLightfv(GL_LIGHT0, GL_AMBIENT, this->ambient);

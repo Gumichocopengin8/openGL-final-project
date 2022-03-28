@@ -7,17 +7,18 @@
 
 #include <iostream>
 #include <string>
+#include <utility>
 
 #include "BiomeType.h"
 
 class Biome {
 public:
-  std::string id;
+  [[maybe_unused]] std::string id;
   int x;
   int z;
   BiomeType *type;
 
-  explicit Biome(std::string id, int x, int z, BiomeType *type);
+  explicit Biome(std::string id, int x, int z, BiomeType *type) : id{std::move(id)}, x{x}, z{z}, type{type} {};
 
   [[nodiscard]] float distance_to(float x, float z) const;
 };

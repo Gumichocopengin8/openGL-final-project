@@ -7,12 +7,6 @@
 #include <cmath>
 
 
-Player::Player(Camera camera) : camera(camera) {
-  this->walking_acceleration = 0.07;
-  this->running_acceleration = 0.2;
-  this->vertical_speed = 0.3;
-}
-
 void Player::forward(bool run) {
   float speed = run ? this->running_acceleration : this->walking_acceleration;
   this->camera.move_x(-speed);

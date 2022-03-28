@@ -12,7 +12,7 @@
 #include "keyboard/keyboard.h"
 #include "player/Player.h"
 #include "window/Window.h"
-#include "world/world.h"
+#include "world/World.h"
 
 #include "biome/BiomeType.h"
 

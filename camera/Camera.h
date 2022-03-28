@@ -21,7 +21,9 @@ public:
   float y_speed;
   float z_speed;
 
-  explicit Camera(float camera_x, float camera_y, float camera_z, float pitch, float yaw, float roll);
+  explicit Camera(float camera_x, float camera_y, float camera_z, float pitch, float yaw, float roll) :
+    camera_x{camera_x}, camera_y{camera_y}, camera_z{camera_z}, pitch{pitch}, yaw{yaw}, roll{roll},
+    x_speed{0}, y_speed{0}, z_speed{0} {};
 
   void refresh(Light light);
 

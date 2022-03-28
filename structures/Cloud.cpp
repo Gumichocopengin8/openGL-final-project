@@ -12,7 +12,7 @@ namespace {
 }
 
 Cloud::Cloud(int x, int y, int z, Chunk *chunk) {
-  int radius_cloud = MIN_RADIUS_CLOUD + this->random(MAX_RADIUS_CLOUD - MIN_RADIUS_CLOUD);
+  int radius_cloud = MIN_RADIUS_CLOUD + Cloud::random(MAX_RADIUS_CLOUD - MIN_RADIUS_CLOUD);
 
   for (int i = -radius_cloud; i < radius_cloud; ++i) {
     for (int j = -radius_cloud; j < radius_cloud; ++j) {

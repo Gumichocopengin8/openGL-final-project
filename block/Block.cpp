@@ -4,21 +4,11 @@
 
 #include "Block.h"
 #include "../texture/Texture.h"
-#include <iostream>
-#include <cstdlib>
 #import <GLUT/glut.h>
 
 #include "../main.h"
 
-Block::Block(int type, int x, int y, int z) {
-  this->type = type;
-  this->x = x;
-  this->y = y;
-  this->z = z;
-}
-
 void Block::render() const {
-
   // Transforms
   glPushMatrix();
   glTranslated(x, y, z);

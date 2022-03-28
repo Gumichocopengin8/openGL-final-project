@@ -18,19 +18,6 @@ namespace {
   constexpr float CAMERA_HEIGHT = 1.5;
 }
 
-
-Camera::Camera(float camera_x, float camera_y, float camera_z, float pitch, float yaw, float roll) {
-  this->camera_x = camera_x;
-  this->camera_y = camera_y;
-  this->camera_z = camera_z;
-  this->pitch = pitch;
-  this->yaw = yaw;
-  this->roll = roll;
-  this->x_speed = 0;
-  this->y_speed = 0;
-  this->z_speed = 0;
-}
-
 void Camera::refresh(Light light) {
   // transformations update
   gluLookAt(0, 0, 0, 0, 0, 1, 0, 1, 0);

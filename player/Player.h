@@ -18,7 +18,8 @@ public:
   std::map<char, bool> keys;
   Camera camera;
 
-  explicit Player(Camera camera);
+  explicit Player(Camera camera) : camera{camera}, walking_acceleration{0.07}, running_acceleration{0.2},
+                                   vertical_speed{0.3} {};
 
   void takeAction();
 

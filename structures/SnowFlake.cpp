@@ -5,9 +5,6 @@
 #include "SnowFlake.h"
 #include <random>
 
-SnowFlake::SnowFlake() {
-  this->fall_speed = 0;
-}
 
 void SnowFlake::snowGenerate(int x, int y, int z, Chunk *chunk) {
   if (chunk->blocks[x][y - this->fall_speed][z] == AIR) {
