@@ -8,11 +8,9 @@
 #include "World.h"
 #include "../main.h"
 
-using namespace std;
-
 World::World() {
-  this->chunks = map<string, Chunk *>();
-  this->biome_types = map<string, BiomeType *>();
+  this->chunks = std::map<std::string, Chunk *>();
+  this->biome_types = std::map<std::string, BiomeType *>();
 
   this->initializeBiomes();
 }
@@ -30,7 +28,7 @@ void World::update(double x, double y) {
 
 void World::loadChunk(int chunk_x, int chunk_y) {
 
-  string key = to_string(chunk_x) + "_" + to_string(chunk_y);
+  std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
   Chunk *chunk = nullptr;
 
   if (this->chunks.count(key) > 0) {
@@ -45,7 +43,7 @@ void World::loadChunk(int chunk_x, int chunk_y) {
 }
 
 Chunk *World::generateChunk(int chunk_x, int chunk_y) {
-  string key = to_string(chunk_x) + "_" + to_string(chunk_y);
+  std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
 
   BiomeType *biome = this->chooseChunkBiome(chunk_x, chunk_y);
 
@@ -58,7 +56,7 @@ Chunk *World::generateChunk(int chunk_x, int chunk_y) {
 
 int World::getBlock(int x, int y, int z) {
 
-  string key = to_string(int(floor(x / 16.0))) + "_" + to_string(int(floor(z / 16.0)));
+  std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
 
   Chunk *chunk = nullptr;
   ///Chunk
@@ -83,7 +81,7 @@ int World::getBlock(int x, int y, int z) {
 }
 
 int World::getTerrainHeight(int x, int z) {
-  string key = to_string(int(floor(x / 16.0))) + "_" + to_string(int(floor(z / 16.0)));
+  std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
   Chunk *chunk = nullptr;
   if (this->chunks.count(key) > 0) {
     chunk = this->chunks[key];
@@ -110,7 +108,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
   // For the first chunk
   if (this->biomes.empty()) {
     // Force desert because the biome is cool
-    string key = "desert";
+    std::string key = "desert";
 
     Biome biome(key, chunk_x, chunk_y, this->biome_types[key]);
     this->biomes.push_back(biome);
@@ -132,7 +130,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
   if (best_distance > 20) {
 
-    vector<string> possibleBiomeTypes;
+    std::vector<std::string> possibleBiomeTypes;
 
     for (auto const &biome_type: this->biome_types) {
       if (biome_type.second != best_distance_biome.type) {
@@ -151,14 +149,14 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
   return best_distance_biome.type;
 }
 
-vector<Chunk *> World::getNeighborsChunks(int x, int z) {
+std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
 
-  vector<Chunk *> neighbors;
+  std::vector<Chunk *> neighbors;
 
   for (int i = -1; i <= 1; ++i) {
     for (int j = -1; j <= 1; ++j) {
       if (i != 0 && j != 0) {
-        string key = to_string(x + i) + "_" + to_string(z + j);
+        std::string key = std::to_string(x + i) + "_" + std::to_string(z + j);
         if (this->chunks.count(key) > 0) {
           neighbors.push_back(this->chunks[key]);
         }
@@ -166,7 +164,7 @@ vector<Chunk *> World::getNeighborsChunks(int x, int z) {
     }
   }
 
-  return vector<Chunk *>();
+  return std::vector<Chunk *>();
 }
 
 void World::initializeBiomes() {

@@ -3,11 +3,10 @@
 //
 #include "mouse.h"
 
-using namespace std;
-
-
-int lastx = -1;
-int lasty = -1;
+namespace {
+  int lastx = -1;
+  int lasty = -1;
+}
 
 void mouse(GLint btn, GLint state, GLint x, GLint y) {
   if (btn == GLUT_LEFT_BUTTON && state == GLUT_DOWN)

@@ -8,8 +8,6 @@
 
 #include "../keyboard/keyboard.h"
 
-using namespace std;
-
 Player::Player(Camera camera) : camera(camera) {
   this->walking_acceleration = 0.07;
   this->running_acceleration = 0.2;

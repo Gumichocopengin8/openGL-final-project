@@ -15,7 +15,6 @@
 #include "../structures/SnowFlake.h"
 #include "../main.h"
 
-using namespace std;
 
 Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
   this->x = chunk_x;
@@ -124,9 +123,9 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             this->blocks[i][water_level][j] = WATER;
           } else {
             this->blocks[i][k][j] = this->biome->ground;
-            string key;
+            std::string key;
 
-            key = to_string(this->x + 1) + "_" + to_string(this->z);
+            key = std::to_string(this->x + 1) + "_" + std::to_string(this->z);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
                 int random_number = rand() % 100;
@@ -141,7 +140,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             }
 
 
-            key = to_string(this->x) + "_" + to_string(this->z + 1);
+            key = std::to_string(this->x) + "_" + std::to_string(this->z + 1);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
                 int random_number = rand() % 100;
@@ -156,7 +155,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             }
 
 
-            key = to_string(this->x - 1) + "_" + to_string(this->z);
+            key = std::to_string(this->x - 1) + "_" + std::to_string(this->z);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
                 int random_number = rand() % 100;
@@ -171,7 +170,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             }
 
 
-            key = to_string(this->x) + "_" + to_string(this->z - 1);
+            key = std::to_string(this->x) + "_" + std::to_string(this->z - 1);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
                 int random_number = rand() % 100;
@@ -219,9 +218,9 @@ void Chunk::render() {
 }
 
 int Chunk::random(int max) {
-  random_device seed_gen;
-  mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
-  uniform_int_distribution<> dist(0, max);
+  std::random_device seed_gen;
+  std::mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
+  std::uniform_int_distribution<> dist(0, max);
   return dist(engine);
 }
 

@@ -10,8 +10,6 @@
 
 #include "../main.h"
 
-using namespace std;
-
 Block::Block(int type, int x, int y, int z) {
   this->type = type;
   this->x = x;

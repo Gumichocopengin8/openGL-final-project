@@ -5,8 +5,6 @@
 #include "Cloud.h"
 #include <random>
 
-using namespace std;
-
 
 namespace {
   constexpr int MIN_RADIUS_CLOUD = 8;
@@ -27,8 +25,8 @@ Cloud::Cloud(int x, int y, int z, Chunk *chunk) {
 }
 
 int Cloud::random(int max) {
-  random_device seed_gen;
-  mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
-  uniform_int_distribution<> dist(0, max);
+  std::random_device seed_gen;
+  std::mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
+  std::uniform_int_distribution<> dist(0, max);
   return dist(engine);
 }

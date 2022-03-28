@@ -5,9 +5,6 @@
 
 #include <cstdlib>
 
-using namespace std;
-
-
 void keydown(unsigned char key, int x, int y) {
   switch (key) {
     case 'q':

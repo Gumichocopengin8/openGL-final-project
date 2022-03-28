@@ -10,8 +10,6 @@
 #include <cmath>
 #include <GLUT/glut.h>
 
-using namespace std;
-
 namespace {
   constexpr float GRAVITY = 0.05;
   constexpr float MAX_HORIZONTAL_SPEED = 0.15;
