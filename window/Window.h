@@ -7,20 +7,20 @@
 
 class Window {
 private:
-    int default_width;
-    int default_height;
-    int width;
-    int height;
+  int default_width;
+  int default_height;
+  int width;
+  int height;
 public:
-    explicit Window(int default_width, int default_height);
+  explicit Window(int default_width, int default_height);
 
-    void setWidth(int width);
+  void setWidth(int width);
 
-    void setHeight(int height);
+  void setHeight(int height);
 
-    int getWidth() const;
+  int getWidth() const;
 
-    int getHeight() const;
+  int getHeight() const;
 };
 
 

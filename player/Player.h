@@ -11,29 +11,29 @@
 
 
 class Player {
-    float walking_acceleration;
-    float running_acceleration;
-    float vertical_speed;
+  float walking_acceleration;
+  float running_acceleration;
+  float vertical_speed;
 public:
 
-    std::map<char, bool> keys;
-    Camera camera;
+  std::map<char, bool> keys;
+  Camera camera;
 
-    explicit Player(Camera camera);
+  explicit Player(Camera camera);
 
-    void takeAction();
+  void takeAction();
 
-    void forward(bool run);
+  void forward(bool run);
 
-    void backward(bool run);
+  void backward(bool run);
 
-    void right(bool run);
+  void right(bool run);
 
-    void left(bool run);
+  void left(bool run);
 
-    void jump();
+  void jump();
 
-    void lookAt(float diffX, float diffY);
+  void lookAt(float diffX, float diffY);
 };
 
 

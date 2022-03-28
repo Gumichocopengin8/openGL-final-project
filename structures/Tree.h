@@ -10,9 +10,9 @@
 
 class Tree {
 public:
-    explicit Tree(int x, int y, int z, Chunk *chunk);
+  explicit Tree(int x, int y, int z, Chunk *chunk);
 
-    int chooseTexture();
+  int chooseTexture();
 };
 
 

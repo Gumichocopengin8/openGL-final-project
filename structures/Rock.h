@@ -11,7 +11,7 @@
 
 class Rock {
 public:
-    explicit Rock(int x, int y, int z, Chunk *chunk);
+  explicit Rock(int x, int y, int z, Chunk *chunk);
 };
 
 

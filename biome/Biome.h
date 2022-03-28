@@ -11,16 +11,15 @@
 #include "BiomeType.h"
 
 class Biome {
-
 public:
-    std::string id;
-    int x;
-    int z;
-    BiomeType *type;
+  std::string id;
+  int x;
+  int z;
+  BiomeType *type;
 
   explicit Biome(std::string id, int x, int z, BiomeType *type);
 
-    float distance_to(float x, float z);
+  float distance_to(float x, float z);
 };
 
 

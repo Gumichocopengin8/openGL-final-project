@@ -8,36 +8,36 @@
 
 class Texture {
 private:
-    float ambient[4];
-    float diffuse[4];
-    float specular[4];
-    float shininess[4];
+  float ambient[4];
+  float diffuse[4];
+  float specular[4];
+  float shininess[4];
 public:
-    explicit Texture();
+  explicit Texture();
 
-    void apply();
+  void apply();
 
-    void grass();
+  void grass();
 
-    void treeTrunk();
+  void treeTrunk();
 
-    void treeLeaves();
+  void treeLeaves();
 
-    void ground();
+  void ground();
 
-    void snow();
+  void snow();
 
-    void water();
+  void water();
 
-    void cloud();
+  void cloud();
 
-    void orange();
+  void orange();
 
-    void lawngreen();
+  void lawngreen();
 
-    void sand();
+  void sand();
 
-    void rock();
+  void rock();
 };
 
 

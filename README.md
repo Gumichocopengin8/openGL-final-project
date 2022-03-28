@@ -24,5 +24,5 @@ Check out [this video!](https://youtu.be/Iv7E1rnGXKs)
 - `d`: move right
 - `a`: move left
 - `space`: jump
-  
+
 You can use mouse to see around

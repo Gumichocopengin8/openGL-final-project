@@ -8,12 +8,12 @@
 using namespace std;
 
 Biome::Biome(string id, int x, int z, BiomeType *type) {
-    this->id = id;
-    this->x = x;
-    this->z = z;
-    this->type = type;
+  this->id = id;
+  this->x = x;
+  this->z = z;
+  this->type = type;
 }
 
 float Biome::distance_to(float x, float z) {
-    return pow(x - this->x, 2) + pow(z - this->z, 2);
+  return pow(x - this->x, 2) + pow(z - this->z, 2);
 }

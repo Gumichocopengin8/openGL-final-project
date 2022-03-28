@@ -11,15 +11,15 @@
 class Block {
 
 private:
-    int type;
-    int x;
-    int y;
-    int z;
+  int type;
+  int x;
+  int y;
+  int z;
 
 public:
   explicit Block(int type, int x, int y, int z);
 
-    void render();
+  void render();
 };
 
 
