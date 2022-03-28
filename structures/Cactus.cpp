@@ -10,7 +10,6 @@ Cactus::Cactus(int x, int y, int z, Chunk *chunk) {
 
   int x_min = 0;
   int x_max = CHUNK_SIZE - 1;
-  int z_min = 0;
   int z_max = CHUNK_SIZE - 1;
 
 
@@ -21,8 +20,6 @@ Cactus::Cactus(int x, int y, int z, Chunk *chunk) {
 
 
   if (x > 2 && x < 14 && z > 2 && z < 14) {
-    int rand_dir = rand() % 2;
-
     chunk->blocks[x][y][z] = TREELEAVES;
     chunk->blocks[x][y + 1][z] = TREELEAVES;
     chunk->blocks[x][y + 2][z] = TREELEAVES;

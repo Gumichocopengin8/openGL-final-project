@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <random>
 #include <string>
 
 #include "Chunk.h"
@@ -50,17 +51,11 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
       if (new_percent_j > 1) new_percent_j = 1;
 
 
-      int height;
+      float height = roundf(
+        perlin.octaveNoise0_1(i / fx, j / fy, octaves) * (this->biome->id == "mountain" ? 40 : 20));
 
-      if (this->biome->id == "mountain") {
-        height = round(perlin.octaveNoise0_1(i / fx, j / fy, octaves) * 40);
-      } else {
-        height = round(perlin.octaveNoise0_1(i / fx, j / fy, octaves) * 20);
-      }
-
-
-      int old_height_i = -1;
-      int old_height_j = -1;
+      float old_height_i = -1;
+      float old_height_j = -1;
 
 
       // Get adjacent i height
@@ -73,7 +68,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
       }
 
       if (i > 10) {
-        int temp_old_height = worldPtr->getTerrainHeight((1 + this->x) * 16, this->z * 16 + j);
+        float temp_old_height = worldPtr->getTerrainHeight((1 + this->x) * 16, this->z * 16 + j);
         if (temp_old_height != -1)
           old_height_i = temp_old_height;
       }
@@ -81,14 +76,14 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
       // Get adjacent j height
 
       if (j < 5) {
-        int temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, this->z * 16 - 1);
+        float temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, this->z * 16 - 1);
 
         if (temp_old_height != -1)
           old_height_j = temp_old_height;
       }
 
       if (j > 10) {
-        int temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, (1 + this->z) * 16);
+        float temp_old_height = worldPtr->getTerrainHeight(this->x * 16 + i, (1 + this->z) * 16);
 
         if (temp_old_height != -1)
           old_height_j = temp_old_height;
@@ -291,12 +286,4 @@ void Chunk::generateStructures() {
       }
     }
   }
-}
-
-float Chunk::distance_to(Chunk *other) {
-  return pow(other->x - this->x, 2) + pow(other->z - this->z, 2);
-}
-
-float Chunk::distance_to(float x, float z) {
-  return pow(x - this->x, 2) + pow(z - this->z, 2);
 }

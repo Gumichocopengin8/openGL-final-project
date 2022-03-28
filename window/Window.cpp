@@ -12,12 +12,13 @@ Window::Window(int default_width, int default_height) {
   this->height = this->default_height;
 }
 
-void Window::setWidth(int width) {
-  Window::width = width;
+void Window::setWidth(int widthValue) {
+  Window::width = widthValue;
 }
 
-void Window::setHeight(int height) {
-  Window::height = height;
+
+void Window::setHeight(int heightValue) {
+  Window::height = heightValue;
 }
 
 int Window::getWidth() const {

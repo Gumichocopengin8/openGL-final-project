@@ -12,7 +12,7 @@ class Tree {
 public:
   explicit Tree(int x, int y, int z, Chunk *chunk);
 
-  int chooseTexture();
+  static int chooseTexture();
 };
 
 

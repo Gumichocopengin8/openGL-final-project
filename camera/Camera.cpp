@@ -19,7 +19,7 @@ namespace {
 }
 
 
-Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
+Camera::Camera(float camera_x, float camera_y, float camera_z, float pitch, float yaw, float roll) {
   this->camera_x = camera_x;
   this->camera_y = camera_y;
   this->camera_z = camera_z;
@@ -68,9 +68,9 @@ void Camera::move_x(float speed) {
   if (this->x_speed < -MAX_HORIZONTAL_SPEED) this->x_speed = -MAX_HORIZONTAL_SPEED;
 
 
-  double new_camera_x = this->camera_x + sin(this->yaw) * cos(this->pitch) * this->x_speed;
-  double new_camera_y = this->camera_y + sin(this->pitch) * speed;
-  double new_camera_z = this->camera_z - cos(this->yaw) * cos(this->pitch) * this->x_speed;
+  float new_camera_x = this->camera_x + sin(this->yaw) * cos(this->pitch) * this->x_speed;
+  float new_camera_y = this->camera_y + sin(this->pitch) * speed;
+  float new_camera_z = this->camera_z - cos(this->yaw) * cos(this->pitch) * this->x_speed;
 
 
   if (worldPtr->getBlock(round(new_camera_x), round(new_camera_y) - CAMERA_HEIGHT, round(new_camera_z)) == 0) {
@@ -88,8 +88,8 @@ void Camera::move_z(float speed) {
   if (this->z_speed > MAX_HORIZONTAL_SPEED) this->z_speed = MAX_HORIZONTAL_SPEED;
   if (this->z_speed < -MAX_HORIZONTAL_SPEED) this->z_speed = -MAX_HORIZONTAL_SPEED;
 
-  double new_camera_x = this->camera_x + cos(this->yaw) * this->z_speed;
-  double new_camera_z = this->camera_z + sin(this->yaw) * this->z_speed;
+  float new_camera_x = this->camera_x + cos(this->yaw) * this->z_speed;
+  float new_camera_z = this->camera_z + sin(this->yaw) * this->z_speed;
 
   this->camera_x = new_camera_x;
   this->camera_z = new_camera_z;
@@ -100,7 +100,7 @@ void Camera::move_y(float speed) {
   if (this->y_speed > MAX_VERTICAL_SPEED) this->y_speed = MAX_VERTICAL_SPEED;
   if (this->y_speed < -MAX_VERTICAL_SPEED) this->y_speed = -MAX_VERTICAL_SPEED;
 
-  double new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
+  float new_camera_y = this->camera_y + cos(this->pitch) * this->y_speed;
 
   if (worldPtr->getBlock(round(this->camera_x), new_camera_y - CAMERA_HEIGHT, round(this->camera_z)) == 0) {
     this->camera_y = new_camera_y;

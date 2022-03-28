@@ -36,7 +36,7 @@ namespace siv {
   class PerlinNoise {
   private:
 
-    std::int32_t p[512];
+    std::int32_t p[512]{};
 
     static double Fade(double t) noexcept {
       return t * t * t * (t * (t * 6 - 15) + 10);
@@ -89,15 +89,15 @@ namespace siv {
       }
     }
 
-    double noise(double x) const {
+    [[nodiscard]] double noise(double x) const {
       return noise(x, 0.0, 0.0);
     }
 
-    double noise(double x, double y) const {
+    [[nodiscard]] double noise(double x, double y) const {
       return noise(x, y, 0.0);
     }
 
-    double noise(double x, double y, double z) const {
+    [[nodiscard]] double noise(double x, double y, double z) const {
       const std::int32_t X = static_cast<std::int32_t>(std::floor(x)) & 255;
       const std::int32_t Y = static_cast<std::int32_t>(std::floor(y)) & 255;
       const std::int32_t Z = static_cast<std::int32_t>(std::floor(z)) & 255;
@@ -123,7 +123,7 @@ namespace siv {
                             Grad(p[BB + 1], x - 1, y - 1, z - 1))));
     }
 
-    double octaveNoise(double x, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise(double x, std::int32_t octaves) const {
       double result = 0.0;
       double amp = 1.0;
 
@@ -136,7 +136,7 @@ namespace siv {
       return result;
     }
 
-    double octaveNoise(double x, double y, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise(double x, double y, std::int32_t octaves) const {
       double result = 0.0;
       double amp = 1.0;
 
@@ -150,7 +150,7 @@ namespace siv {
       return result;
     }
 
-    double octaveNoise(double x, double y, double z, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise(double x, double y, double z, std::int32_t octaves) const {
       double result = 0.0;
       double amp = 1.0;
 
@@ -165,27 +165,27 @@ namespace siv {
       return result;
     }
 
-    double noise0_1(double x) const {
+    [[nodiscard]] double noise0_1(double x) const {
       return noise(x) * 0.5 + 0.5;
     }
 
-    double noise0_1(double x, double y) const {
+    [[nodiscard]] double noise0_1(double x, double y) const {
       return noise(x, y) * 0.5 + 0.5;
     }
 
-    double noise0_1(double x, double y, double z) const {
+    [[nodiscard]] double noise0_1(double x, double y, double z) const {
       return noise(x, y, z) * 0.5 + 0.5;
     }
 
-    double octaveNoise0_1(double x, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise0_1(double x, std::int32_t octaves) const {
       return octaveNoise(x, octaves) * 0.5 + 0.5;
     }
 
-    double octaveNoise0_1(double x, double y, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise0_1(double x, double y, std::int32_t octaves) const {
       return octaveNoise(x, y, octaves) * 0.5 + 0.5;
     }
 
-    double octaveNoise0_1(double x, double y, double z, std::int32_t octaves) const {
+    [[nodiscard]] double octaveNoise0_1(double x, double y, double z, std::int32_t octaves) const {
       return octaveNoise(x, y, z, octaves) * 0.5 + 0.5;
     }
   };

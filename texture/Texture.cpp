@@ -5,15 +5,6 @@
 #include <GLUT/glut.h>
 #include "Texture.h"
 
-Texture::Texture() {
-  for (int i = 0; i < 4; i++) {
-    this->ambient[i] = 0.0;
-    this->diffuse[i] = 0.0;
-    this->specular[i] = 0.0;
-  }
-  this->shininess[0] = 0;
-}
-
 void Texture::apply() {
   glMaterialfv(GL_FRONT, GL_AMBIENT, this->ambient);
   glMaterialfv(GL_FRONT, GL_DIFFUSE, this->diffuse);

@@ -19,9 +19,7 @@ void mouse(GLint btn, GLint state, GLint x, GLint y) {
 void mouseMotion(int x, int y) {
   if (lastx == -1 || x < 0 || y < 0) {
     lastx = x;
-    lasty = y;
   }
   lastx = x;
-  lasty = y;
   playerPtr->lookAt(x - 200, y - 200);
 }

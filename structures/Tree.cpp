@@ -27,7 +27,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
 
   int radius_tree = MIN_RADIUS_TREE + rand() % (MAX_RADIUS_TREE - MIN_RADIUS_TREE);
-  int texture = this->chooseTexture();
+  int texture = Tree::chooseTexture();
 
   for (int i = -radius_tree + 1; i <= radius_tree - 1; i++) {
     for (int j = -radius_tree + 1; j <= radius_tree - 1; j++) {

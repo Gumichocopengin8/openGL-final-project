@@ -6,7 +6,6 @@
 #include "../main.h"
 #include <cmath>
 
-#include "../keyboard/keyboard.h"
 
 Player::Player(Camera camera) : camera(camera) {
   this->walking_acceleration = 0.07;
@@ -35,7 +34,7 @@ void Player::left(bool run) {
 }
 
 void Player::jump() {
-  if (abs(this->camera.y_speed) < 0.03)this->camera.move_y(this->vertical_speed);
+  if (abs(this->camera.y_speed) < 0.03) this->camera.move_y(this->vertical_speed);
 }
 
 void Player::lookAt(float diffX, float diffY) {

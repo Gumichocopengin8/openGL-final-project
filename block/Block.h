@@ -19,7 +19,7 @@ private:
 public:
   explicit Block(int type, int x, int y, int z);
 
-  void render();
+  void render() const;
 };
 
 

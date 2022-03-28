@@ -8,13 +8,13 @@
 
 class Light {
 private:
-  float diffuse[4];
-  float specular[4];
-  float ambient[4];
-  float spotDirection[3];
+  static constexpr float diffuse[4]{0.3, 0.3, 0.3, 0.3};
+  static constexpr float specular[4]{1.3, 1.3, 1.3,1.3};
+  static constexpr float ambient[4]{0.65, 0.65, 0.65, 0.65};
+  static constexpr float spotDirection[3]{};
 
 public:
-  float position[4];
+  float position[4]{0, 0, 0, 1.0}; // TODO: getter setter
 
   explicit Light();
 

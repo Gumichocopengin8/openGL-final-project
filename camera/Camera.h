@@ -9,19 +9,19 @@
 
 class Camera {
 private:
-  double pitch; // x rotation
-  double yaw; // y rotation
-  double roll; // z rotation
+  float pitch; // x rotation
+  float yaw; // y rotation
+  float roll; // z rotation
 
 public:
-  double camera_x;
-  double camera_y;
-  double camera_z;
-  double x_speed;
-  double y_speed;
-  double z_speed;
+  float camera_x;
+  float camera_y;
+  float camera_z;
+  float x_speed;
+  float y_speed;
+  float z_speed;
 
-  explicit Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll);
+  explicit Camera(float camera_x, float camera_y, float camera_z, float pitch, float yaw, float roll);
 
   void refresh(Light light);
 

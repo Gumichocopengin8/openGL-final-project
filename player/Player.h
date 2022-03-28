@@ -15,7 +15,6 @@ class Player {
   float running_acceleration;
   float vertical_speed;
 public:
-
   std::map<char, bool> keys;
   Camera camera;
 

@@ -8,12 +8,12 @@
 
 class Texture {
 private:
-  float ambient[4];
-  float diffuse[4];
-  float specular[4];
-  float shininess[4];
+  float ambient[4]{};
+  float diffuse[4]{};
+  float specular[4]{};
+  float shininess[4]{};
 public:
-  explicit Texture();
+  explicit Texture() = default;
 
   void apply();
 

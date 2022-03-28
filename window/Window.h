@@ -18,9 +18,9 @@ public:
 
   void setHeight(int height);
 
-  int getWidth() const;
+  [[nodiscard]] int getWidth() const;
 
-  int getHeight() const;
+  [[nodiscard]] int getHeight() const;
 };
 
 

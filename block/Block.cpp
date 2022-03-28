@@ -17,7 +17,7 @@ Block::Block(int type, int x, int y, int z) {
   this->z = z;
 }
 
-void Block::render() {
+void Block::render() const {
 
   // Transforms
   glPushMatrix();
@@ -26,18 +26,43 @@ void Block::render() {
   // Texture
   Texture texture;
 
-  if (this->type == GROUND) { texture.ground(); }
-  else if (this->type == GRASS) { texture.grass(); }
-  else if (this->type == TREETRUNK) { texture.treeTrunk(); }
-  else if (this->type == TREELEAVES) { texture.treeLeaves(); }
-  else if (this->type == SNOW) { texture.snow(); }
-  else if (this->type == WATER) { texture.water(); }
-  else if (this->type == CLOUD) { texture.cloud(); }
-  else if (this->type == ORANGE) { texture.orange(); }
-  else if (this->type == LAWNGREEN) { texture.lawngreen(); }
-  else if (this->type == SAND) { texture.sand(); }
-  else if (this->type == ROCK) { texture.rock(); }
-  else { texture.ground(); }
+  switch (this->type) {
+    case GROUND:
+      texture.ground();
+      break;
+    case GRASS:
+      texture.grass();
+      break;
+    case TREETRUNK:
+      texture.treeTrunk();
+      break;
+    case TREELEAVES:
+      texture.treeLeaves();
+      break;
+    case SNOW:
+      texture.snow();
+      break;
+    case WATER:
+      texture.water();
+      break;
+    case CLOUD:
+      texture.cloud();
+      break;
+    case ORANGE:
+      texture.orange();
+      break;
+    case LAWNGREEN:
+      texture.lawngreen();
+      break;
+    case SAND:
+      texture.sand();
+      break;
+    case ROCK:
+      texture.rock();
+      break;
+    default:
+      texture.ground();
+  }
 
   glutSolidCube(1);
   glPopMatrix();

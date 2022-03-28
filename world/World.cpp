@@ -100,7 +100,6 @@ int World::getTerrainHeight(int x, int z) {
   }
 
   return chunk->getHeight(x, z);
-
 }
 
 BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
