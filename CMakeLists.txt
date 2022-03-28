@@ -18,6 +18,8 @@ add_executable(
         block/types_of_block.h
         camera/Camera.cpp
         camera/Camera.h
+        utils/Utils.cpp
+        utils/Utils.h
         window/Window.cpp
         window/Window.h
         player/Player.cpp

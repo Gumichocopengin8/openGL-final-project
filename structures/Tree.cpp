@@ -3,6 +3,7 @@
 //
 
 #include "Tree.h"
+#include "../utils/Utils.h"
 #include <random>
 #include <cmath>
 
@@ -17,7 +18,7 @@ namespace {
 
 Tree::Tree(int x, int y, int z, Chunk *chunk) {
 
-  int height_tree = MIN_HEIGHT_TREE + rand() % (MAX_HEIGHT_TREE - MIN_HEIGHT_TREE);
+  int height_tree = MIN_HEIGHT_TREE + utils::random(RAND_MAX) % (MAX_HEIGHT_TREE - MIN_HEIGHT_TREE);
 
   for (int i = 0; i < height_tree; ++i) {
     if (chunk->blocks[x][y + i][z] == AIR) {
@@ -26,7 +27,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
   }
 
 
-  int radius_tree = MIN_RADIUS_TREE + rand() % (MAX_RADIUS_TREE - MIN_RADIUS_TREE);
+  int radius_tree = MIN_RADIUS_TREE + utils::random(RAND_MAX) % (MAX_RADIUS_TREE - MIN_RADIUS_TREE);
   int texture = Tree::chooseTexture();
 
   for (int i = -radius_tree + 1; i <= radius_tree - 1; i++) {
@@ -69,7 +70,7 @@ Tree::Tree(int x, int y, int z, Chunk *chunk) {
 }
 
 int Tree::chooseTexture() {
-  int num = rand() % 100;
+  int num = utils::random(RAND_MAX) % 100;
   int texture = 0;
   if (0 <= num && num < 33) {
     texture = TREELEAVES;

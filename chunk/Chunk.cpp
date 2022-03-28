@@ -15,6 +15,7 @@
 #include "../structures/Cloud.h"
 #include "../structures/SnowFlake.h"
 #include "../main.h"
+#include "../utils/Utils.h"
 
 
 Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
@@ -24,7 +25,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
 
 
   // PerlinNoise Setup
-  uint32_t seed = rand();
+  uint32_t seed = utils::random(RAND_MAX);
   double frequency = 0.1;
   int octaves = 4;
   const siv::PerlinNoise perlin(seed);
@@ -123,7 +124,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             key = std::to_string(this->x + 1) + "_" + std::to_string(this->z);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
-                int random_number = rand() % 100;
+                int random_number = utils::random(RAND_MAX) % 100;
                 int prob_actual_next_ground = 0;
 
                 if (i == CHUNK_SIZE - 1) prob_actual_next_ground = 80;
@@ -138,7 +139,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             key = std::to_string(this->x) + "_" + std::to_string(this->z + 1);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
-                int random_number = rand() % 100;
+                int random_number = utils::random(RAND_MAX) % 100;
                 int prob_actual_next_ground = 0;
 
                 if (j == CHUNK_SIZE - 1) prob_actual_next_ground = 80;
@@ -153,7 +154,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             key = std::to_string(this->x - 1) + "_" + std::to_string(this->z);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
-                int random_number = rand() % 100;
+                int random_number = utils::random(RAND_MAX) % 100;
                 int prob_actual_next_ground = 0;
 
                 if (i == 0) prob_actual_next_ground = 80;
@@ -168,7 +169,7 @@ Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
             key = std::to_string(this->x) + "_" + std::to_string(this->z - 1);
             if (worldPtr->chunks.count(key) > 0) {
               if (this->biome != worldPtr->chunks[key]->biome) {
-                int random_number = rand() % 100;
+                int random_number = utils::random(RAND_MAX) % 100;
                 int prob_actual_next_ground = 0;
 
                 if (j == 0) prob_actual_next_ground = 80;
@@ -212,13 +213,6 @@ void Chunk::render() {
   }
 }
 
-int Chunk::random(int max) {
-  std::random_device seed_gen;
-  std::mt19937_64 engine(seed_gen()); // 64-bit Mersenne Twister by Matsumoto and Nishimura, 2000
-  std::uniform_int_distribution<> dist(0, max);
-  return dist(engine);
-}
-
 int Chunk::getBlock(int x, int y, int z) {
   return this->blocks[x][y][z];
 }
@@ -251,7 +245,7 @@ void Chunk::generateStructures() {
 
       // Get surface_height
       int surface_height = this->heights[i][j];
-      int random_number = this->random(100);
+      auto random_number = utils::random(100);
 
       // Trees
       if (random_number < this->biome->tree_frequency * 100) {
@@ -276,7 +270,7 @@ void Chunk::generateStructures() {
   // Cloud
   for (int i = 5; i < CHUNK_SIZE - 5; ++i) {
     for (int j = 5; j < CHUNK_SIZE - 5; ++j) {
-      int prob = this->random(1000);
+      int prob = utils::random(1000);
       if (prob < 50) {
         int surface_height = 0;
         for (int k = 0; k < CHUNK_HEIGHT; ++k) {

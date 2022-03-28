@@ -7,6 +7,7 @@
 #include <cmath>
 #include "World.h"
 #include "../main.h"
+#include "../utils/Utils.h"
 
 World::World() {
   this->chunks = std::map<std::string, Chunk *>();
@@ -139,7 +140,7 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
 
 
     auto it = possibleBiomeTypes.begin();
-    advance(it, rand() % possibleBiomeTypes.size());
+    advance(it, utils::random(RAND_MAX) % possibleBiomeTypes.size());
     Biome biome(*it, chunk_x, chunk_y, this->biome_types[*it]);
     this->biomes.push_back(biome);
     return this->biome_types[*it];

@@ -28,8 +28,6 @@ public:
 
   void render();
 
-  int random(int max);
-
   int getBlock(int x, int y, int z);
 
   int getHeight(int x, int z);
