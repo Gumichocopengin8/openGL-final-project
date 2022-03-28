@@ -21,12 +21,14 @@ Player *playerPtr;
 Window *windowPtr;
 World *worldPtr;
 
-#define WINDOW_SIZE 512
+namespace {
+  constexpr int WINDOW_SIZE = 512;
+}
+
 int count = 0;
 Light light;
 
 void init() {
-
     light.ApplyLight();
 }
 

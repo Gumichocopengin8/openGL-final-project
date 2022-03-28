@@ -9,20 +9,22 @@
 #include "../block/types_of_block.h"
 #include "../biome/BiomeType.h"
 
-#define CHUNK_SIZE 16
-#define CHUNK_HEIGHT 128
+namespace {
+  constexpr int CHUNK_SIZE = 16;
+  constexpr int CHUNK_HEIGHT = 128;
+}
 
 class Chunk {
 public:
 
     int x;
     int z;
-    BiomeType *biome;
+    BiomeType *biome; // TODO
 
     int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
     int heights[CHUNK_SIZE][CHUNK_SIZE];
 
-    Chunk(int chunk_x, int chunk_z, BiomeType *biome);
+    explicit Chunk(int chunk_x, int chunk_z, BiomeType *biome);
 
     void render();
 

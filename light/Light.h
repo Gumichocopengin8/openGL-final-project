@@ -16,7 +16,7 @@ private:
 public:
     float position[4];
 
-    Light();
+    explicit Light();
 
     void ApplyLight();
 };

@@ -4,13 +4,14 @@
 
 #include "Cloud.h"
 #include <random>
-#include <iostream>
 
 using namespace std;
 
 
-#define MIN_RADIUS_CLOUD 8
-#define MAX_RADIUS_CLOUD 15
+namespace {
+  constexpr int MIN_RADIUS_CLOUD = 8;
+  constexpr int MAX_RADIUS_CLOUD = 15;
+}
 
 Cloud::Cloud(int x, int y, int z, Chunk *chunk) {
     int radius_cloud = MIN_RADIUS_CLOUD + this->random(MAX_RADIUS_CLOUD - MIN_RADIUS_CLOUD);

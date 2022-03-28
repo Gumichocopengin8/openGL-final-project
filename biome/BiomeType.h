@@ -12,7 +12,6 @@
 #include "../block/types_of_block.h"
 
 struct BiomeType {
-
     std::string id;
     int ground = GRASS;
     float tree_frequency = 0;

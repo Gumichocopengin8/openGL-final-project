@@ -13,7 +13,7 @@ private:
     float specular[4];
     float shininess[4];
 public:
-    Texture();
+    explicit Texture();
 
     void apply();
 

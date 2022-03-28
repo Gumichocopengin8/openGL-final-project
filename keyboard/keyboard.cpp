@@ -4,8 +4,6 @@
 #include "keyboard.h"
 
 #include <cstdlib>
-#include <iostream>
-#import <GLUT/glut.h>
 
 using namespace std;
 

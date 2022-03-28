@@ -11,7 +11,7 @@ class SnowFlake {
 private:
     int fall_speed = 0;
 public:
-    SnowFlake();
+    explicit SnowFlake();
 
     void snowGenerate(int x, int y, int z, Chunk *chunk);
 

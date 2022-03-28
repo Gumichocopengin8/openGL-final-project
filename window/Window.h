@@ -12,7 +12,7 @@ private:
     int width;
     int height;
 public:
-    Window(int default_width, int default_height);
+    explicit Window(int default_width, int default_height);
 
     void setWidth(int width);
 

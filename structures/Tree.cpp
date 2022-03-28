@@ -6,11 +6,13 @@
 #include <random>
 #include <cmath>
 
-#define MIN_HEIGHT_TREE 8
-#define MAX_HEIGHT_TREE 12
+namespace {
+  constexpr int MIN_HEIGHT_TREE = 8;
+  constexpr int MAX_HEIGHT_TREE = 12;
 
-#define MIN_RADIUS_TREE 3
-#define MAX_RADIUS_TREE 6
+  constexpr int MIN_RADIUS_TREE = 3;
+  constexpr int MAX_RADIUS_TREE = 6;
+}
 
 
 Tree::Tree(int x, int y, int z, Chunk *chunk) {

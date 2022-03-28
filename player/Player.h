@@ -19,7 +19,7 @@ public:
     std::map<char, bool> keys;
     Camera camera;
 
-    Player(Camera camera);
+    explicit Player(Camera camera);
 
     void takeAction();
 

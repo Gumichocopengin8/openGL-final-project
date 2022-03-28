@@ -17,7 +17,7 @@ private:
     int z;
 
 public:
-    Block(int type, int x, int y, int z);
+  explicit Block(int type, int x, int y, int z);
 
     void render();
 };

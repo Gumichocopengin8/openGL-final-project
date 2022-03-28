@@ -12,11 +12,13 @@
 
 using namespace std;
 
-#define GRAVITY 0.05
-#define MAX_HORIZONTAL_SPEED 0.15
-#define MAX_VERTICAL_SPEED 1
-#define GROUND_FRICTION 0.1
-#define CAMERA_HEIGHT 1.5
+namespace {
+  constexpr float GRAVITY = 0.05;
+  constexpr float MAX_HORIZONTAL_SPEED = 0.15;
+  constexpr float MAX_VERTICAL_SPEED = 1;
+  constexpr float GROUND_FRICTION = 0.1;
+  constexpr float CAMERA_HEIGHT = 1.5;
+}
 
 
 Camera::Camera(double camera_x, double camera_y, double camera_z, double pitch, double yaw, double roll) {
@@ -107,8 +109,6 @@ void Camera::move_y(float speed) {
     } else {
         this->y_speed = 0;
     }
-
-
 }
 
 void Camera::lookAt(float diffX, float diffY) {
