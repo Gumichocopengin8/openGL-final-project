@@ -18,11 +18,11 @@
 #include "../utils/Utils.h"
 
 
-Chunk::Chunk(int chunk_x, int chunk_z, BiomeType *biome) {
+Chunk::Chunk(int chunk_x, int chunk_z, BiomeType* biomeType) {
   this->x = chunk_x;
   this->z = chunk_z;
-  this->biome = biome;
-
+  std::unique_ptr<BiomeType> temp(biomeType); // TODO: is it a clean way to make a unique pointer?
+  this->biome = std::move(temp);
 
   // PerlinNoise Setup
   uint32_t seed = utils::random(RAND_MAX);

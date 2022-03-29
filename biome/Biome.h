@@ -16,9 +16,10 @@ public:
   [[maybe_unused]] std::string id;
   int x;
   int z;
-  BiomeType *type;
+  std::shared_ptr<BiomeType> type;
 
-  explicit Biome(std::string id, int x, int z, BiomeType *type) : id{std::move(id)}, x{x}, z{z}, type{type} {};
+  explicit Biome(std::string id, int x, int z, std::shared_ptr<BiomeType> type) : id{std::move(id)}, x{x}, z{z},
+                                                                                  type{std::move(type)} {};
 
   [[nodiscard]] float distance_to(float x, float z) const;
 };

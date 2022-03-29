@@ -10,9 +10,8 @@
 #include "../utils/Utils.h"
 
 World::World() {
-  this->chunks = std::map<std::string, Chunk *>();
-  this->biome_types = std::map<std::string, BiomeType *>();
-
+  this->chunks = std::map<std::string, std::shared_ptr<Chunk>>();
+  this->biome_types = std::map<std::string, std::shared_ptr<BiomeType>>();
   this->initializeBiomes();
 }
 
@@ -28,38 +27,28 @@ void World::update(double x, double y) {
 }
 
 void World::loadChunk(int chunk_x, int chunk_y) {
-
   std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
-  Chunk *chunk = nullptr;
+  std::shared_ptr<Chunk> chunk;
 
   if (this->chunks.count(key) > 0) {
     chunk = this->chunks[key];
   } else {
-    chunk = this->generateChunk(chunk_x, chunk_y);
+    chunk = std::move(this->generateChunk(chunk_x, chunk_y));
     this->chunks[key] = chunk;
   }
-
-
   chunk->render();
 }
 
-Chunk *World::generateChunk(int chunk_x, int chunk_y) {
+std::unique_ptr<Chunk> World::generateChunk(int chunk_x, int chunk_y) {
   std::string key = std::to_string(chunk_x) + "_" + std::to_string(chunk_y);
-
-  BiomeType *biome = this->chooseChunkBiome(chunk_x, chunk_y);
-
-  Chunk *chunk = nullptr;
-  chunk = new Chunk(chunk_x, chunk_y, biome);
-
-
+  std::shared_ptr<BiomeType> biome_type = this->chooseChunkBiome(chunk_x, chunk_y);
+  std::unique_ptr<Chunk> chunk(new Chunk(chunk_x, chunk_y, biome_type.get()));
   return chunk;
 }
 
 int World::getBlock(int x, int y, int z) {
-
   std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
-
-  Chunk *chunk = nullptr;
+  std::shared_ptr<Chunk> chunk;
   ///Chunk
   if (this->chunks.count(key) > 0) {
     chunk = this->chunks[key];
@@ -78,12 +67,11 @@ int World::getBlock(int x, int y, int z) {
   }
 
   return chunk->getBlock(x, y, z);
-
 }
 
 int World::getTerrainHeight(int x, int z) {
   std::string key = std::to_string(int(floor(x / 16.0))) + "_" + std::to_string(int(floor(z / 16.0)));
-  Chunk *chunk = nullptr;
+  std::shared_ptr<Chunk> chunk;
   if (this->chunks.count(key) > 0) {
     chunk = this->chunks[key];
   } else {
@@ -103,8 +91,7 @@ int World::getTerrainHeight(int x, int z) {
   return chunk->getHeight(x, z);
 }
 
-BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
-
+std::shared_ptr<BiomeType> World::chooseChunkBiome(int chunk_x, int chunk_y) {
   // For the first chunk
   if (this->biomes.empty()) {
     // Force desert because the biome is cool
@@ -114,7 +101,6 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
     this->biomes.push_back(biome);
     return this->biome_types[key];
   }
-
 
   // Get the nearest biome
   float best_distance = this->biomes[0].distance_to(chunk_x, chunk_y);
@@ -129,7 +115,6 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
   }
 
   if (best_distance > 20) {
-
     std::vector<std::string> possibleBiomeTypes;
 
     for (auto const &biome_type: this->biome_types) {
@@ -137,7 +122,6 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
         possibleBiomeTypes.push_back(biome_type.first);
       }
     }
-
 
     auto it = possibleBiomeTypes.begin();
     advance(it, utils::random(RAND_MAX) % possibleBiomeTypes.size());
@@ -149,9 +133,8 @@ BiomeType *World::chooseChunkBiome(int chunk_x, int chunk_y) {
   return best_distance_biome.type;
 }
 
-std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
-
-  std::vector<Chunk *> neighbors;
+std::vector<std::shared_ptr<Chunk>> World::getNeighborsChunks(int x, int z) {
+  std::vector<std::shared_ptr<Chunk>> neighbors;
 
   for (int i = -1; i <= 1; ++i) {
     for (int j = -1; j <= 1; ++j) {
@@ -163,24 +146,21 @@ std::vector<Chunk *> World::getNeighborsChunks(int x, int z) {
       }
     }
   }
-
-  return std::vector<Chunk *>();
+  return neighbors;
 }
 
 void World::initializeBiomes() {
-
-  this->biome_types["prairie"] = new BiomeType();
+  this->biome_types["prairie"] = std::make_unique<BiomeType>(new BiomeType());
   this->biome_types["prairie"]->id = "prairie";
   this->biome_types["prairie"]->ground = GRASS;
   this->biome_types["prairie"]->tree_frequency = 0.02;
 
-  this->biome_types["desert"] = new BiomeType();
+  this->biome_types["desert"] = std::make_unique<BiomeType>(new BiomeType());
   this->biome_types["desert"]->id = "desert";
   this->biome_types["desert"]->ground = SAND;
   this->biome_types["desert"]->cactus_frequency = 0.02;
 
-
-  this->biome_types["mountain"] = new BiomeType();
+  this->biome_types["mountain"] = std::make_unique<BiomeType>(new BiomeType());
   this->biome_types["mountain"]->id = "mountain";
   this->biome_types["mountain"]->ground = GRASS;
   this->biome_types["mountain"]->rock_frequency = 0.05;

@@ -17,10 +17,10 @@ class World {
 
 public:
 
-  std::map<std::string, Chunk *> chunks;
+  std::map<std::string, std::shared_ptr<Chunk>> chunks;
   std::vector<Biome> biomes;
 
-  std::map<std::string, BiomeType *> biome_types;
+  std::map<std::string, std::shared_ptr<BiomeType>> biome_types;
 
 
   World();
@@ -29,15 +29,15 @@ public:
 
   void loadChunk(int chunk_x, int chunk_y);
 
-  Chunk *generateChunk(int chunk_x, int chunk_y);
+  std::unique_ptr<Chunk> generateChunk(int chunk_x, int chunk_y);
 
-  BiomeType *chooseChunkBiome(int chunk_x, int chunk_y);
+  std::shared_ptr<BiomeType> chooseChunkBiome(int chunk_x, int chunk_y);
 
   int getBlock(int x, int y, int z);
 
   int getTerrainHeight(int x, int z);
 
-  std::vector<Chunk *> getNeighborsChunks(int x, int z);
+  std::vector<std::shared_ptr<Chunk>> getNeighborsChunks(int x, int z);
 
 
   void initializeBiomes();

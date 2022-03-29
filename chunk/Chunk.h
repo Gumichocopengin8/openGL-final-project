@@ -19,12 +19,12 @@ public:
 
   int x;
   int z;
-  BiomeType *biome; // TODO
+  std::unique_ptr<BiomeType> biome;
 
   int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE]{};
   int heights[CHUNK_SIZE][CHUNK_SIZE]{};
 
-  explicit Chunk(int chunk_x, int chunk_z, BiomeType *biome);
+  explicit Chunk(int chunk_x, int chunk_z, BiomeType *biomeType);
 
   void render();
 
