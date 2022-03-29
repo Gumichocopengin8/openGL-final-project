@@ -10,7 +10,7 @@
 
 class Cactus {
 public:
-    Cactus(int x, int y, int z, Chunk *chunk);
+  explicit Cactus(int x, int y, int z, Chunk *chunk);
 };
 
 

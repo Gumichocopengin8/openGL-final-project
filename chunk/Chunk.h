@@ -9,36 +9,32 @@
 #include "../block/types_of_block.h"
 #include "../biome/BiomeType.h"
 
-#define CHUNK_SIZE 16
-#define CHUNK_HEIGHT 128
+namespace {
+  constexpr int CHUNK_SIZE = 16;
+  constexpr int CHUNK_HEIGHT = 128;
+}
 
 class Chunk {
 public:
 
-    int x;
-    int z;
-    BiomeType *biome;
+  int x;
+  int z;
+  std::unique_ptr<BiomeType> biome;
 
-    int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE];
-    int heights[CHUNK_SIZE][CHUNK_SIZE];
+  int blocks[CHUNK_SIZE][CHUNK_HEIGHT][CHUNK_SIZE]{};
+  int heights[CHUNK_SIZE][CHUNK_SIZE]{};
 
-    Chunk(int chunk_x, int chunk_z, BiomeType *biome);
+  explicit Chunk(int chunk_x, int chunk_z, BiomeType *biomeType);
 
-    void render();
+  void render();
 
-    int random(int max);
+  int getBlock(int x, int y, int z);
 
-    int getBlock(int x, int y, int z);
+  int getHeight(int x, int z);
 
-    int getHeight(int x, int z);
+  void generateStructures();
 
-    float distance_to(Chunk *other);
-
-    float distance_to(float x, float z);
-
-    void generateStructures();
-
-    void removeHiddenBlocks();
+  void removeHiddenBlocks();
 };
 
 

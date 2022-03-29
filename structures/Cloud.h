@@ -9,9 +9,7 @@
 
 class Cloud {
 public:
-    Cloud(int x, int y, int z, Chunk *chunk);
-
-    int random(int max);
+  explicit Cloud(int x, int y, int z, Chunk *chunk);
 };
 
 

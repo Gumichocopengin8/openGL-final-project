@@ -5,17 +5,17 @@
 #ifndef PROJECT_TYPES_OF_BLOCK_H
 #define PROJECT_TYPES_OF_BLOCK_H
 
-#define AIR 0
-#define GROUND 1
-#define GRASS 2
-#define TREETRUNK 3
-#define TREELEAVES 4
-#define SNOW 5
-#define WATER 6
-#define CLOUD 7
-#define ORANGE 8
-#define LAWNGREEN 9
-#define SAND 10
-#define ROCK 11
+constexpr int AIR = 0;
+constexpr int GROUND = 1;
+constexpr int GRASS = 2;
+constexpr int TREETRUNK = 3;
+constexpr int TREELEAVES = 4;
+constexpr int SNOW = 5;
+constexpr int WATER = 6;
+constexpr int CLOUD = 7;
+constexpr int ORANGE = 8;
+constexpr int LAWNGREEN = 9;
+constexpr int SAND = 10;
+constexpr int ROCK = 11;
 
 #endif //PROJECT_TYPES_OF_BLOCK_H

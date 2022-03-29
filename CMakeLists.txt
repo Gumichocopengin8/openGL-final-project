@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.20)
 project(project)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -framework GLUT -framework OpenGL")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -framework GLUT -framework OpenGL")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 set(CMAKE_CXX_FLAGS_MINSIZEREL "-Os")
 
@@ -18,6 +18,8 @@ add_executable(
         block/types_of_block.h
         camera/Camera.cpp
         camera/Camera.h
+        utils/Utils.cpp
+        utils/Utils.h
         window/Window.cpp
         window/Window.h
         player/Player.cpp
